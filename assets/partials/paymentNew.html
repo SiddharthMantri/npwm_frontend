@@ -1,0 +1,497 @@
+<div class="jr-body" style="font-family:'jrMid';">
+  <div class="container">
+    <!--
+<div class="jr-payment-announcer" id="small-screen-announcer">
+-->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-payment-header">
+        <div class="booking-box-header">
+          <h3 class="modal-title payment-title">
+            Payment for your Booking
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="top-nav-row">
+    <div class="row" style="background-color:#ddd">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 jr-responsive-card">
+        <span class="tab-block" ng-click="setActive('saved')" ng-class="{'jr-payment-tab-selected': activeState == 'saved', 'jr-payment-tab-unselected': activeState !== 'saved'}">
+          <div class="tab-text">
+            <img src="assets/images/sidetab_payment.png">
+            <span>
+              Saved Card
+            </span>
+          </div>
+        </span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 jr-responsive-card">
+        <span class="tab-block" ng-click="setActive('credit')" ng-class="{'jr-payment-tab-selected': activeState == 'credit', 'jr-payment-tab-unselected': activeState !== 'credit'}">
+          <div class="tab-text">
+            <img src="assets/images/sidetab_card.png">
+            <span>
+              Credit
+            </span>
+          </div>
+        </span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 jr-responsive-card">
+        <span class="tab-block" ng-click="setActive('debit')" ng-class="{'jr-payment-tab-selected': activeState == 'debit', 'jr-payment-tab-unselected': activeState !== 'debit'}">
+          <div class="tab-text">
+            <img src="assets/images/sidetab_card.png">
+            <span>
+              Debit
+            </span>
+          </div>
+        </span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 jr-responsive-card">
+        <span class="tab-block" ng-click="setActive('internet')" ng-class="{'jr-payment-tab-selected': activeState == 'internet', 'jr-payment-tab-unselected': activeState !== 'internet'}">
+          <div class="tab-text">
+            <img src="assets/images/sidetab_net.png">
+            <span>
+              Net Banking
+            </span>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" id="side-nav-col" class="jr-side-nav-col" style="padding-right: 0px;">
+        <div class="jr-payment-tab" ng-class="{'jr-payment-tab-selected': activeState == 'saved', 'jr-payment-tab-unselected': activeState !== 'saved'}" ng-click="setActive('saved')">
+          <span class="jr-icon-side-nav-span">
+            <img src="assets/images/sidetab_payment.png">
+          </span>
+          <span>
+            SAVED CARD
+          </span>
+        </div>
+        <div class="jr-payment-tab" ng-class="{'jr-payment-tab-selected': activeState == 'credit', 'jr-payment-tab-unselected': activeState !== 'credit'}" ng-click="setActive('credit')">
+          <span class="jr-icon-side-nav-span">
+            <img src="assets/images/sidetab_card.png">
+          </span>
+          <span>
+            CREDIT CARD
+          </span>
+        </div>
+        <div class="jr-payment-tab" ng-class="{'jr-payment-tab-selected': activeState == 'debit', 'jr-payment-tab-unselected': activeState !== 'debit'}" ng-click="setActive('debit')">
+          <span class="jr-icon-side-nav-span">
+            <img src="assets/images/sidetab_card.png">
+          </span>
+          <span>
+            DEBIT CARD
+          </span>
+        </div>
+        <div class="jr-payment-tab" ng-class="{'jr-payment-tab-selected': activeState == 'internet', 'jr-payment-tab-unselected': activeState !== 'internet'}" ng-click="setActive('internet')">
+          <span class="jr-icon-side-nav-span">
+            <img src="assets/images/sidetab_net.png">
+          </span>
+          <span>
+            INTERNET BANKING
+          </span>
+        </div>
+      </div>
+      <div class="col-md-5" class="jr-payment-center-container" style="padding: 0px;background: #fff;">
+        <div class="jr-credit-card-container jr-creditCard-padding" id="saved-card" ng-if="activeState === 'saved'">
+          <div class="stored-cards">
+            <p class="disclaimer" style="text-align: right;">
+              Pay using your saved cards
+            </p>
+            <div ng-if="!cardArray || cardArray.length == 0" style="text-transform: uppercase;">
+              Make a payment to see your saved cards here
+            </div>
+            <div ng-repeat="card in cardArray" class="stored-card" ng-class="{'active': card.id == activeSavedCard.id}" ng-click="setActiveSavedCard(card)">
+              <div class="new-clearfix card">
+                <input type="radio" name="cvv-radio" ng-model="activeSavedCard.id" ng-value="card.id">
+                <span class="card-radio">
+                </span>
+                <p class="card-num">
+                  <span class="main-text">
+                    {{card.card_number}}
+                  </span>
+                  <span class="sub-text">
+                    {{card.card_brand}}
+                  </span>
+                </p>
+                <a class="delete-btn-section" ng-click="deleteCard(card)">
+                  <img src="https://dmx246cm6p7k8.cloudfront.net/content/images/desktop/remove-stored-card.png">
+                </a>
+                <input ng-if="card.card_number.length != 19" class="cvv input-form-card-pay jr-pay-now-saved-card" type="password" placeholder="CVV" ng-model="activeSavedCard.cvv">
+                <div class="jr-cvv-error2" ng-if="card.id == activeSavedCard.id && activeSavedCardError && card.card_number.length != 19">
+                  Required CVV
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position: relative;margin-left: 15%;" ng-if="cardArray && cardArray.length >
+0">
+  <div class="jr-pay-now-btn jr-pay-now-saved-card" ng-click="savedPay()">
+    PAY NOW
+  </div>
+          </div>
+        </div>
+        <div class="jr-credit-card-container jr-creditCard-padding" id="credit-card" ng-if="activeState === 'credit'">
+          <p class="disclaimer" style="text-align: right;">
+            Pay using VISA, MASTER or AMEX
+            <img class="card" width="100" height="28" src="assets/images/credit-cards.jpg">
+            
+          </p>
+          <div class="jr-payment-row" style="position: relative;">
+            <input type="text" ng-model="creditCardNumber" ng-init="creditCardNumber = ''" only-digits format-attr placeholder="Card Number" class="credit-card-input integer input-form-card-pay" id="credCardNumber" required="true" maxlength="23" tabindex="1">
+            <span ng-if="cardDetected" class="card-img card-img-pos" ng-class="cardIcon">
+            </span>
+            <div ng-if="invalidCreditNumber" style="color: red;font-size: smaller;">
+              Invalid Number
+            </div>
+            <div ng-if="unsupportedCard" style="color: red; font-size: smaller">
+              VISA, MASTER or AMEX CARDS only
+            </div>
+            <div ng-if="emptyNo" style="color: red; font-size: smaller;">
+              Please provide card number
+            </div>
+          </div>
+          <div class="jr-payment-row">
+            <input type="text" placeholder="Name" class="credit-card-name text input-form-card-pay" id="credDebCard" maxlength="24" ng-model="credit.creditCardName" tabindex="2">
+            <div ng-if="emptyName" style="color: red; font-size: smaller;">
+              Please input your name
+            </div>
+          </div>
+          <div class="jr-payment-expiry-row" style="text-align: right;">
+            <div class="row payment-card-row">
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="jr-payment-boxes jr-payment-dropdown jr-expiry-month-responsive input-form-card-pay" ng-class="{'open': askExpiryMonth}" id="toggle-month" dropdown tabindex="3">
+                  <div style="font-size: 14px;" class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">
+                    <span ng-if="expiryMonth == undefined" style="color: #a9a9a9;font-size:14px;" class="minimize-label">
+                      Expiry Month 
+                      <span style="float:right">
+                        <i class="fa fa-chevron-down">
+                        </i>
+                      </span>
+                    </span>
+                    <span ng-if="expiryMonth != null">
+                      {{expiryMonth}}
+                      <i class="fa fa-chevron-down pull-right">
+                      </i>
+                    </span>
+                  </div>
+                  
+                  <div class="dropdown-menu jr-dropdown jr-dropdown-menu-limit jr-payment-dummy">
+                    <li ng-repeat="month in months" ng-if="p.id != 0">
+                      <a class="jr-anchor"  ng-click="setExpiryMonth(month)">
+                        {{month}}({{$index + 1}})
+                      </a>
+                    </li>
+                    
+                  </div>
+                </div>
+                <div ng-if="emptyMonth" class="jr-empty-month-new pull-left">
+                  Required
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="jr-payment-boxes jr-payment-dropdown jr-payment-expiry-year input-form-card-pay" ng-class="{'open': askExpiryYear}" id="toggle-year" dropdown tabindex="4">
+                  <div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">
+                    <span ng-if="expiryYear == undefined" style="color: #a9a9a9;font-size:14px;" class="minimize-label">
+                      Expiry Year 
+                      <i class="fa fa-chevron-down pull-right">
+                      </i>
+                    </span>
+                    <span ng-if="expiryYear != null">
+                      {{expiryYear}}
+                      <i class="fa fa-chevron-down pull-right">
+                      </i>
+                    </span>
+                  </div>
+                  <div class="dropdown-menu jr-dropdown jr-dropdown-menu-limit jr-payment-dummy" tabindex="4">
+                    <li ng-repeat="year in years">
+                      <a class="jr-anchor"  ng-click="setExpiryYear(year)">
+                        {{year}}
+                      </a>
+                    </li>
+                    
+                  </div>
+                </div>
+                <div ng-if="emptyYear" class="jr-empty-year-new pull-left">
+                  Required
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="jr-payment-boxes jr-payment-dropdown input-form-card-pay">
+                  <input type="password" only-digits class="jr-cvv-input" placeholder="CVV" class="credit-card-input text" id="credDebCard" minlength="3" maxlength="4" ng-model="creditCardCVV" style="border: none" tabindex="5">
+                  <span ng-if="emptyCVV" class="jr-cvv-missing">
+                    CVV missing
+                  </span>
+                  <span ng-if="invalidCVV" class="jr-cvv-error jr-require-invalid-cvv">
+                    Invalid CVV
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="jr-error-div">
+          </div>
+          <div class="jr-payment-expiry-row jr-pay-btn-credit-new">
+            <div class="jr-pay-now-btn jr-pay-now-btn-click-credit" ng-click="creditPay()">
+              PAY NOW
+            </div>
+            <div style="margin-top:10px">
+              <input type="checkbox" ng-model="defaultRememberCredit" ng-click="changeRememberCredit()">
+              <span style="color: #c9c9c9;">
+                Remember card
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="jr-debit-card-container jr-creditCard-padding" id="debit-card" ng-if="activeState === 'debit'">
+          <p class="disclaimer" style="text-align: right;">
+            Pay using MASTER, VISA, MAESTRO or CITI BANK CARD
+          </p>
+          <div class="jr-payment-row">
+            <div class="jr-payment-boxes jr-debit-select input-form-card-pay" ng-class="{'open': askDebitMethod}" id="toggle-debit-method" dropdown>
+              <div class="dropdown-toggle jr-debit-card" dropdown-toggle="dropdown">
+                <span ng-if="debitMethod == undefined" class="jr-default-placeholder">
+                  Select Debit Card
+                  <i class="fa fa-chevron-down pull-right">
+                  </i>
+                </span>
+                <span ng-if="debitMethod != null">
+                  {{debitMethod.name}}
+                  <i class="fa fa-chevron-down pull-right">
+                  </i>
+                </span>
+              </div>
+              <div class="dropdown-menu jr-dropdown jr-payment-dummy">
+                <li ng-repeat="method in debitMethods">
+                  <a class="jr-anchor" ng-click="setDebitMethod(method)" style="padding: 7px">
+                    {{method.name}}
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div class="jr-credit-card-container jr-creditCard-padding" ng-if="debitMethod" style="min-height: 0px;padding: 0px;">
+            <div class="jr-new-payment-row">
+              <input type="text" placeholder="Card Number" class="credit-card-input integer input-form-card-pay" id="debCard" only-debit-digits format-attr required="true" ng-model="debitCardNumber" ng-init="debitCardNumber = ''" tabindex="1">
+              <div ng-if="invalidDebitNo" style="color: red;font-size: smaller;">
+                Invalid Number
+              </div>
+              <div ng-if="emptyDebitNo" style="color: red; font-size: smaller;">
+                Please provide card number
+              </div>
+            </div>
+            <div class="jr-new-payment-row">
+              <input type="text" placeholder="Name" class="credit-card-name text input-form-card-pay" id="debCardName" maxlength="24" ng-model="debit.debitCardName" ng-init="debit.debitCardName = ''" tabindex="2">
+              <div ng-if="emptyDebitName" style="color: red; font-size: smaller;">
+                Required
+              </div>
+            </div>
+            <div class="jr-payment-expiry-row">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="jr-payment-boxes jr-payment-dropdown jr-expiry-month-responsive input-form-card-pay" ng-class="{'open': askDebMonth}" id="toggle-month" dropdown tabindex="3">
+                    <div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">
+                      <span ng-if="debExpiryMonth == undefined" style="color: #a9a9a9;font-size:14px;" class="minimize-label">
+                        Expiry Month
+                        <span style="float:right">
+                          <i class="fa fa-chevron-down">
+                          </i>
+                        </span>
+                      </span>
+                      <span ng-if="debExpiryMonth != null">
+                        {{debExpiryMonth}}
+                        <i class="fa fa-chevron-down pull-right">
+                        </i>
+                      </span>
+                    </div>
+                    <div class="dropdown-menu jr-dropdown jr-dropdown-menu-limit jr-payment-dummy">
+                      <li ng-repeat="month in months" ng-if="p.id != 0">
+                        <a class="jr-anchor" ng-click="setDebExpiryMonth(month)">
+                          {{month}}({{$index + 1}})
+                        </a>
+                      </li>
+                    </div>
+                  </div>
+                  <span class="optional" ng-show="optional">
+                    {{optional}}
+                  </span>
+                </div>
+                <div class="col-lg-4">
+                  <div class="jr-payment-boxes jr-payment-dropdown jr-payment-expiry-year input-form-card-pay" ng-class="{'open': askDebYear}" id="toggle-year" dropdown tabindex="4">
+                    <div style="font-size:14px;" class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">
+                      <span ng-if="debExpiryYear == undefined" style="color: #a9a9a9;font-size: 14px;" class="minimize-label">
+                        Expiry Year 
+                        <i class="fa fa-chevron-down pull-right">
+                        </i>
+                      </span>
+                      <span ng-if="debExpiryYear != null">
+                        {{debExpiryYear}}
+                        <i class="fa fa-chevron-down pull-right">
+                        </i>
+                      </span>
+                    </div>
+                    <div class="dropdown-menu jr-dropdown jr-dropdown-menu-limit jr-payment-dummy">
+                      <li ng-repeat="year in years">
+                        <a class="jr-anchor"  ng-click="setDebExpiryYear(year)">
+                          {{year}}
+                        </a>
+                      </li>
+                      
+                    </div>
+                  </div>
+                  <span class="optional" ng-show="optional">
+                    {{optional}}
+                  </span>
+                </div>
+                <div class="col-lg-4">
+                  <div class="jr-payment-boxes jr-payment-dropdown input-form-card-pay">
+                    <input type="password" only-debit-digits class="jr-cvv-input" placeholder="CVV" class="credit-card-input text" minlength="3" maxlength="4" ng-model="debitCardCVV" ng-init="debitCardCVV = ''" style="border: none;" tabindex="5">
+                  </div>
+                  <span class="optional" ng-show="optional">
+                    {{optional}}
+                  </span>
+                </div>
+                <div class="col-lg-4">
+                  <div ng-if="emptyDebitMonth" class="jr-expiry-month-error jr-expiry-debit-month">
+                    Required
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div ng-if="emptyDebitYear" class="jr-expiry-year-error jr-expiry-debit-year">
+                    Required
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div ng-if="emptyDebitCVV" class="jr-cvv-error jr-cvv-new-btn">
+                    CVV missing
+                  </div>
+                  <div ng-if="invalidDebitCVV" class="jr-cvv-error">
+                    Invalid CVV
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="jr-payment-expiry-row">
+                    <div class="jr-pay-now-btn jr-btn-debit-pay" ng-click="debitPay()">
+                      PAY NOW
+                    </div>
+                    <div style="padding-top: 10px;">
+                      <input type="checkbox" ng-model="defaultRememberDebit" ng-click="changeRememberDebit()">
+                      <span style="color: #c9c9c9;">
+                        Remember card
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="internet-banking" class="jr-credit-card-container jr-creditCard-padding" ng-if="activeState === 'internet'">
+          <p class="disclaimer" style="text-align: right;">
+            Pay using Netbanking
+          </p>
+          <ul class="bank-list netbanking clearfix" id="image-bank-list">
+            <li ng-repeat="bank in ib.topBanks" ng-click="setBank(bank)">
+              <label class="bankOption">
+                <input type="radio" ng-model="ibBank.id" ng-value="bank.id" name="paymentOption" class="rdoIn">
+                <span>
+                </span>
+                <img class="payimg-responsive" src="{{bank.image}}" width="98" height="28">
+              </label>
+            </li>
+          </ul>
+          
+          <div class="internet-payment-new-box">
+            <div class="jr-payment-boxes jr-debit-select jr-pay-bank-internet jr-pay-now-saved-card input-form-card-pay jr-padding-nil" ng-class="{'open': askBank}" id="toggle-bank-name" dropdown>
+              <div class="dropdown-toggle jr-debit-card" dropdown-toggle="dropdown">
+                <span class="jr-default-placeholder" ng-if="otherBank == undefined">
+                  Select a Bank
+                  <i class="fa fa-chevron-down pull-right">
+                  </i>
+                </span>
+                <span ng-if="otherBank != null">
+                  {{otherBank.bank_name}}
+                  <i class="fa fa-chevron-down pull-right">
+                  </i>
+                </span>
+              </div>
+              <div class="dropdown-menu jr-dropdown jr-payment-dummy" id="maximum-list" style="max-height: 250px; overflow-y: scroll;">
+                <li ng-repeat="topBank in ib.topBanks">
+                  <a class="jr-anchor" ng-click="setBank(topBank,true)">
+                    {{topBank.bank_name}}
+                  </a>
+                </li>
+                <li ng-repeat="normalBank in ib.normalBanks">
+                  <a class="jr-anchor" ng-click="setBank(normalBank, true)">
+                    {{normalBank.bank_name}}
+                  </a>
+                </li>
+              </div>
+              <div class="dropdown-menu jr-dropdown jr-payment-dummy" id="minimum-list" style="max-height: 220px; overflow-y: scroll;">
+                <li ng-repeat="normalBank in ib.normalBanks">
+                  <a class="jr-anchor" ng-click="setBank(normalBank, true)">
+                    {{normalBank.bank_name}}
+                  </a>
+                </li>
+              </div>
+            </div>
+            <div class="jr-payment-expiry-row">
+              <div class="jr-pay-now-btn jr-internet-pay" ng-click="ibPay()">
+                PAY NOW
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="text-align: center;padding-left: 0px;">
+        <div class="left-payment">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="top-payment">
+                <div style="padding-bottom: 10px;">
+                  Booking PNR 
+                </div>
+                <div class="side-announcer-large">
+                  {{bookingPnr}}
+                </div>
+                <hr>
+                <div style="margin-top: 10px;padding-bottom: 10px;">
+                  Payable Amount
+                </div>
+                <div class="side-announcer-large">
+                  {{bookingObj.tentative_amount | currency:"&#8377;"}}
+                </div>
+                <hr>
+                
+                <div class="jr-payu-btn jr-btn-payu-new" ng-click="usePayU()">
+                  Use PayU
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="payment-messages">
+          <h5 class="modal-title jr-spaced-header jr-spaced-newheader">
+            Important Instructions
+          </h5>
+          <ol>
+            <li class="remember-text remember-text-new">
+              Your ride is subject to confirmation on successful verification of your license
+            </li>
+            <li class="remember-text remember-text-new">
+              Please carrry your original driving license at the time of collecting the vehicle
+            </li>
+            <li class="remember-text remember-text-new">
+              Your refund will be available in your account in 4-5 working days of ride completion
+            </li>
+            <li class="remember-text remember-text-new">
+              For any other information, call our helpline# +91-8080232211 or write to support@justride.in
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

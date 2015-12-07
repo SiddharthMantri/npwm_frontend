@@ -1,0 +1,358 @@
+<div class="section-page-top">
+  <div class="page-top-overlay">
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="jr-center-text">
+        <h1 class="jr-caption-top-slogan">
+          Why buy a car when you can rent one?
+        </h1>
+        <h1 class="jr-caption-top-scheme">
+          Introducing Ubiq
+        </h1>
+        <h4 class="jr-caption-price">
+          Starting At Rs.3500.
+        </h4>
+      </div>
+    </div>
+  </div>
+  
+
+    
+    <div class="row">
+      <div class="search-cont-new jr-ubiq-travel">
+          <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 jr-zeropad">
+                  <select class="form-control jr-ubiq-select-car">
+                      <option ng-repeat="v in carList" value="v.id">{{v.name}}</option>
+                  </select>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 jr-zeropad">
+                <div class="jr-boxes jr-custom-location-pick" ng-click="pickStationFromMap(1)">
+                  <span ng-if="customLocation" style="white-space: nowrap;">
+                    {{customLocationName}}
+                  </span>
+                  <span ng-if="venuesLoaded && mapPick && !customLocation" class="jr-default-placeholder">
+                    Choose your own location
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 jr-zeropad">
+                <div class="jr-boxes jr-ubiq-date-time">
+                  <div class="inner-addon has-feedback">
+                    <input id="jr-pick-time-ubiq-new" class="jr-date-input" placeholder="Pick Up Date and Time" ng-click="openDateTimePicker()">
+                    
+                    <i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes">
+                    </i>
+                    <i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes">
+                    </i>
+                  </div>
+                </div>
+                 <div id="test" class="jr-pick-time-new-ubiq" ng-show="jrShowDateTime">
+                      <div class="jr-ubiq-drop-down">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-text-ubiq">
+                              <span class="jr-choose-week">Choose One or More Weeks</span>
+                          </div>
+                            <span ng-click="setDays(prevCounter)" class="jr-angle-left">
+                              <i class="fa fa-angle-left fa-2x"></i>
+                            </span>
+                          <div class="jr-choose-ubiq-timing">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-repeat="b in pickUpDate">
+                               <div class="jr-ubiq-week-selection" id="{{b.id}}" ng-click="selectBox(b)">
+                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-pad jr-ubiq-start-date-week">
+                                    <span>
+                                        {{b.start_date}}
+                                    </span>
+                                    <span>
+                                        Mon
+                                    </span>
+                                   </div>
+                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-pad">
+                                        <div class="jr-time-to-week">
+                                            <hr class="jr-ubiq-hr"/>
+                                            <div class="jr-ubiq-circle">
+                                                <span class="jr-to-span-circle">
+                                                    TO
+                                                </span>
+                                            </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-pad jr-ubiq-start-date-week">
+                                    <span>
+                                        {{b.end_date}}
+                                    </span>
+                                    <span>
+                                        Fri
+                                    </span>
+                                   </div>
+                               </div>
+                            </div>
+                          </div>
+                        <span ng-click="setDays(nextCounter+1)" class="jr-angle-right">
+                            <i class="fa fa-angle-right fa-2x"></i>
+                        </span>
+
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 jr-zeropad">
+                <button type="submit" class="btn jr-btn-register-ubiq">
+                  Register
+                </button>
+              </div>
+          </div>  
+      </div>
+    </div>
+  
+
+
+
+</div>
+<div class="section-page-middle">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="jr-why-ubiq">
+        <img class="img-responsive center-block jr-what-is-ubiq-img" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151202122605-623239.png"/>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <img class="img-responsive what-is-ubiq-car" src="https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/self-drive-city.png"/>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <p class="what-is-ubiq-text">
+        Planning to buy a car to reach work? Think again. 
+        <br />
+        With Ubiq you can now travel in comfort in every 
+        <br />
+        day of the week without spending big on a new 
+        <br />
+        set of wheels.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="section-page-why-ubiq">
+  <div class="row">
+    <div class="jr-expand-door-step-delivery">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="jr-door-step-delivery-detail">
+          <span class="jr-cross-span">
+            <i ng-click="closeDoorstepDelivery()" class="fa fa-times fa-2x">
+            </i>
+          </span>
+          <div class="jr-door-step-detail">
+            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-12">
+              <img class="img-responsive jr-door-step-delivery-detail-image" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201121830-953963.png "/>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <h3 style="color:red">
+                Doorstep Delivery
+              </h3>
+              <p class="jr-para-content">
+                Have your car delivered right at your doorstep every Monday. We shall pick it up at the end of the week. No more trips to the pick-up stations. Sit back and relax as we take care of the cars you rent.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="jr-expand-share-the-fare">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="jr-door-step-delivery-detail">
+          <span class="jr-cross-span">
+            <i ng-click="closeShareTheFare()" class="fa fa-times fa-2x">
+            </i>
+          </span>
+          <div class="jr-door-step-detail">
+            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-12">
+              <img class="img-responsive jr-door-step-delivery-detail-image" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201122802-170130.png"/>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <h3 style="color:red">
+                Share The Fare
+              </h3>
+              <p class="jr-para-content">
+                Share the fare with your friends. Once your friends decide to pool in, pay your part and select how much each of you pay.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="jr-expand-pickup-drop">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="jr-door-step-delivery-detail">
+          <span class="jr-cross-span">
+            <i ng-click="closePickupDrop()" class="fa fa-times fa-2x">
+            </i>
+          </span>
+          <div class="jr-door-step-detail">
+            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-12">
+              <img class="img-responsive jr-door-step-delivery-detail-image" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201122917-780874.png"/>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <h3 style="color:red">
+                Pickup and Drop Off
+              </h3>
+              <p class="jr-para-content">
+                With Ubiq you have the freedom to schedule your vehicle drop and pick-up. Select a slot as per your convenience and we’ll have the car delivered right when you need it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="jr-why-ubiq">
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151202122950-993791.png"/>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 jr-col-pad-ubiq">
+      <div class="jr-door-step-delivery">
+        <div class="jr-why-ubiq-overlay">
+          <div class="jr-door-step-overlay">
+            <h3 class="jr-doorstep-overlay-text">
+              Doorstep 
+              <br />
+              Delivery
+            </h3>
+            <span class="jr-span-doorstep-delivery center-block">
+              <i ng-click="coverDoorStep()" class="fa fa-plus-circle fa-2x jr-icon-plus">
+              </i>
+              
+            </span>
+          </div>
+        </div>
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201121830-953963.png "/>
+		
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 jr-col-pad-ubiq">
+        <div class="jr-share-the-fare">
+          <div class="jr-why-ubiq-overlay">
+            <div class="jr-door-step-overlay">
+              <h3 class="jr-doorstep-overlay-text">
+                Share 
+                <br />
+                The Fare
+              </h3>
+              <span class="jr-span-doorstep-delivery center-block">
+                <i ng-click="coverShareTheFare()" class="fa fa-plus-circle fa-2x jr-icon-plus">
+                </i>    
+              </span>
+            </div>
+          </div>
+          <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201122802-170130.png "/>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 jr-col-pad-ubiq">
+        <div class="jr-freedom-to-do-more">
+          <div class="jr-why-ubiq-overlay">
+            <div class="jr-door-step-overlay">
+              <h3 class="jr-doorstep-overlay-text">
+                Pick Up and 
+                <br />
+                Drop Off
+              </h3>
+              <span class="jr-span-doorstep-delivery center-block">
+                <i ng-click="coverPickUpDrop()" class="fa fa-plus-circle fa-2x jr-icon-plus">
+                </i>
+              </span>
+            </div>
+          </div>
+          <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201122917-780874.png"/>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="section-page-how-it-works">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="jr-why-ubiq">
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201012809-554900.png"/>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div class="jr-how-it-works-signup">
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201012156-251967.png"/>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <div class="jr-signup-ubiq">
+        <h3 style="color:red;">
+          Sign Up
+        </h3>
+        <p class="jr-new-signup-text">
+          Signup for Ubiq and we'll get in touch with you within 24 hours.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:40px;" class="row">
+    <div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-8">
+      <div class="how-it-works-select-ride">
+        <h3 style="color:red">
+          Select A Ride
+        </h3>
+        <p class="jr-select-a-ride-text">
+          Select a car you wish to rent for the week and confirm your time slot. Choose a drop and pick time as per your convenience.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div class="jr-sign-up-icon">
+        <img class="img-responsive jr-select-a-ride-img" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201021438-508292.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="row jr-how-it-works-margin">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <div class="jr-how-it-works-signup">
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201032100-896142.png"/>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <div class="jr-signup-ubiq">
+        <h3 style="color:red;">
+          Pay
+        </h3>
+        <p class="jr-new-signup-text">
+          Once you've confirmed your booking on call, 
+          <br />
+          you'll receive a payment link on mail. Split the fare with your 
+          <br />
+          with your friends and pay the fare.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-jr-page-available-cars">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="jr-why-ubiq">
+        <img class="img-responsive" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151201033815-210064.png"/>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="image-slide">
+        <carousel interval="myInterval" no-wrap="noWrapSlides">
+          <slide ng-repeat="item in slides" slides-array={{slides}}>
+            <img ng-src="{{item.img}}"  class="img-responsive jr-img-available">
+            <div class="carousel-caption">
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

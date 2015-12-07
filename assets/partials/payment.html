@@ -1,0 +1,204 @@
+<section class="jr-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="booking-box">
+					<div class="booking-box-header">
+						<h3 class="modal-title payment-title">
+							JustRide Booking
+							<span class="pull-right" tooltip="Your JustRide PNR">
+								{{bookingToken}}
+							</span>
+						</h3>
+					</div>
+					<div class="booking-box-body">
+						<div class="booking-body-sub">
+							<div class="row">
+								<div class="col-lg-8">
+									<h4 class="modal-title" style="margin-bottom: 10px;">
+										Dear {{user.display_name}},
+									</h4>
+									<p class="remember-text" ng-if="success == 'success'">
+										Thank you for booking with JustRide.
+									</p>
+
+									<p class="remember-text" ng-if="success == 'cancellation'">
+										<i class="glyphicon glyphicon-remove" style="color: red; font-size: 1.5em;"></i> Oops the payment transaction was cancelled. How about you give Justride another try.
+									</p>
+									<p class="remember-text" ng-if="success == 'failure'">
+										<i class="glyphicon glyphicon-remove" style="color: red; font-size: 1.5em;"></i> Sorry the payment transaction failed. 
+									</p>
+									<p class="remember-text" ng-if="success == 'manual'">
+										Justride has booked a ride for you on your behalf. We kindly request you to make the payment.
+									</p>
+								</div>
+								<div class="col-lg-4">
+									<h1 class="modal-title" ng-if="success == 'success' || success =='manual'" style="text-align: right;">
+										<span class="glyphicon glyphicon-ok" style="color: #2ecc71;"></span>
+									</h1>
+									<div class="payment-messages" ng-if="success == 'manual' || success == 'cancellation' || success == 'failure'" style="padding-right: 0px;">
+										<div class="quick-links" ng-if="success == 'manual'" ng-click="makePayment()" style="cursor: pointer; background: #2ecc71;">
+											Make Payment
+										</div>
+										<div class="quick-links" ng-if="success == 'cancellation' || success == 'failure'" ng-click="makePayment()" style="cursor: pointer; background: #2ecc71;">
+											Try Again
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="booking-body-sub">
+							<h4 class="modal-title" style="margin-bottom: 10px;">
+								Your booking details
+							</h4>
+							<p class="remember-text">
+								Scheduled Pickup time
+								<span class="pull-right bold-val">
+									{{start_time}}
+								</span>
+							</p>
+							<p class="remember-text">
+								Scheduled Drop time
+								<span class="pull-right bold-val">
+									{{end_time}}
+								</span>
+							</p>
+							<p class="remember-text">
+								Booking cost
+								<span class="pull-right bold-val">
+									<span class="fa fa-inr"></span>
+									{{tentative_amount | formatToInr}}
+								</span>
+							</p>
+							<p class="remember-text">
+								Ride Duration
+								<span class="pull-right bold-val">
+									{{duration}} {{hourParam}}
+								</span>
+							</p>
+							<p class="remember-text" ng-if="freeKms != undefined && freeKms != null">
+								Free kilometers
+								<span class="pull-right bold-val">
+									{{freeKms}} Kms
+ 								</span>
+							</p>
+							<p class="remember-text" ng-if="distance != undefined && distance != null">
+								Distance
+								<span class="pull-right bold-val">
+									{{distance}} Kms
+ 								</span>
+							</p>
+						</div>
+						<div class="booking-body-sub">
+							<h4 class="modal-title" style="margin-bottom: 10px;">
+								Car details
+							</h4>
+							<p class="remember-text">
+								Name
+								<span class="pull-right bold-val">
+									{{car.name}}
+								</span>
+							</p>
+							<p class="remember-text">
+								Seating
+								<span class="pull-right bold-val">
+									{{car.seats}}
+								</span>
+							</p>
+						</div>
+						<div class="booking-body-sub" ng-if="successData.booking_type != 19">
+							<h4 class="modal-title" style="margin-bottom: 10px;" ng-if="successData.booking_type != 19">
+								Pick up / Drop points
+							</h4>
+							<p class="remember-text">
+								Pick up venue
+								<a class="pull-right bold-val jr-map-out" ng-href="https://www.google.com/maps?q={{pickUp.latitude}},{{pickUp.longitude}}&ll={{pickUp.latitude}},{{pickUp.longitude}}&z=17" target="_blank" tooltip="Click to view on map">
+									{{pickUp.name}}
+									<span class="glyphicon glyphicon-map-marker colored-marker"></span>
+								</a>
+							</p>
+							<p class="remember-text">
+								Drop venue
+								<a class="pull-right bold-val jr-map-out" ng-href="https://www.google.com/maps?q={{dropOff.latitude}},{{dropOff.longitude}}&ll={{dropOff.latitude}},{{dropOff.longitude}}&z=17" target="_blank" tooltip="Click to view on map">
+									{{dropOff.name}}
+									<span class="glyphicon glyphicon-map-marker colored-marker"></span>
+								</a>
+							</p>
+						</div>
+						<div class="booking-body-sub" ng-if="successData.booking_type != 19">
+							<h4 class="modal-title" style="margin-bottom: 10px;" ng-if="successData.booking_type != 19">
+								Assistance
+							</h4>
+							<p class="remember-text">
+								For any assistance required, please feel free to contact <span class="bold-val">{{pickUp.contact_person}}</span> on <span class="bold-val">{{pickUp.contact_number}}</span>.
+							</p>
+						</div>
+						<div class="booking-body-sub">
+							<h4 class="modal-title" style="margin-bottom: 10px;">
+								Quick Links
+							</h4>
+							<p class="remember-text">
+								In case you want to cancel your booking, please refer to the details listed in our <a class="jr-refund-online" href="/policies/refund-cancellation" target="_blank">Refunds and Cancellation policies.</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="row">	
+					<div class="col-lg-12">
+					<!--<div ng-class="{'col-lg-12': success=='success', 'col-lg-6': success != 'success'}">-->	
+						<div class="payment-messages">
+							<h5 class="modal-title" style="text-align: center;">
+								Remember
+							</h5>
+							<p class="remember-text">
+								Please arrive 15 minutes before your booking time to ensure a quick handover of the vehicle.
+							</p>
+							<p class="remember-text">
+								Remember to carry your valid license that was used to make this booking. 
+							</p>
+							<p class="remember-text">
+								Your booking <span tooltip="{{bookingToken}}">PNR</span> is unique to you. If you have any queries, please keep your PNR handy.
+							</p>
+							<div class="jr-redirect-container">
+								<div ui-sref="profile.rides" class="quick-links jr-redirect-button">
+										My Rides
+								</div>
+								<div ui-sref="index" class="quick-links jr-redirect-button">
+										Home
+								</div>
+							</div>
+							<div class="row hide" style="margin-top: 10px" ng-if="success == 'success'">
+								<div class="col-lg-6">
+									<div class="social-btn fb-btn" ng-click="shareFacebook(bookingToken)" >
+										<span class="fa fa-facebook social-icon"></span>
+										Share on Facebook
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="social-btn gp-btn" ng-click="shareGoogle(bookingToken)">
+										<span class="fa fa-google-plus social-icon"></span>
+										Share on Google+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;" ng-if="successData && successData.booking_type != 19">
+						<h4 class="modal-title">
+							View {{mapObj.name}} on map
+						</h4>
+
+						<div class="payment-messages">
+							<div id="googleMap-id-new" style="width:100%;height:425px;">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

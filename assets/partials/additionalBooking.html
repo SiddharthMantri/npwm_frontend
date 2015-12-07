@@ -1,0 +1,182 @@
+<div>
+	<ol class="breadcrumb mycustom jr-addtional-booking-orderedlist">
+		<li><a ui-sref="index">Home</a></li>
+		<li><a ui-sref="profile.rides">My Rides</a></li>
+		<li class="active">PNR No: {{order.token}}</li>
+	</ol>
+	<div class="jrpanel-default">
+		<div class="jrpanel-heading">
+			<span class="panel-title">Ride Summary</span>
+			<span class="label" ng-class="{'label-success': order.status==7, 'label-info': order.status==6, 'label-warning': order.status==5, 'label-danger': order.status==8}">{{order.rideStatus}}</span>
+			<div class="btn-group pull-right">
+				<div class="btn-group">
+					<div class="jrpanel-extend-button" ng-if="order.status==5 || order.status==6" ng-click="extendBookingModal(order.token)">
+						Extend Ride<span class="fa fa-level-up"></span>
+					</div>
+					<div class="jrpanel-cancel-button" ng-if="order.status==5" ng-click="cancelBookingModal(order.token)">
+						Cancel Ride<span class="fa fa-minus-circle"></span>
+					</div>
+					<div class="additional-viewmore jrpanel-extend-button" ng-click="resendInvoice(order.token)" ng-if="order.status==7">
+						Resend Invoice
+					</div>
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div id="left-hand" class="col-xs-9 col-sm-6 col-md-6">
+						<ul class="nolist">
+						<li>
+							<div class="line">
+								<label class="inline-block size1of4">PNR</label>
+								<span class="pull-right">{{order.token}}</span>
+							</div>
+						</li>
+						<li>
+							<div class="line">
+								<label class="inline-block size1of4">Booking Date</label>
+								<span class="pull-right">{{order.booking_date}}</span>
+							</div>
+						</li>
+						<li>
+							<div class="line">
+								<label class="inline-block">Pickup Time</label>
+								<span class="pull-right">{{order.pickup_time}}</span>
+							</div>
+						</li>
+						<li>
+							<div class="line">
+								<label class="inline-block">Drop Time</label>
+								<span class="pull-right">{{order.drop_time}}</span>
+							</div>
+						</li>
+						<li ng-show="order.status==7">
+							<div class="line">
+								<label class="inline-block size1of4">Final Amount</label>
+								<span class="pull-right">{{order.final_amount | currency:"&#8377;"}}</span>
+							</div>
+						</li>
+						<li ng-show="order.status==5 || order.status==6">
+						<div class="line">
+							<label class="inline-block size1of4">Tentative Amount</label>
+							<span class="pull-right">{{order.tentative_amount|
+							currency:"&#8377;"}}</span>
+						</div>
+						</li>
+						<li>
+							<div class="row" ng-if="hasVenuePick && hasVenueDrop">
+								<div class="col-md-6 col-sm-6 col-xs-6 jrlocation-marker" ng-click="setFromMap(venue_pick.latitude, venue_pick.longitude, 'PICKUP')">
+								<div class="media-body">
+									<i class="fa fa-map-marker fa-2x jrpanel-marker"></i>
+							  		<span class="media-heading jrpanel-droplabel">Pickup Point</span><br/>
+							  		<span>{{order.venue_pick}}</span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6 jrlocation-marker" ng-click="setFromMap(venue_drop.latitude, venue_drop.longitude, 'DROP')">
+								<div class="media-body jr-media-body-mapwork">
+							  		<span class="media-heading jrpanel-droplabel">Drop Point</span>
+							  		<i class="fa fa-map-marker fa-2x jrpanel-marker"></i>
+							  		<br/>
+							  		<span>{{order.venue_drop}}</span>
+								</div>
+							</div>
+							</div>
+						</li>
+						</ul>
+				</div>
+				<div id="right-hand" class="col-xs-9 col-sm-6 col-md-6">
+					<div>
+						<ul class="nolist jr-additional-listone">
+							<li>
+								<div>
+									<span class="jr-font-17 jr-font-bold">
+										{{order.username}}
+									</span>
+									<span class="jr-font-11 jr-font-light">
+										<i class="fa fa-mobile jr-mobile-additional"></i>{{order.mobile}}
+									</span>
+								</div>
+							</li>
+							<li>
+								<div>
+									<span class="jr-font-bold">{{order.car_name}}</span>
+					    <span class="jr-font-light">{{order.car_model}}</span>
+								</div>
+							</li>							
+						</ul>
+					</div>
+					<div class="media jr-additional-image-car">
+					      <img id="carImage" class="media-object" ng-src="{{order.car_image}}" alt="Car Image">
+					</div>
+				</div>
+			</div>
+			<div class="row jr-additional-marginTop" ng-show="showMore">
+			<table class="rideDistance">
+				<thead class="rideHeader">
+					<th>
+						Total Distance Travelled
+					</th>
+					<th>
+						Free Kilometers
+					</th>
+					<th>
+						Additional Kilometers
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							{{order.distance_covered}} kms
+						</td>
+						<td>
+							{{order.distance_free}} kms
+						</td>
+						<td>
+							{{order.distance_additional}} kms
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+				<div class="row jr-additional-showmore" ng-show="showMore">
+					<div class="col-md-offset-8 col- col-md-4">
+						<ul class="nolist">
+							<li ng-repeat="item in order.collectionArray">
+								<div class="line">
+									<label class="inline-block">{{item.account_head.name}}</label>
+									<span class="pull-right">{{item.amount|currency:"&#8377;"}}</span>
+								</div>
+							</li>
+							<li>
+								<div class="line">
+									<label class="inline-block">Total Amount</label>
+									<span class="pull-right">{{order.temporary_amount| currency:"&#8377;"}}</span>
+								</div>
+							</li>
+							<li ng-show="order.hascoupon">
+								<div class="line">
+									<label class="inline-block">Coupon Code</label>
+									<span class="pull-right">{{order.coupon_id}}</span>
+								</div>
+							</li>
+							<li>
+								<div class="line">
+									<label class="inline-block">Final Amount</label>
+									<span class="pull-right">{{order.final_amount| currency:"&#8377;"}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<div ng-if="order.status==7" class="jrpanel-footer jr-additional-footer-tag">
+			<div class="col-md-offset-9 col-sm-offset-9 menu jr-additional-menu" ng-show="order.status == 7">
+				<div class="additional-viewmore" ng-click="showMoreFn()" class="ng-binding">
+					{{showMoreTag}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

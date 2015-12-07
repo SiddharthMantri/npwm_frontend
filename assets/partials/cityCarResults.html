@@ -1,0 +1,66 @@
+<section class="jr-body show-hide-padding">
+	<div class="row search-nav-cont">
+		<div class="search-cont search-pg top-search" ng-cloak>
+			<div class="row">
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<autocomplete placeholder="Select a car" click-activation="true" autocomplete="on" data="pickUpCarsVal" on-type="doSomethingCar" selected-value="selectedCar" venue-pick="false" home-pick="'false'"></autocomplete>
+					<i class="fa fa-car form-control-feedback" style="position: absolute; top: 11px;"></i>	       
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px">
+						<input id="jr-car-start-time" class="jr-date-input" placeholder="Pick Up Time" ng-model="pickedDateVal" onfocus="blur()">
+						<i style="top: 0px;" class="glyphicon glyphicon-calendar form-control-feedback" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+						<i style="top: 0px;" class="glyphicon glyphicon-info-sign form-control-feedback" tooltip="Error in pick up time" ng-if="wrongTimes"></i>
+					</div>
+					<div class="jr-errors" ng-if="startMiss">
+						Select a pick up time
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px">
+						<input id="jr-car-drop-time" class="jr-date-input" placeholder="Drop Time" ng-model="droppedDateVal" onfocus="blur()">
+						<i style="top: 0px;" class="glyphicon glyphicon-calendar form-control-feedback" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+						<i style="top: 0px;" class="glyphicon glyphicon-info-sign form-control-feedback" tooltip="Error in drop off time" ng-if="wrongTimes"></i>
+					</div>
+					<div class="jr-errors" ng-if="dropMiss">
+						Select a drop off time
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="search-btn" ng-click="modifyCarSelection()">
+						Modify
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="jr-car-container" style="height: 600px; position: relative;">
+		<div id="jr-car-map-div" style="height: 600px;">
+
+		</div>
+		<div ng-if="noCarAvailable" class="jr-car-map-unavailable-overlay">
+			<div>
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-car fa-stack-1x fa-inverse"></i>
+				</span>
+				Sorry there are currently no cars available
+			</div>
+			<div>Please modify your search parameters</div>
+		</div>
+		<div class="jr-car-sidepane">
+			<h4 class="modal-title jr-side-pane-header">Available At Stations</h4>
+			<div ng-repeat="venue in venues | orderBy: 'venue.name'" ng-click="setVenue($event, venue)" style="border-bottom: 1px solid rgba(128, 128, 128, 0.46);cursor: pointer;" ng-class="{fdSelected: venue.selected}">
+				<div class="jr-car-side-text">
+					<div class="jr-car-venue-name-text jr-venue-name-new-text">{{venue.name}}</div>
+					<div class="jr-car-venue-address-text jr-venue-name-new-text">{{venue.address}}</div>
+				</div>
+				<div class="jr-car-left-icon">
+					<span><i class="fa fa-3x fa-map-marker"></i></span>
+				</div>
+			</div>
+			<div class="jr-unavailable-content" ng-if="showVenuesPaneError">
+				Sorry selected car not Available at any venue
+			</div>
+		</div>
+	</div>

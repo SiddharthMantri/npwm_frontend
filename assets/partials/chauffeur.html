@@ -1,0 +1,63 @@
+<section class="home-landing">
+	<div class="grad-overlay">
+		<div class="container">	
+			<h4 class="jr-tagline">
+				Drive it like you own it
+			</h4>			
+			<div class="search-cont">
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px;" ng-click="selectLocation()">
+						<div class="jr-pad">							
+							<span>
+								Pick Up Location
+							</span>							
+						</div>	
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px">
+						<div class="inner-addon has-feedback">
+							<input id="jr-start-time" class="jr-date-input" placeholder="Pick Up Time" ng-model="pickedDateVal" onfocus="blur();"> 
+							<i class="glyphicon glyphicon-time form-control-feedback" style="top: 2px" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+							<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+						</div>										
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px">
+						<div class="inner-addon has-feedback">
+							<input id="jr-drop-time" class="jr-date-input" placeholder="Drop Off Time" ng-model="droppedDateVal" onfocus="blur();"> 	
+							<i class="glyphicon glyphicon-time form-control-feedback" style="top: 2px" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+							<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+						</div>									
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="search-btn" ng-click="invokeSearch()">
+						Book Now
+					</div>
+		    	</div>
+			</div>
+			<div class="row">
+				<div class="search-cont">
+					<div class="col-lg-offset-3 col-lg-6 col-xs-12 max-w-limit">
+						<div class="row">
+							<div class="col-lg-6 col-sm-6 col-xs-6 zero-pad">
+								<a ui-sref="index" style="text-decoration: none !important;color: #fff;">
+									<div class="switch">
+										Self Drive
+									</div>	
+								</a>						
+							</div>
+							<div class="col-lg-6 col-sm-6 col-xs-6 zero-pad">
+								<div class="switch sw-active">
+									With Chauffeur
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

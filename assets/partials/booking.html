@@ -1,0 +1,442 @@
+<div class="container">
+  <div class="row level-div jr-bookingtop-row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <section class="body-section jr-body-section-ride-detail">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-ride-detail-col">
+            <h4 class="ride-details-head">RIDE DETAILS</h4>
+            <hr class="jr-ride-detail-top-hr">
+        </div>
+        <div id="booking" class="faq-content-section jr-left-panel-booking-page">
+          <div class="booking-question question-one jr-cursor-default">
+              <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 jr-cursor-default">
+                      <div class="car-img">
+                        <img class="img-responsive jr-img-car-image" ng-src="{{car.image}}"/>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 car-name-booking">
+                              {{carName}}
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 jr-cursor-default">
+                      <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 date-format jr-start-date-format-new">
+                             {{startDateFormat}}
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-startdate-format">
+                             <div class="jr-from-to">
+                                <hr class="circle-line-hr">
+                                <div class="circle-to">
+                                   <h6 class="jr-to-tag">
+                                      TO
+                                   </h6>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 date-format jr-enddate-format">
+                             {{endDateFormat}}
+                          </div>
+                      </div>
+                      <div class="row jr-starttime-format">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <p class="get-start-time">
+                                {{getStartTime}}
+                              </p> 
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <p class="text-duration">
+                                ( {{durationHours}} Hours )
+                              </p> 
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <p class="get-end-time">
+                                {{getEndTime}}
+                              </p> 
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                              <p class="get-start-day">
+                                  {{getStartDay}}
+                              </p> 
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                              <p class="get-end-day">
+                                  {{getEndDay}}
+                              </p> 
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 jr-text-align-left">
+                                <span>
+                                <span ng-if="!customLocs" class="jr-text-right">
+                                  <span class="glyphicon glyphicon-map-marker input-glyphs jr-span-input-glyph">
+                                  </span>
+                                  <strong class="station-name">
+                                   {{station.name}}
+                                  </strong>
+                                  <br/>
+                                  <p class="left-station-address">
+                                    {{station.address}}
+                                  </p>
+                                </span>
+                                <span ng-if="customLocs" class="jr-text-right">
+                                <span class="glyphicon glyphicon-map-marker input-glyphs jr-input-homepickup">
+                                </span>
+                                <strong class="left-station-address">
+                                 {{customName}}
+                                </strong>
+                                </span>
+                                </span>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 jr-text-align-left">
+                              <span>
+                                <span ng-if="!customLocs" class="jr-text-right">
+                                    <span class="glyphicon glyphicon-map-marker input-glyphs jr-input-glyphicon">
+                                    </span>
+                                    <strong class="station-name">
+                                        {{station.name}}
+                                    </strong>
+                                    <br/>
+                                    <p class="right-station-address">
+                                      {{station.address}}
+                                    </p>
+                                </span>
+                                <span ng-if="customLocs" class="jr-text-right">
+                                  <span class="glyphicon glyphicon-map-marker input-glyphs jr-text-home-pickup-right">
+                                  </span>
+                                  <strong class="left-station-address">
+                                    {{customName}}
+                                  </strong>
+                                </span>
+                              </span>  
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>  
+     <section class="body-section jr-get-directions">
+        <div class="faq-content-section jr-section-get-directions">
+          <div class="booking-question question-one jr-cursor-default">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="map-view jr-map-view-booking">           
+                        <div class="map-block jr-map-block">           
+                          <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                            <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+                          </ui-gmap-google-map>
+                        </div>            
+                      </div>  
+                  <div class="col-lg-12 col-md-12 sm-hidden xs-hidden" style="margin-top: 10px;padding-right:5px;">
+                    <button style="border-radius:4px;" class="btn save-settings pull-right" type="button" ng-click="getDirections()">
+                        Get Directions
+                    </button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section> 
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <section class="body-section jr-fare-detail-section">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-text-align-center">
+            <h4 class="ride-details-head">FARE DETAILS</h4>
+            <hr class="jr-fare-detail-hrtag">
+        </div>
+        <div class="faq-content-section jr-fare-detail-content">
+          <div class="booking-question question-one jr-cursor-default">
+              <div class="row">
+                  <div ng-if="showPreviousPaid" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-booking-weekend-rate">
+                    <span class="fare-head-font">
+                      <span class="booking-label pull-left fare-head-font">
+                        Previous Paid
+                      </span>
+                      <span class="pull-right">
+                         <span class="date-vals pull-right fare-head-font">
+                           <span class="fa fa-inr">
+                           </span>
+                           {{previousCarPaid | formatToInr}}
+                         </span>
+                      </span>
+                    </span>
+                  </div>
+
+                  <div ng-if="availability.pricing.weekday != 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-booking-weekend-rate">
+                    <span class="fare-head-font">
+                          <span class="booking-label pull-left fare-head-font">
+                            Weekday Rate
+                          </span>
+                          <span class="pull-right fare-head-font">
+                             <span class="date-vals pull-right fare-head-font" float-val="weekday">
+                               <span class="fa fa-inr">
+                               </span>
+                               {{availability.pricing.weekday | formatToInr}}
+                             </span>
+                          </span>
+                    </span>
+                  </div>
+
+
+                  <div ng-if="availability.pricing.weekend != 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-booking-weekend-rate">
+                    <span class="fare-head-font">
+                          <span class="booking-label pull-left fare-head-font">
+                            Weekend Rate
+                          </span>
+                          <span class="pull-right">
+                             <span class="date-vals pull-right fare-head-font" float-val="weekend">
+                               <span class="fa fa-inr">
+                               </span>
+                               {{availability.pricing.weekend | formatToInr}}
+                             </span>
+                          </span>
+                    </span>
+                  </div>
+
+                  <div ng-if="availability.pricing.homepickup" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-booking-weekend-rate">
+                    <span class="fare-head-font">
+                          <span class="booking-label pull-left fare-head-font">
+                               Home Pickup
+                          </span>
+                          <span class="pull-right">
+                             <span class="date-vals pull-right fare-head-font" float-val="weekend">
+                               <span class="fa fa-inr">
+                               </span>
+                               {{availability.pricing.homepickup | formatToInr}}
+                             </span>
+                          </span>
+                    </span>
+                  </div>
+
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-booking-weekend-rate">
+                    <span class="fare-head-font">
+                          <span class="booking-label pull-left fare-head-font">
+                                Deposit
+                          </span>
+                          <span class="pull-right">
+                             <span class="date-vals pull-right fare-head-font" float-val="caution">
+                               <span class="fa fa-inr">
+                               </span>
+                               {{availability.pricing.caution | formatToInr}}
+                             </span>
+                          </span>
+                    </span>
+                  </div>
+
+
+                  
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr class="jr-total-pay-hr"/>
+                    <span class="jr-bold">
+                          <span class="booking-label pull-left fare-total">
+                                Total Payable
+                          </span>
+                          <span class="pull-right">
+                             <span class="date-vals pull-right fare-total" float-val="total">
+                               {{totalCost | currency:" &#8377; "}}
+                             </span>
+                          </span>
+                    </span>
+                    <hr class="jr-total-cost-hr"/>
+                  </div>
+
+
+
+                  <div ng-if="couponApplied && validCoupon" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-discount-tag">
+                    <span class="fare-head-font fare-head-font jr-span-discount">
+                          <span class="booking-label pull-left jr-booking-discount-fare">
+                               Discount
+                          </span>
+                          <span  class="pull-right fare-head-font">
+                             <span class="date-vals pull-right fare-head-font jr-booking-discount-fare" float-val="weekend">
+                                ( - )
+                               <span class="fa fa-inr">
+                               </span> 
+                                {{discount}}
+                             </span>
+                          </span>
+                    </span>
+                     <hr class="jr-discount-hr-tag"/>
+                  </div>
+
+
+
+                   <div ng-if="addonsShow" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="booking-details-row jr-addon-tag">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="booking-label jr-booking-addon-fare">
+                          Addons
+                        </p>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="save-settings jr-booking-addon-fare" ng-click="showAddons()">
+                          Add
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <hr class="jr-addon-hrtag"/>
+                  </div>
+                  <div ng-if="finals.length > 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="booking-details-row jr-accessory-name-tag">
+                        <div class="row" ng-repeat="f in finals">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <p class="booking-label add-on-fare jr-access-name-ptag">
+                                {{f.accessory.name}}
+                            </p>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 jr-accessory-col">
+                            <span class="pull-right jr-accessory-cost-section">
+                              <p class="jr-section-cost-accessory">
+                                <span class="fa fa-inr"></span>
+                                {{f.accessory.cost}}
+                              </p>
+                            </span>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">   
+                            <span class="glyphicon glyphicon-remove pull-right jr-access-padding" ng-click="removeAccessory(f.accessory_id)"></span>            
+                          </div>
+                        </div>
+                  </div>
+                    <hr class="jr-accessory-hrtag"/>
+                  </div>
+
+                      <div ng-if="!couponApplied == true || !validCoupon" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="booking-details-row jr-booking-detail-padding">
+                                <input class="jr-input jr-input-booking-final-page" focus-me="{{!couponApplied}}" ng-model="coupon.val" placeholder="Coupon Code"/>
+                                <span class="exclamation-mark-wrong" ng-if="couponApplied && !validCoupon">
+                                    <i class="fa fa-exclamation-circle jr-exclamation-input" tooltip="{{toolTip}}" tooltip-trigger="mouseenter" tooltip-placement='top'></i>
+                                </span>
+                          </div>
+                      </div>
+                      <div ng-if="!couponApplied == true || !validCoupon" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="booking-details-row jr-booking-apply-button">
+                                 <div class="save-settings" ng-click="applyCoupon()">
+                                    Apply
+                                </div>
+                          </div>
+                      </div>
+                   
+
+                    <div ng-if="couponApplied && validCoupon">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          <div class="booking-details-row jr-coupon-input-box">
+                                <p class="booking-label jr-coupon-text-pclass">
+                                  Coupon
+                                </p>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 jr-coupon-padding-right-nil">
+                          <div class="booking-details-row jr-coupon-text-value">
+                                <span class="jr-coupon-val jr-coupon-value-final">
+                                    {{coupon.val}}
+                                </span>
+                                <span ng-if="couponApplied && validCoupon" class="fa-stack fa-lg jr-coupon-feedback-icon jr-coupon-icon-left-auto">
+                                    <i class="fa fa-circle fa-stack-2x fa-inverse">
+                                    </i>
+                                    <i class="fa fa-check fa-stack-1x jr-stack-icon-style">
+                                    </i>
+                                </span>
+                          </div>
+                      </div>
+                      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                          <div class="booking-details-row jr-booking-validcoupon">
+                                  <span class="fa-stack fa-lg deleteBtn" ng-if="couponApplied == true && validCoupon" ng-click="modifyCoupon()">
+                                    <i class="fa fa-circle fa-stack-2x fa-inverse">
+                                    </i>
+                                    <i class="fa fa-pencil fa-stack-1x jr-font-pencil">
+                                    </i>
+                                  </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-text-align-center">
+                    <hr class="jr-also-includes-tag"/>
+                    <span>
+                          <span class="booking-label pull-left">
+                               <h4 class="jr-includes-tag">
+                                  Includes 
+                               </h4>
+                          </span>
+                    </span>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 jr-includes-margin">
+
+                    <div ng-show="!noChargeForKm">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-no-charge-for-free">
+                          <i class="fa fa-car fa-2x jr-icon-color-freekm" tooltip="Extra Km charge-{{extra_km_charges}} Rs" tooltip-trigger="mouseenter" tooltip-placement='top'></i>
+                          <br/>
+                          <span class="also-includes">
+                              {{freeKms}} Kms Free
+                          </span>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-text-align-center">
+                          <i class="fa fa-life-ring fa-2x jr-icon-color-freekm"></i>
+                          <br/>
+                          <span class="also-includes">
+                              Insurance
+                          </span>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-text-align-center">
+                          <i class="fa fa-money fa-2x jr-icon-color-freekm"></i>
+                          <br/>
+                          <span class="also-includes">
+                              Service Tax
+                          </span>
+                      </div>
+                    </div>
+                     <div ng-show="noChargeForKm">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-text-align-center table-pad">
+                          <i class="fa fa-car fa-2x jr-icon-color-freekm" tooltip="Fuel cost excluded" tooltip-trigger="mouseenter" tooltip-placement='top'></i>
+                          <br/>
+                          <span class="also-includes">
+                              Unlimited Kms
+                          </span>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-text-align-center">
+                          <i class="fa fa-life-ring fa-2x jr-icon-color-freekm"></i>
+                          <br/>
+                          <span class="also-includes">
+                              Insurance
+                          </span>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 jr-text-align-center jr-text-align-center">
+                          <i class="fa fa-money fa-2x jr-icon-color-freekm"></i>
+                          <br/>
+                          <span class="also-includes">
+                              Service Tax
+                          </span>
+                      </div>
+                    </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+      </section>  
+
+      <section class="body-section jr-cancel-ride-booking-page">
+        <div class="faq-content-section jr-section-cancel-booking">
+          <div class="booking-question question-one">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                       <div class="jr-booking-cancel cancel-booking jr-booking-cancel" ng-click="cancelBooking()">
+                          Cancel
+                       </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                       <input type="button" value="Get Set Go!" class="jr-get-set-btn cancel-booking jr-confirm-booking-page-button" ng-click="confirmBooking()">
+                    </div>
+                </div>
+          </div>
+        </div>
+      </section> 
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,38 @@
+<div class="jr-body bg-image">
+<div id="listdeals">
+	<div class="container">
+		<div class="row" style="text-align: center;">
+			<h2 style="color: white;">Justride to your favorite vacation destination</h2>
+		</div>
+		<div class="row" id="jr-deal-card">
+			<ul class="listBig">
+				<li ng-repeat="package in packages">
+					<a ng-click="selectPackage(package)">
+						<div class="col-md-12 col-xs-12 col-sm-12 placebox">
+							<div class="thumbnail">
+								<img src="{{package.image}}" style="display: block;">
+							</div>
+							<div class="jr-deal-info">
+								<span class="jr-deals-number">
+									<span style="font-size: 1.5em; font-family: 'jrMid';">{{package.number_of_deals}}</span> Deals
+								</span>
+								<div class="offer-price">
+									<span class="jr-info-price">{{package.cost}}/-<sup>*</sup>only</span>
+									<!--<span class="jr-info-price">{{package.cost}}/-<sup>*</sup>only
+									</span>-->
+								</div>
+							</div>
+							<div class="thumbnailCoverList">&nbsp;</div>
+							<div class="curListCover" ng-click="selectPackage(package)">
+								<a href="" class="placeName">
+									{{package.name}}
+								</a>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>

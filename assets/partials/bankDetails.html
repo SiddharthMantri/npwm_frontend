@@ -1,0 +1,173 @@
+<div>
+  <div class="row">
+    <div class="modal-title pull-left jr-bank-detail-head-page">
+      <span class="jr-bank-detail-page-head">
+        Bank Details
+      </span>
+    </div>
+    <div style="border:0px;" class="jr-boxes pull-right jr-bank-detail-page-adddetail" dropdown>
+      <buttton class="btn btn-success jr-adddetail-bank-button" ng-click="addbankingDetails()">
+        ADD DETAILS 
+        <i class="fa fa-plus-circle jr-bank-icon-add">
+        </i>
+      </buttton>
+    </div>
+  </div>
+  <div class="clearfix">
+  </div>
+  <div class="row table-row">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 table-bank-repeat table-head" ng-show="bankDetails.length > 0">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head">
+                <h6>Display Name</h6>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head">
+                <h6>Account Number</h6>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head">
+                <h6>IFSC Code</h6>
+            </div>
+        </div>
+        <div  ng-show="bankDetails.length > 0" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-repeat table-padd">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 media-table table-data">
+                <h6>Edit</h6>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 media-table table-data">
+                <h6>Delete</h6>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 media-table table-data">
+                <h6>Default</h6>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="bankDetails.length < 1">
+            <h4 class="jr-nav-links" ng-click="addbankingDetails()">There are no bank details Available. Start adding Now <i class="fa fa-plus"></i></h4>  
+        </div>
+      </div>
+      <div ng-repeat="b in bankDetails" class="row">
+          <div ng-click="viewBankDetail(b)" class="col-lg-8 col-md-8 col-sm-8 col-xs-8 table-bank-repeat angular-dynamic-table">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head table-align">
+                  {{b.display_name}}
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head table-align">
+                  {{b.account_no}}
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 table-bank-head table-align">
+                  {{b.ifsc_code}}
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div ng-click="editDetail(b)" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 edit-detail-div table-data">
+                  <i class="fa fa-pencil pencil-color"></i>
+              </div>
+              <div ng-click="deleteDetail(b)" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 edit-detail-div table-data">
+                  <i class="fa fa-trash-o trash-delete"></i>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 edit-detail-div table-data">
+                  <input name="test" ng-checked="b.is_default" type="checkbox" ng-model="b.is_default" ng-click="updateSelection(b.id, $index)" ng-attr-id="{{ 'object-' + $index }}"/>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div id="editThisContent" class="editContent">
+      <div class="row form-header">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h3>
+            {{valueOfBank}} Bank Detail
+          </h3>
+        </div>
+      </div>
+      <div class="outer-bank-detail">
+        <div class="inner-bank-detail">
+          <div class="row">
+            <form class="bank-form">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label for="Account Holder Name">
+                        Account Holder Name
+                      </label>
+                      <input ng-show="addThis" type="text" class="form-control test" placeholder="Account Holder Name" ng-model="display_name"/>
+                      <input ng-show="editThis" type="text" class="form-control test" placeholder="Account Holder Name" ng-model="userBankDetails.display_name">
+                      <input ng-show="viewThis" type="text" class="form-control test" placeholder="Account Holder Name" ng-model="userBankDetails.display_name" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label for=" Account Number">
+                        Account Number
+                      </label>
+                      <input ng-show="addThis" type="text" class="form-control test" placeholder=" Account Number" ng-model="account_no">
+                      <input ng-show="editThis" type="text" class="form-control test" placeholder="Account Number" ng-model="userBankDetails.account_no">
+                      <input ng-show="viewThis" type="text" class="form-control test" placeholder="Account Number" ng-model="userBankDetails.account_no" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label for="IFSC Code">
+                        IFSC Code
+                      </label>
+                      <input ng-show="addThis" type="text" class="form-control test" placeholder="IFSC Code" ng-model="ifsc_code">
+                      <input ng-show="editThis" type="text" class="form-control test" placeholder="IFSC Code" ng-model="userBankDetails.ifsc_code">
+                      <input ng-show="viewThis" type="text" class="form-control test" placeholder="IFSC Code" ng-model="userBankDetails.ifsc_code" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div ng-show="addThis" class="form-group">
+                      <label for="IFSC Code">
+                        Make Default
+                      </label>
+                      <select class="form-control" ng-model="is_default">
+                          <option value="1">YES</option>
+                          <option value="0">NO</option>
+                      </select>
+                      <!-- <input ng-show="editThis" type="text" class="form-control test" placeholder="IFSC Code" ng-model="userBankDetails.ifsc_code">
+                      <input ng-show="viewThis" type="text" class="form-control test" placeholder="IFSC Code" ng-model="userBankDetails.ifsc_code" disabled> -->
+                    </div>
+                    <div ng-show="editThis" class="form-group">
+                      <label for="IFSC Code">
+                        Make Default
+                      </label>
+                      <select class="form-control" ng-model="userBankDetails.is_default">
+                          <option value="1">YES</option>
+                          <option value="0">NO</option>
+                      </select>
+                    </div>
+                    <div ng-show="viewThis" class="form-group">
+                      <label for="IFSC Code">
+                        Make Default
+                      </label>
+                      <select class="form-control" ng-model="userBankDetails.is_default" disabled>
+                          <option value="1">YES</option>
+                          <option value="0">NO</option>
+                      </select>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row form-footer">
+        <div ng-show="viewThis" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <button type="submit" class="btn btn-close-form" ng-click="close()">
+            CLOSE
+          </button>
+        </div>
+        <div ng-show="addThis || editThis" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <button type="submit" class="btn btn-close-form" ng-click="close()">
+            CLOSE
+          </button>
+        </div>
+        <div ng-show="addThis || editThis" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <button ng-show="addThis" type="submit" class="btn btn-send" ng-click="AddThisbank()">
+            SUBMIT
+          </button>
+          <button ng-show="editThis" type="submit" class="btn btn-success" ng-click="editThisbank(userBankDetails.id)">
+            EDIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

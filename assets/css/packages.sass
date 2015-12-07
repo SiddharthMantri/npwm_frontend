@@ -1,0 +1,184 @@
+#jr-deal-card ul
+  list-style: none
+  width: 100%
+  margin: 0 auto
+  text-align: center
+  li
+    display: inline-block
+    width: 22%
+    margin: 5%
+    a
+      text-decoration: none
+      outline: none
+      cursor: pointer
+
+.placebox
+  /*background: rgba(165, 157, 161, 0.4);*/
+  padding: 5px
+  &:hover .thumbnail img
+    transform: scale(1.05)
+    -ms-transform: scale(1.05)
+    -moz-transform: scale(1.05)
+    -webkit-transform: scale(1.05)
+    -o-transform: scale(1.05)
+    transition: all 0.5s ease
+    vertical-align: middle
+
+.thumbnail
+  padding: 0
+
+.thumbnailCoverList
+  position: absolute
+  height: 100%
+  width: 100%
+  bottom: -11px
+  left: 0px
+  z-index: 3
+  /*background: rgba(0,0,0,0.2);*/
+
+.curListCover
+  position: absolute
+  bottom: -7px
+  width: 100%
+  padding: 4px
+  z-index: 4
+  color: black
+  left: 0px
+  background-color: #1B1B1B
+  a.placeName
+    color: #fff
+    line-height: 2em
+    margin-left: 4px
+    width: 100%
+    text-transform: uppercase
+
+.bookbtn
+  border: 2px solid #FF6600
+  border-radius: 4px
+  color: #FFFFFF
+  float: left
+  font-size: 16px
+  font-weight: bold
+  left: 29%
+  padding: 4px 10px
+  position: absolute
+  top: 45%
+  width: auto !important
+  -webkit-transition: all 1s ease
+  -moz-transition: all 1s ease
+  -o-transition: all 1s ease
+  transition: all 1s ease
+  opacity: 0
+
+.jr-deal-info
+  padding: 10px
+  color: #FFF
+  position: absolute
+  width: 100%
+  -webkit-transition: all 300ms ease
+  -moz-transition: all 300ms ease
+  -o-transition: all 300ms ease
+  transition: all 300ms ease
+  top: 0px
+  text-align: left
+  left: 0px
+  background-color: rgba(128, 128, 128, 0.37)
+
+.jr-price-space
+  padding: 2px
+  font-size: small
+
+.jr-price-display
+  font-size: 1.5em
+  font-family: 'jrMid'
+
+.slider-margin
+  margin-top: 20px
+  text-align: center
+
+.slider-div
+  margin-top: 5%
+  position: relative
+
+.slider-caption
+  position: absolute
+  text-align: center
+  left: 40%
+  bottom: 45%
+  /* margin-top: 0%;
+  font-family: "jrMid"
+  text-transform: uppercase
+  color: white
+
+.deal-type
+  border-top: 1px solid #ddd
+  padding: 10px
+  font-family: "jrMid",sans-serif
+  text-align: left
+  cursor: pointer
+  text-transform: uppercase
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.deal-active
+  background: #2c3e50 !important
+  color: #fff !important
+
+#listdeals
+  margin-top: 20px
+
+.bg-image
+  background: url("../images/deals_2.jpeg") 50% 15% no-repeat
+  background-size: cover
+  position: relative
+  min-height: 790px
+
+.sort-deals
+  text-align: right
+  width: 100%
+  li
+    text-decoration: none
+    list-style: none
+    display: inline-block
+    text-align: center
+    width: 25%
+
+.deal-result-header
+  padding: 10px
+
+.deal-sort-type
+  padding: 10px
+  font-family: "jrMid",sans-serif
+  text-align: left
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  color: white
+  &:hover
+    background-color: white
+    color: black
+
+.package-city-modal
+  text-align: center
+  overflow-y: scroll
+  li
+    text-decoration: none
+    position: relative
+    list-style: none
+    text-align: center
+    height: 50px
+    margin: 15px
+    background-color: #ADA8A8
+    color: white
+    text-transform: uppercase
+    cursor: pointer
+    font-family: "jrMid",sans-serif
+
+.city-name-block
+  padding-top: 15px
+
+.package-city-modal li:hover
+  background-color: #f92d2d
+
+.jslider div.jslider-label
+  color: white

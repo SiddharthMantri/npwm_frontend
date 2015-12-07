@@ -1,0 +1,16 @@
+<div id="content-header">
+	<h3>Feedback Submission</h3>
+</div>
+<div id="content-container">
+	<div id="content">
+		<section ng-if="goodFeedback">
+			Thanks for submitting your feedback, for Justriding again we shall soon redirect you to home page
+		</section>
+		<section ng-if="!goodFeedback">
+			<form name="feedback" novalidate>
+				<textarea class="jr-input" autofocus="true" name="comment" cols="50" rows="5" ng-model="feedbackComment" placeholder="Help us give you a good experience"></textarea>	
+				<input type="submit" ng-click="sendFeedback()"/>
+			</form>
+		</section>
+	</div>
+</div>

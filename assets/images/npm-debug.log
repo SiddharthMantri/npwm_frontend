@@ -1,0 +1,115 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'buildchmod',
+1 verbose cli   '-R',
+1 verbose cli   '755',
+1 verbose cli   '.',
+1 verbose cli   '60x60-IN.png',
+1 verbose cli   '60x60-OUT.png',
+1 verbose cli   'Cash-Icon.png',
+1 verbose cli   'Docs-Icon.png',
+1 verbose cli   'Header-Image.jpg',
+1 verbose cli   'Permit-Icon-2.png',
+1 verbose cli   'Permit-Icon.png',
+1 verbose cli   'Reimburse-Icon.png',
+1 verbose cli   'Ride_512x512.png',
+1 verbose cli   'States-Icon-2.png',
+1 verbose cli   'States-Icon.png',
+1 verbose cli   'Stop-Icon.png',
+1 verbose cli   'amex.png',
+1 verbose cli   'axis.png',
+1 verbose cli   'axisbank.png',
+1 verbose cli   'bg2.jpg',
+1 verbose cli   'black-in.png',
+1 verbose cli   'black-out.png',
+1 verbose cli   'car_512x512.png',
+1 verbose cli   'car_red_512x512.png',
+1 verbose cli   'careers1.png',
+1 verbose cli   'careers2.png',
+1 verbose cli   'careers3.png',
+1 verbose cli   'careers4.png',
+1 verbose cli   'cc_512x512.png',
+1 verbose cli   'cc_red_512x512.png',
+1 verbose cli   'citi_24x24.png',
+1 verbose cli   'citibank.png',
+1 verbose cli   'close.png',
+1 verbose cli   'credit-cards.jpg',
+1 verbose cli   'creditcards.png',
+1 verbose cli   'facebook56.png',
+1 verbose cli   'footer-bg.jpg',
+1 verbose cli   'footer-overlay.png',
+1 verbose cli   'google2.png',
+1 verbose cli   'hdfc_24x24.png',
+1 verbose cli   'hdfcbank.png',
+1 verbose cli   'hiw1.png',
+1 verbose cli   'hiw2.png',
+1 verbose cli   'hiw3.png',
+1 verbose cli   'icici_24x24.png',
+1 verbose cli   'icicibank.png',
+1 verbose cli   'image.png',
+1 verbose cli   'justride-free-ride.png',
+1 verbose cli   'justride-user.png',
+1 verbose cli   'justride-video.mp4',
+1 verbose cli   'justride_book.png',
+1 verbose cli   'justride_pay.png',
+1 verbose cli   'justride_ride.png',
+1 verbose cli   'kotakbank.png',
+1 verbose cli   'logo',
+1 verbose cli   'maestro.png',
+1 verbose cli   'mastercard.png',
+1 verbose cli   'mobile-cover.png',
+1 verbose cli   'pay_512x512.png',
+1 verbose cli   'payment_cards.png',
+1 verbose cli   'payment_modes.png',
+1 verbose cli   'payu_24x24.png',
+1 verbose cli   'polygonal-bg.jpg',
+1 verbose cli   'punjabbank.png',
+1 verbose cli   'questions1.png',
+1 verbose cli   'radio-dot.png',
+1 verbose cli   'rideBook_512x512.png',
+1 verbose cli   'sbi.png',
+1 verbose cli   'secure-lock.png',
+1 verbose cli   'self-drive-cars-bg.jpg',
+1 verbose cli   'sidetab_card.png',
+1 verbose cli   'sidetab_net.png',
+1 verbose cli   'sidetab_payment.png',
+1 verbose cli   'small_red_in.png',
+1 verbose cli   'small_red_out.png',
+1 verbose cli   'social',
+1 verbose cli   'splash-bg.jpg',
+1 verbose cli   'sprites.png',
+1 verbose cli   'statbank.png',
+1 verbose cli   'station_maker.png',
+1 verbose cli   'toggle-icons.png',
+1 verbose cli   'triangulated_bg.png',
+1 verbose cli   'twitter47.png',
+1 verbose cli   'user_marker.png',
+1 verbose cli   'visa.png',
+1 verbose cli   'white-in.png',
+1 verbose cli   'white-out.png',
+1 verbose cli   'works.jpg',
+1 verbose cli   'yesbank.png' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.6
+4 verbose stack Error: missing script: buildchmod
+4 verbose stack     at run (/usr/local/lib/node_modules/npm/lib/run-script.js:142:19)
+4 verbose stack     at /usr/local/lib/node_modules/npm/lib/run-script.js:58:5
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:345:5
+4 verbose stack     at checkBinReferences_ (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:309:45)
+4 verbose stack     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:343:3)
+4 verbose stack     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:113:5)
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:300:12
+4 verbose stack     at evalmachine.<anonymous>:334:14
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:102:5
+4 verbose stack     at FSReqWrap.oncomplete (evalmachine.<anonymous>:95:15)
+5 verbose cwd /www/sites/justride-web-ui/assets/images
+6 error Darwin 14.4.0
+7 error argv "node" "/usr/local/bin/npm" "run" "buildchmod" "-R" "755" "." "60x60-IN.png" "60x60-OUT.png" "Cash-Icon.png" "Docs-Icon.png" "Header-Image.jpg" "Permit-Icon-2.png" "Permit-Icon.png" "Reimburse-Icon.png" "Ride_512x512.png" "States-Icon-2.png" "States-Icon.png" "Stop-Icon.png" "amex.png" "axis.png" "axisbank.png" "bg2.jpg" "black-in.png" "black-out.png" "car_512x512.png" "car_red_512x512.png" "careers1.png" "careers2.png" "careers3.png" "careers4.png" "cc_512x512.png" "cc_red_512x512.png" "citi_24x24.png" "citibank.png" "close.png" "credit-cards.jpg" "creditcards.png" "facebook56.png" "footer-bg.jpg" "footer-overlay.png" "google2.png" "hdfc_24x24.png" "hdfcbank.png" "hiw1.png" "hiw2.png" "hiw3.png" "icici_24x24.png" "icicibank.png" "image.png" "justride-free-ride.png" "justride-user.png" "justride-video.mp4" "justride_book.png" "justride_pay.png" "justride_ride.png" "kotakbank.png" "logo" "maestro.png" "mastercard.png" "mobile-cover.png" "pay_512x512.png" "payment_cards.png" "payment_modes.png" "payu_24x24.png" "polygonal-bg.jpg" "punjabbank.png" "questions1.png" "radio-dot.png" "rideBook_512x512.png" "sbi.png" "secure-lock.png" "self-drive-cars-bg.jpg" "sidetab_card.png" "sidetab_net.png" "sidetab_payment.png" "small_red_in.png" "small_red_out.png" "social" "splash-bg.jpg" "sprites.png" "statbank.png" "station_maker.png" "toggle-icons.png" "triangulated_bg.png" "twitter47.png" "user_marker.png" "visa.png" "white-in.png" "white-out.png" "works.jpg" "yesbank.png"
+8 error node v0.12.6
+9 error npm  v2.11.2
+10 error missing script: buildchmod
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

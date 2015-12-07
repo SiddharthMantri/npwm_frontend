@@ -1,0 +1,26 @@
+<div class="jr-body">
+	<div class="container">
+		<div class="col-lg-offset-3 col-lg-6">
+			<h3 class="modal-title" style="text-align:center;">
+				Reset your JustRide Password
+			</h3>
+		</div>
+		<div class="col-lg-offset-3 col-lg-6">
+			<input class="jr-input reset-pass" ng-model="resetObj.email" placeholder="Your Email">
+			<input class="jr-input reset-pass" type="password" ng-model="resetObj.password" placeholder="Your Password">
+			<input class="jr-input reset-pass" type="password" ng-model="resetObj.confPassword" placeholder="Confirm Password">
+			<button class="btn user-btn login-btn" type="submit" ng-click="submitReset()">
+				Reset
+			</button>
+			<p class="reco-text" ng-if="errorVal" style="margin: 0px">
+				{{errorMessage}}
+			</p>
+			<p class="reco-text jr-success-text" ng-if="completed == true" style="margin: 0px">
+				Password Changed
+			</p>
+			<p class="reco-text" ng-if="completed == false" style="margin: 0px">
+				Password Not Changed
+			</p>
+		</div>
+	</div>
+</div>

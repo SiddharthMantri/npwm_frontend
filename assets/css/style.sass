@@ -1,0 +1,4614 @@
+@font-face
+  font-family: "jrMid"
+  src: url(fonts/sg-mid-sans.woff)
+
+
+@font-face
+  font-family: "jrLight"
+  src: url(fonts/sg-light-sans.woff2)
+
+$primaryColor: #d30606
+$jrFont: "jrMid",sans-serif
+$jrFontSecondary: "jrLight",sans-serif
+$jrPaymentCommon: #b1b1b1
+html, body
+  height: 100%
+.video-landing
+  max-height: 810px
+  background: rgba(0,0,0,0.1)
+.video-preload
+  z-index: -1
+  position: absolute
+  right: 0
+  left: 0
+  top: -40px
+  height: 100%
+  overflow: hidden
+  /*background: url(/assets/images/bg2.jpg) 50% 60% no-repeat*/
+  background: url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b') 50% 60% no-repeat
+  background-size: cover
+.home-landing, .works
+  background: url(/assets/images/works.jpg) 50% 30% no-repeat
+  background-size: cover
+  position: relative
+  min-height: 490px
+.works
+  .grad-overlay
+    padding-top: 80px
+    padding-bottom: 80px
+    background: rgba(0, 0, 0, 0.2)
+    position: absolute
+    width: 100%
+    top: 0
+    bottom: 0
+.para-text
+  font-family: $jrFont
+  font-size: 1.2em
+.no-border
+  border: none !important
+.grad-overlay
+  padding-top: 240px
+  padding-bottom: 240px
+  background: rgba(0, 0, 0, 0.07)
+  position: absolute
+  width: 100%
+  top: 0
+  bottom: 0
+.colored-marker
+  color: $primaryColor
+  cursor: pointer
+.search-cont
+  max-width: 800px
+  margin-left: auto
+  margin-right: auto
+.search-cont-new
+  padding: 10px
+  //background: rgba(0,0,0,0.3)
+  max-width: 840px
+  margin-left: auto
+  margin-right: auto
+.jr-boxes
+  background: #fff
+  padding: 10px
+  font-family: $jrFont
+  cursor: pointer
+  border: 1px solid #ccc
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+.jr-boxes-borderless
+  padding: 3px
+  border: none
+  font-family: $jrFont
+  margin-top: 10px
+.zero-pad
+  padding: 0px !important
+
+.search-btn
+  font-family: "jrMid",sans-serif
+  background: #c63333
+  border: 1px solid #d30606
+  color: #fff
+  padding: 10px
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #f92d2d
+.get-started
+  margin-top: 20px
+  font-family: "jrMid",sans-serif
+  background: #d30606
+  border: 1px solid #d30606
+  color: #fff
+  padding: 10px
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #f92d2d
+
+.input-glyphs
+  font-size: 1em
+  margin-right: 10px
+
+.logged-in-links
+  display: none !important
+.sr-landing
+  display: none !important
+
+@media (max-width: 766px)
+  .contact-message-label
+    bottom: 0px
+@media (min-width: 767px)
+  .contact-message-label
+    bottom: 100px
+  .show-hide-padding
+    padding-left: 0px
+    padding-right: 0px
+
+@media (max-width: 600px)
+  .sm-wrap
+    text-wrap: normal
+  .mar-sm-left
+    margin-left: 0 !important
+  .list-detail-para, .list-title
+    text-align: center !important
+  .query-text
+    text-align: left !important
+  .payment-title
+    font-size: 14px
+  .mar-top-sm
+    margin-top: 10px
+  .addon-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      max-width: 450px !important
+      margin-left: auto
+      margin-right: auto
+  .footer-container 
+    text-align: left
+  .video-landing
+    display: none !important
+  .home-landing, .new-landing
+    display: none !important
+  .sr-landing
+    display: block !important
+    background: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-mobile.jpg) 50% 15% no-repeat
+    min-height: 653px
+    position: relative
+    .sr-overlay
+      background: rgba(0,0,0,0.6)
+      top: 0
+      bottom: 0
+      width: 100%
+      height: 100%
+    .jr-boxes
+      background: none
+      border: none
+      border-bottom: 1px solid #ccc
+      color: #fff
+      font-size: 1.4em
+      margin-top: 0px
+      .jr-date-input
+        background: none
+        color: #fff
+  .jr-input
+    border: none
+  #jr-collapse-menu
+    margin-top: 15px
+    border: none
+    background: rgba(45, 45, 45, 0.8)
+    //max-height: 460px
+    //height: 460px
+  .max-w-limit
+    max-width: 346px
+    margin-left: 15px
+    margin-right: 15px
+  .jr-boxes    
+    max-width: 100%
+    margin-left: auto
+    margin-right: auto
+  .jr-payment-boxes
+    max-width: 100%
+    margin-left: auto
+    margin-right: auto
+    position: relative
+  .zero-pad
+    padding-right: 15px !important
+    padding-left: 15px !important
+  //.zero-pad
+  //  &:first-child
+  //    padding-left: 0px !important
+  //  &:last-child
+  //    padding-right: 0px !important
+  .form-control-feedback
+    right: 10px !important
+  .no-car-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 450px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+  .direction-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 450px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+      margin-top: 0px
+      width: 100%
+      height: 100%
+  .list-result
+    height: 470px !important
+  .logged-in-links
+    display: block !important
+  .logged-in-hide
+    display: none !important
+  .lock-modal
+    z-index: 4000 !important
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 350px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+@media (max-width: 360px)
+  .query-text
+    text-align: center !important
+  .direction-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 340px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+      margin-top: 0px
+      width: 100%
+      height: 100%
+  .addon-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      max-width: 340px !important
+      margin-left: auto
+      margin-right: auto
+
+@media (max-width: 991px)
+  .jr-car-sidepane
+    display: none
+@media (max-width: 450px)
+  .query-text
+    text-align: center !important
+  .jr-footer-description
+    display: none
+  .direction-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 390px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+      margin-top: 0px
+      width: 100%
+      height: 100%
+  .addon-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      max-width: 400px !important
+      margin-left: auto
+      margin-right: auto
+@media (min-width:451px) and (max-width: 480px)
+  .query-text
+    text-align: center !important
+  .jr-input
+    border: none
+  #jr-collapse-menu
+    margin-top: 15px
+    border: none
+    background: rgba(45, 45, 45, 0.8)
+  .addon-modal
+    .modal-content, .modal-dialog
+      border-radius: 0
+      max-width: 450px !important
+      margin-left: auto
+      margin-right: auto
+  .lock-modal
+    z-index: 4000 !important
+    .modal-content, .modal-dialog
+      border-radius: 0
+      width: 350px !important
+      margin-left: auto
+      margin-right: auto
+      z-index: 4000 !important
+
+.jr-tagline
+  font-family: "jrMid",sans-serif
+  font-size: 3.3em
+  text-align: center
+  color: #fff
+
+.jr-nav-true
+  background: #fff !important
+  border-bottom: 1px solid #ccc
+  height: 75px
+  border-radius: 0 !important
+  margin-bottom: 0
+.transparent-header
+  background: rgba(0,0,0,0) !important
+
+.jr-logo
+  max-width: 130px !important
+
+.jr-payu-btn
+  font-family: "jrMid",sans-serif
+  background: #2ecc71
+  color: #fff
+  padding: 10px
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.jr-dropdown
+  width: 100%
+  padding: 5px
+  border-radius: 0
+  margin-top: 0px
+
+.jr-anchor
+  cursor: pointer
+
+.jr-pad
+  padding: 10px
+
+.jr-date-input
+  padding: 10px
+  border: none
+  outline: none
+  width: 100%
+  cursor: pointer
+
+.datetimepicker
+  font-family: "jrMid",sans-serif
+  border-radius: 0
+  table tr td.disabled
+    color: #ddd
+    &:hover
+      color: #ddd
+
+.day.old.active.disabled
+  background: none !important
+  color: #ddd
+
+.top-links
+  padding-top: 13px
+  a
+    color: #fff !important
+    font-family: "jrMid",sans-serif
+
+.jr-body
+  padding: 100px 20px 20px 20px
+  background: #f5f5f5
+  min-height: 790px
+
+.jr-button
+  border: none
+  margin-top: 20px
+  &:hover
+    background: none !important
+
+.icon-bar
+  background: #fff !important
+
+.login-modal
+  z-index: 4000 !important
+  border-radius: 4px
+  .modal-content
+    border-radius: 4px
+    max-width: 350px
+    margin-left: auto
+    margin-right: auto
+  .modal-dialog
+    border-radius: 0
+    max-width: 350px
+    margin-left: auto
+    margin-right: auto
+    width: 300px
+    margin-top: 170px
+    margin-left: auto
+    margin-right: auto
+
+.modal-title
+  font-family: "jrMid",sans-serif
+
+.social-btn
+  width: 100%
+  padding: 10px
+  text-align: center
+  color: #fff
+  font-family: "jrMid",sans-serif
+  cursor: pointer
+  margin-bottom: 10px
+
+.fb-btn
+  background: #3a5795
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #4a6db8
+
+.gp-btn
+  background: #dd4b39
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #e15f4f
+
+.reco-text
+  font-family: "jrLight",sans-serif
+  text-align: center
+
+.user-btn
+  width: 100%
+  padding: 10px
+  background: #d6d6d9
+  text-align: center
+  color: #333
+  font-family: "jrMid",sans-serif
+  border-radius: 0
+  margin-bottom: 10px
+
+.modal-backdrop
+  background: #000
+  height: 100%
+  min-height: 40000px
+
+.footer
+  background: rgba(0, 0, 0, 0.8)
+  padding: 20px
+
+.glyphicon-remove
+  cursor: pointer
+
+.login-btn
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #3e5771
+
+.signup-btn
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    color: #fff
+    background: #2c3e50
+
+.jr-input
+  width: 100%
+  border-top: none
+  border-left: none
+  border-right: none
+  border-bottom: 1px solid #eee
+  outline: none
+  margin-bottom: 10px
+  font-family: "jrMid",sans-serif
+  padding: 0 5px 5px 5px
+  background: #fff
+  &:disabled
+    width: 100%
+    border-top: none
+    border-left: none
+    border-right: none
+    border-bottom: 1px solid #eee
+    outline: none
+    margin-bottom: 10px
+    font-family: "jrMid",sans-serif
+    padding: 0 5px 5px 5px
+    background: #fff
+
+.jr-input-setting
+  width: 100%
+  border: none !important
+  outline: none
+  font-family: "jrMid",sans-serif
+  padding: 0 5px 5px 5px
+  background: #fff
+  &:disabled
+    width: 100%
+    border: none !important
+    outline: none
+    font-family: "jrMid",sans-serif
+    padding: 0 5px 5px 5px
+    background: #fff
+
+.jr-input-edit
+  width: 100%
+  border: none !important
+  outline: none
+  font-family: "jrMid",sans-serif
+  padding: 0 5px 5px 5px
+  background: #fff
+  padding: 10px
+
+.jr-errors
+  background: #fedada
+  color: #f81414
+  text-align: center
+  font-family: "jrLight",sans-serif
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.search-pg
+  width: auto
+  margin-left: auto
+  margin-right: auto
+  margin-top: -5px
+
+.jr-result-header
+  background: #fff
+  padding: 10px
+
+.toggle-view-btn
+  padding: 3px
+  cursor: pointer
+  display: inline-block
+
+td.day
+  border: 1px solid #eee
+  border-radius: 0 !important
+
+span
+  &.hour, &.minute
+    border: 1px solid #eee
+    border-radius: 0 !important
+
+td.active
+  border-radius: 0 !important
+  background: #f81414 !important
+
+span
+  &.hour.active, &.minute.active
+    border-radius: 0 !important
+    background: #f81414 !important
+  &.hour, &.minute
+    margin-left: 0px !important
+    margin-right: 0px !important
+    width: 25% !important
+    margin-bottom: -2px !important
+
+.datetimepicker
+  padding: 0 1px 0 0
+
+.jr-results-filter
+  background: #fff
+  padding: 5px
+  margin-top: 0px
+
+.grid-result
+  width: 100%
+  height: 200px
+  margin-top: 10px
+  position: relative
+  cursor: pointer
+
+.veh-grid
+  height: 250px !important
+
+.overlay
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background: rgba(0, 0, 0, 0.1)
+  -webkit-transition: 0.4s
+  transition: 0.4
+  &:hover
+    background: rgba(0, 0, 0, 0.2)
+
+.unavailable-overlay
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background: rgba(0, 0, 0, 0.35)
+  -webkit-transition: 0.4s
+  transition: 0.4
+
+.grid-pricing
+  position: absolute
+  cursor: pointer
+
+.grid-pricing-unavailable
+  padding: 10px
+  color: #fff
+  font-family: "jrMid",sans-serif
+  text-align: center
+  border-bottom: 16px solid rgba(255, 0, 0, 0)
+  /* border-left: 50px solid rgba(0, 128, 0, 0.17); */
+  border-right: 24px solid #CC7575
+  border-top: 36px solid rgba(128, 128, 128, 0)
+  height: 138px
+  width: 13px
+  transform: rotate(59deg)
+  position: absolute
+  left: 29px
+  top: -50px
+  padding-left: 5px
+  /*margin-top: 115px*/
+  font-size: 1.3em
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.grid-pricing-available
+  padding: 10px
+  color: #fff
+  font-family: "jrMid",sans-serif
+  text-align: center
+  background: rgba(71, 71, 71, 0.8)
+  margin-top: 115px
+  font-size: 1.5em
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.currency
+  font-family: "jrMid",sans-serif
+  font-size: 0.9em
+  display: inline-block
+
+.result-block
+  background: #fff
+  padding: 10px
+
+.toggle-block
+  max-width: 120px
+  float: right
+
+.glyphicon-info-sign
+  color: #f81414
+  margin-top: -5px
+
+.glyphicon-align-justify
+  color: #fff !important
+
+.settings-btn
+  margin-top: 0px
+  border: none
+  background: none !important
+  display: block
+  padding: 1px !important
+
+.setting-dropdown
+  border-radius: 0
+  margin-right: 15px
+  margin-top: 25px
+  li.menu-opts
+    color: #333
+    font-family: "jrMid",sans-serif
+    padding: 5px
+    cursor: pointer
+    &:hover
+      background: #fafafa
+  &:before
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+    bottom: 100%
+    right: 13px
+    border-width: 0 8px 8px 8px
+    border-style: solid
+    border-color: rgba(0, 0, 0, 0.1) transparent
+  &:after
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+    bottom: 100%
+    right: 15px
+    border-width: 0 6px 6px 6px
+    border-style: solid
+    border-color: #fff transparent
+
+.dd-icon
+  margin-right: 10px
+  margin-left: 12px
+
+.prof-bg
+  height: 250px
+  background-size: cover
+  position: relative
+  background: url(/assets/profile_bg/bg2.jpg) 50% 70%
+  background-repeat: no-repeat
+
+.user-details
+  margin-top: 20px
+
+.user-name
+  text-align: center
+
+.profile-block
+  padding: 15px
+  border-left: 1px solid #ddd
+  font-family: $jrFont
+
+.setting-container
+  margin-top: 20px
+
+.setting-box
+  padding: 10px
+  border-bottom: 1px solid #ddd
+  font-family: "jrMid",sans-serif
+  font-size: 1.1em
+  cursor: pointer
+  &.active, &:hover
+    background: #fff
+
+.booking-header
+  font-family: "jrMid",sans-serif
+  font-size: 1.2em
+  text-align: center
+
+.booking-row
+  font-family: "jrLight",sans-serif
+  padding: 10px
+  text-align: center
+  font-size: 1em
+
+.ride-details, .save-settings, .apply-coupon, .book-now
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  text-transform: uppercase
+  color: #fff
+  background: #2c3e50
+  text-transform: uppercase
+  font-family: "jrMid",sans-serif
+
+.save-settings, .book-now
+  padding: 10px
+  text-align: center
+  border-radius: 4px
+
+.apply-coupon
+  text-align: center
+  border-radius: 4px
+
+.ride-details:hover, .save-settings:hover, .apply-coupon:hover, .book-now:hover
+  background: #f5f5f5
+  color: #333
+
+.expand-detail, .setting-edit-row
+  display: none
+  padding: 15px
+  background: #f5f5f5
+
+.booking-row p
+  margin: 0 !important
+
+.shut-det
+  float: right
+  margin-top: -5px
+
+.res-titles
+  position: absolute
+  padding: 5px 10px 5px 10px
+  bottom: 0
+  background: rgba(71, 71, 71, 0.8)
+  width: 100%
+  color: #fff
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.veh-titles
+  position: absolute
+  padding: 5px 10px 5px 10px
+  bottom: 0
+  background: rgba(71, 71, 71, 0.8)
+  width: 100%
+  color: #fff
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.setting-label
+  text-align: center
+  font-family: "jrMid",sans-serif
+
+.edit-btn
+  cursor: pointer
+  font-family: "jrLight",sans-serif
+  text-align: center
+  &:hover
+    text-decoration: underline
+
+.setting-fixed-row
+  border-bottom: 1px solid #ddd
+  margin-bottom: 10px
+  padding-bottom: 5px
+
+.social-icon
+  float: left
+  font-size: 1.5em
+  margin-left: 20px
+  margin-right: -40px
+
+.map-view
+  background: #fff
+  padding: 5px
+  margin-top: 20px
+  height: 260px
+
+.booking-details-row
+  border-bottom: 1px solid #ccc
+  padding: 10px
+
+.booking-label
+  font-family: "jrLight",sans-serif
+  font-size: 1.15em
+  color: #565a5c
+  /*margin: 0 !important*/
+
+.date-vals
+  font-family: "jrMid",sans-serif
+  color: #000
+  font-size: 1em
+  margin-left: 10px
+
+
+\::-moz-selection, ::selection
+  background: lighten($primaryColor, 10%)
+
+.list-result
+  height: 160px
+  background: #fff
+  margin-top: 10px
+
+.list-img
+  height: 180px
+  width: 100%
+  cursor: pointer
+
+.res-list-img
+  height: 160px
+
+.list-price
+  height: 160px
+  padding: 10px
+  margin-top: 10px
+  margin-bottom: 10px
+  border-left: 1px solid #efefef
+  position: relative
+
+.list-pricing-available
+  text-align: center
+  font-size: 1.1em
+  font-family: "jrMid",sans-serif
+
+.cancel-booking
+  width: 100%
+  padding: 10px
+  text-align: center
+  font-family: "jrMid",sans-serif
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  background: #e6e6e8
+  &:hover
+    background: #2c3e50
+    color: #fff
+
+.list-pricing-unavailable
+  padding: 10px
+  color: #fff
+  font-family: "jrMid",sans-serif
+  text-align: center
+  background: #2ecc71
+  margin-top: 25px
+  cursor: pointer
+  font-size: 1.3em
+  -webkit-font-smoothing: antialiased
+
+.sort-type
+  border-top: 1px solid #ddd
+  padding: 10px
+  font-family: "jrMid",sans-serif
+  text-align: left
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: #f5f5f5
+
+.sort-active
+  background: #2c3e50 !important
+  color: #fff !important
+
+.label-val
+  font-family: "jrMid",sans-serif
+  text-align: center
+
+.payment
+  font-family: "jrLight",sans-serif
+  text-align: center
+
+.payment-panel
+  background: #fff
+  padding: 20px
+
+.payment-panel-header
+  padding: 10px
+  background: #fff
+  border-bottom: 1px solid #ddd
+
+.thanks-label
+  font-family: "jrMid",sans-serif
+  font-size: 1.4em
+
+.sub-thanks
+  font-family: "jrLight",sans-serif
+  font-size: 1.1em
+
+.payment-panel-body
+  padding: 40px 10px 40px 10px
+  background: #fff
+  .booking-label
+    margin-bottom: 10px !important
+
+.payment-body
+  padding: 30px
+  background: #f5f5f5
+
+.payment-details
+  background: #fff
+  padding: 10px
+
+.remember-text
+  font-family: "jrLight",sans-serif
+  text-align: justify
+  font-size: 1em
+
+.loading-modal
+  .modal-dialog, .modal-content
+    width: 60px
+    height: 60px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 350px
+    box-shadow: none
+    border: none
+    background: none !important
+
+.how-it-works-btn
+  margin-top: 20px
+  font-family: "jrMid",sans-serif
+  background: rgba(255, 255, 255, 0.4)
+  color: #fff
+  padding: 10px
+  max-width: 150px
+  margin-left: auto
+  margin-right: auto
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: rgba(0,0,0,0.4)
+.how-it-works
+  background: #DC2B33
+  width: 100%
+  padding-top: 40px
+  margin-top: -684px
+  min-height: 663px
+  -webkit-transition: 0.9s
+  transition: 0.9s
+  margin-top: -684px
+.jr-footer-logo
+  max-width: 130px
+  display: block
+
+.contact-number
+  font-family: "jrMid",sans-serif
+  color: #fff
+  display: block
+
+.footer-logo
+  max-width: 150px
+  margin-left: 0px
+
+.query-text
+  margin: 0 !important
+  text-align: left
+  font-family: "jrMid",sans-serif
+  font-size: 1em
+  margin-top: 10px
+  color: #fafafa
+
+.footer-header
+  font-family: "jrLight",sans-serif
+  font-weight: normal
+  color: #Fff
+  font-size: 18px
+  text-transform: uppercase
+  line-height: 20px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.footer-item
+  font-family: "jrLight",sans-serif
+  line-height: 20px
+  color: rgb(205,205,205)
+  font-size: 14px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+.footer-links
+  color: #fff
+.footer-link
+  text-decoration: none !important
+  line-height: 20px
+  color: rgb(205,205,205)
+  font-family: "jrLight",sans-serif
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.hiw-container
+  &.hiw-step-one
+    height: 300px
+    background: url("/img/hiw-01.png") 0 0 no-repeat
+    background-size: contain
+  &.hiw-step-two
+    height: 300px
+    background: url("/img/hiw-02.png") 0 0 no-repeat
+    background-size: contain
+  &.hiw-step-three
+    height: 300px
+    background: url("/img/hiw-03.png") 0 0 no-repeat
+    background-size: contain
+  &.hiw-step-four
+    height: 300px
+    background: url("/img/hiw-04.png") 0 0 no-repeat
+    background-size: contain
+
+.list-title
+  font-family: "jrMid",sans-serif
+  font-size: 1.5em
+
+.list-title-car
+  border-bottom: 1px solid #eee
+
+.list-detail-para
+  margin-top: 10px
+  text-align: left
+  font-size: 1.2em
+
+.term-header
+  font-family: "jrMid",sans-serif !important
+  text-align: center
+
+.term-cont
+  font-family: "jrLight",sans-serif
+
+.detail-type
+  border-top: 1px solid #ddd
+  padding: 10px
+  font-family: "jrMid",sans-serif
+  text-align: left
+  cursor: default
+
+.address-text
+  white-space: normal
+  font-family: "jrLight",sans-serif !important
+  margin: 0 !important
+
+.direction-modal
+  .modal-content, .modal-dialog
+    border-radius: 0
+    width: 90%
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+    margin-top: 0px
+    width: 100%
+    height: 100%
+.no-car-modal
+  z-index: 4000 !important
+  .modal-content, .modal-dialog
+    border-radius: 0
+    width: 450px
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+
+.jr-message
+  font-family: "jrLight",sans-serif
+  padding: 10px 15px 10px 15px
+
+.floating-side-bar
+  max-width: 100%
+  top: 100px
+  bottom: 213px
+
+\::-webkit-scrollbar
+  width: 6px
+  height: 6px
+
+\::-webkit-scrollbar-track
+  background-color: #333
+  &:hover
+    background-color: #ddd
+
+\::-webkit-scrollbar-thumb
+  background-color: #333
+  &:hover
+    background-color: #ddd
+
+.pac-container
+  z-index: 4500 !important
+
+.angular-google-map-container
+  height: 240px
+
+#map-dir
+  height: 80%
+#map-dires
+  height: 350px
+
+.directions-panel
+  max-height: 300px
+  overflow-y: scroll
+  font-family: "jrLight",sans-serif !important
+
+.adp-text, .adp-summary
+  font-family: "jrMid",sans-serif !important
+
+.adp-substep
+  font-family: "jrLight",sans-serif !important
+
+.jr-label-list
+  border-top: 1px solid #ddd
+  text-align: center
+
+.hidden-features
+  position: absolute
+  padding: 5px 20px 20px 20px
+  max-height: 220px
+  bottom: -235px
+  display: none
+  background: rgba(71, 71, 71, 0.8)
+  width: 100%
+  color: #fff
+  min-height: 215px
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.vehicle-value
+  font-family: "jrMid",sans-serif
+  font-size: 1.1em
+  padding-top: 5px
+  padding-bottom: 5px
+
+.img-upload
+  width: 100%
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  border-radius: 0px
+  font-family: "jrMid",sans-serif
+  &:hover
+    background: #3e5771
+
+.month
+  border-radius: 0 !important
+  width: 25% !important
+  margin: 0 !important
+  border-radius: 0 !important
+  border: 1px solid #ddd !important
+  &.active
+    background: #f81414 !important
+
+.error-dob
+  border: 1px solid #f81414 !important
+
+.hire-sub-header
+  text-align: center
+  font-family: "jrLight",sans-serif
+  font-size: 1em
+  color: #999
+
+.pos-name
+  font-family: "jrMid",sans-serif
+  font-size: 1em
+
+.pos-loc
+  font-family: "jrMid",sans-serif
+  font-size: 1em
+  color: #999
+
+.chauffeur-btn
+  margin-top: 40px
+  font-family: "jrMid",sans-serif
+  background: rgba(248, 20, 20, 0.7)
+  color: #fff
+  max-width: 100%
+  margin-left: auto
+  margin-right: auto
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &:hover
+    background: rgba(161, 5, 5, 0.7)
+    text-decoration: none
+
+.pickstation-modal
+  .modal-content, .modal-dialog
+    border-radius: 0
+    width: 100%
+    height: 100%
+    padding: 0
+    margin-top: 0px
+  #map-dir
+    min-height: 550px
+
+.addon-modal
+  z-index: 4000 !important
+  .modal-content
+    border-radius: 0
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+  .modal-dialog
+    border-radius: 0
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+    width: 500px
+
+.add-on-name .add-on-name .add-on-toggle
+  font-family: "jrMid",sans-serif
+
+.modal
+  &.fade
+    opacity: 1
+    .modal-dialog
+      -webkit-transform: translate(0, 0)
+      -ms-transform: translate(0, 0)
+      transform: translate(0, 0)
+  &.in .modal-dialog
+    -webkit-transform: translate(0, 0)
+    -ms-transform: translate(0, 0)
+    transform: translate(0, 0)
+
+.addons
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 100%
+
+.addon-box
+  background: #fff
+  padding: 20px
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 100%
+
+.addon-overlay
+  background: rgba(0, 0, 0, 0.6)
+  top: 0
+  bottom: 0
+  width: 100%
+  position: absolute
+
+.toggle-switch
+  .switch-left
+    background: #2ecc71 !important
+  border: none !important
+  min-width: 70px !important
+  border-radius: 999px
+
+.fare-details
+  display: none
+
+.search-nav-cont
+  margin-bottom: 20px
+
+.error-text, .error-msg
+  text-align: center
+  font-family: "jrMid",sans-serif
+
+.error-text
+  font-size: 6em
+  color: #f81414
+
+.error-msg
+  font-size: 2em
+
+.cancel-modal-btn
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  text-transform: uppercase
+  margin-left: 15px
+  margin-top: 20px
+  &:hover
+    background: #f94646
+
+.jr-get-set-btn
+  background: #2ecc71
+  color: #fff !important
+  border-radius: 4px
+  text-transform: uppercase
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  margin-left: 15px
+  margin-top: 20px
+  background-image: -webkit-gradient(linear, 0% 30%, 50% top, color-stop(0%, rgba(75, 204, 40, 0)), color-stop(40%, rgba(75, 204, 40, 0)), color-stop(90%, rgba(75, 204, 40, 0.3)), color-stop(100%, rgba(75, 204, 40, 0))), -webkit-gradient(linear, 50% 30%, 100% top, color-stop(0%, rgba(75, 204, 40, 0)), color-stop(25%, rgba(75, 204, 40, 0.3)), color-stop(50%, rgba(75, 204, 40, 0)), color-stop(80%, rgba(75, 204, 40, 0.3)), color-stop(100%, rgba(75, 204, 40, 0)))
+  background-size: 200%
+  background-position: right
+  -webkit-animation-name: flagwave
+  -webkit-animation-duration: 10s
+  -webkit-animation-timing-function: linear
+  -webkit-animation-iteration-count: infinite
+
+@-webkit-keyframes flagwave
+  0%
+    background-position: -400px 0px, -400px 0px, -400px 0px,-400px 0px
+
+  100%
+    background-position: 800px 0px, 800px 0px, 800px 0px, 800px 0px
+
+.points-user-container
+  background: #fff
+  padding: 10px
+  margin-bottom: 10px
+
+.point-sub
+  font-size: 1em
+  font-family: "jrLight",sans-serif
+
+.hiw-img
+  max-height: 250px
+  margin-left: auto
+  margin-right: auto
+
+.hiw-title
+  font-family: "jrMid",sans-serif
+  font-size: 1.8em
+  color: #fff
+  text-align: center
+  margin-top: 30px
+
+.hiw-text
+  font-family: "jrLight",sans-serif
+  font-size: 1.1em
+  color: #7f7f7f
+  text-align: center
+
+.modal-footer
+  text-align: center
+  font-family: "jrLight",sans-serif
+  font-size: 0.9em
+  margin: 0 !important
+
+.modal-text
+  margin: 0 !important
+
+.menu
+  height: 35px
+  font-size: 12px
+  font-family: Tahoma, Geneva, sans-serif
+  font-weight: bold
+  text-align: right
+  ul
+    height: auto
+    padding: 8px 0px
+    margin: 0px
+  li
+    display: inline
+    padding: 20px
+  a
+    text-decoration: none
+    padding: 8px 8px 8px 8px
+    &:hover
+      cursor: pointer
+
+.line
+  padding: 10px 0 5px 0
+  border-bottom: 1px solid #f2f2f2
+
+.nolist
+  display: inline
+  list-style: none
+  padding: 0px
+
+.jr-inline-block
+  display: inline-block
+
+.tmargin20
+  margin-top: 20px
+
+.buttons-list
+  border: 1px solid #c9c9c9
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  -ms-border-radius: 2px
+  -o-border-radius: 2px
+  border-radius: 2px
+  margin-top: 0
+
+.size1of4
+  width: 25%
+
+.clearfix
+  display: inline-block
+
+.buttons-list .buttons
+  float: left
+  background: linear-gradient(to bottom, #f9f9f9 1%, #fff 3%, #f9f9f9 7%, #f2f2f2 100%)
+  border-right: 1px solid #c9c9c9
+  a
+    padding: 5px 15px
+    text-decoration: none
+    display: block
+    font-size: 11px
+    color: #565656
+    font-weight: bold
+    text-transform: uppercase
+
+.jr-font-17
+  font-size: 17px
+
+.jr-font-11
+  font-size: 11px
+
+.jr-font-bold
+  font-weight: bold
+
+.jr-font-light
+  color: #848484
+
+.bottom-menu a
+  color: white
+
+.mycustom a
+  color: #0F0000
+  &:hover
+    color: #d30606
+
+.car-thumbnail
+  width: 75%
+  height: 100px
+  margin-left: 20%
+
+.rideDistance
+  width: 100%
+  text-align: center
+  margin-top: 1%
+
+.rideHeader th
+  text-align: center
+  text-decoration: underline
+
+.pl
+  margin-right: 5px
+
+#innerImage, #outerImage, #logoTag
+  background-image: url('assets/images/logo/justride_sprite.png')
+  background-repeat: no-repeat
+
+#innerImage
+  height: 166px
+  position: absolute
+  left: 25px
+  top: 15px
+
+#outerImage
+  height: 166px
+  width: 50px
+  height: 50px
+  position: absolute
+  top: 5px
+  -webkit-animation: roundabout 2s 4 alternate
+
+@-webkit-keyframes roundabout
+  from
+    -webkit-transform: rotate(-30deg)
+
+  to
+    -webkit-transform: rotate(30deg)
+
+
+#logoTag
+  width: 50px
+  height: 50px
+
+.go-button
+  background-color: rgba(22, 31, 40, 0.99)
+  color: white
+  border-radius: 25px
+  margin-left: 10px
+  border-color: rgba(22, 31, 40, 0.99)
+
+#hoverButton
+  cursor: default
+  &:hover
+    color: #333
+    background-color: white
+    border-color: #ccc
+
+.modify-modal-btn
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  text-transform: uppercase
+  transition: 0.4s
+  margin-left: 15px
+  margin-top: 20px
+
+.modify-booking
+  width: 100%
+  padding: 10px
+  text-align: center
+  font-family: "jrMid",sans-serif
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  background: #e6e6e8
+  margin-left: 15px
+  margin-top: 20px
+
+.extend-modal-btn
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  text-transform: uppercase
+  transition: 0.4s
+  margin-left: 15px
+  margin-top: 20px
+
+.extend-booking
+  width: 100%
+  padding: 10px
+  text-align: center
+  font-family: "jrMid",sans-serif
+  cursor: pointer
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  background: #e6e6e8
+  margin-left: 15px
+  margin-top: 20px
+
+.extend-modal-btn:hover
+  background: #f94646
+
+.extend-booking:hover
+  background: #2c3e50
+  color: #fff
+
+.sr-search-cont
+  background: url(https://download.unsplash.com/uploads/1413259835094dcdeb9d3/6e609595) 50% 15% no-repeat
+  position: absolute
+  top: 0
+  min-height: 650px
+  z-index: 3000
+  height: 100%
+.sr-panel-header
+  padding: 20px
+  background: #ddd
+  color: #333
+  font-family: $jrFont
+  text-align: center
+
+.start-date-picker
+  position: absolute
+  top: 0
+  min-height: 650px
+  z-index: 3100
+  width: 100%
+  background: rgba(0,0,0,0.4)
+
+.date-picker-panel
+  max-width: 300px
+  margin-left: auto
+  margin-right: auto
+  background: #fff
+  margin-top: 90px
+.direction-modal, .loading-modal
+  z-index: 4000 !important
+.modal-backdrop
+  z-index: 3800 !important
+
+.lock-modal
+  z-index: 4000 !important
+  .modal-content, .modal-dialog
+    border-radius: 0
+    width: 610px
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important 
+
+.commute-container
+  max-width: 800px
+  margin-left: auto
+  margin-right: auto
+
+.additional-modal-btn
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  text-transform: uppercase
+  transition: 0.4s
+  margin-left: 15px
+  margin-top: 20px
+
+.additional-modal-btn:hover
+  background: #f94646
+
+
+.additional-booking
+  width: 100%
+  padding: 10px
+  text-align: center
+  font-family: "jrMid" sans-serif
+  cursor: pointer
+  -webkit-transition: 0.4s
+  text-transform: uppercase
+  transition: 0.4s
+  background: #e6e6e8
+
+.additional-booking:hover
+  background: #2c3e50
+  color: #fff
+
+.footer-container
+  text-align: left
+#carImage
+  //height: 225px
+  width: 100%
+
+@media (max-width: 1024px)
+  .how-it-works
+    display: none
+  .query-text
+    text-align: center !important
+  .footer-logo
+    margin-left: auto
+  .sm-wrap
+    text-wrap: nowrap
+  .footer-container 
+    text-align: left
+@media (max-width: 764px) 
+  .how-it-works
+    display: none !important
+  #left-hand
+    width: 100%
+  .query-text
+    text-align: center !important
+  .footer-container 
+    text-align: left
+  #right-hand
+    width: 100%
+  .sm-wrap
+    text-wrap: nowrap
+  #carImage
+    height: 300px  
+  #jr-collapse-menu
+    margin-top: 15px
+    border: none
+    background: rgba(45, 45, 45, 0.8)
+  .logged-in-links
+    display: block !important
+  .logged-in-hide
+    display: none !important
+.extendButtonAdditional
+  display: inline
+  padding: .2em .6em .3em
+  font-size: 75%
+  font-weight: 700
+  line-height: 1
+  color: #fff
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  border-radius: 1.25em
+  background-color: green
+
+.extendButtonAdditional:hover
+  cursor: pointer
+
+.header-cityIndicator
+  color: rgb(254, 254, 254)
+  position: relative
+  top: 25px
+  font-weight: lighter
+
+.index-modal
+  z-index: 4000 !important
+  
+
+.index-modal 
+  .modal-content
+    border-radius: 0
+    width: 300px !important
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+    
+
+.index-modal 
+  .modal-dialog 
+    border-radius: 0
+    width: 300px !important
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+
+.index-modal 
+  .modal-content
+    border-radius: 0
+    width: 800px
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+    
+
+.index-modal 
+  .modal-dialog
+    border-radius: 0
+    width: 800px
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+    
+
+.index-modal 
+  .modal-body
+    height: 200px
+    overflow-y: scroll
+
+.city-entry
+  margin: 0 auto
+  display: block
+  padding-bottom: 6px
+  border-bottom: 1px solid rgba(128, 128, 128, 0.35)
+  height: 10%
+  vertical-align: middle
+  text-align: center
+  min-width: 100px
+
+.city-entry:hover
+  cursor: pointer
+
+.city-select
+  width: 10%
+
+.city-indicator
+  position: relative
+  top: 1px
+  color: white
+  font-weight: lighter
+  padding: 5px
+
+
+.city-indicator:hover
+  cursor: pointer
+
+
+.city-spacer
+  margin-left: 5px
+
+
+.city-dropdown
+  position: relative
+  top: -12px
+  left: 135px
+  color: white
+  padding: 5px
+  border: 1px solid
+  border-top: none
+  width: 150px
+
+.city-selected
+  margin-top: 20px
+  font-family: "jrMid",sans-serif
+  background: #d30606
+  color: #fff
+  padding: 10px
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.city-notselected
+  margin-top: 20px
+  font-family: "jrMid", sans-serif
+  background: #ADA8A8
+  color: #fff
+  padding: 10px
+  cursor: pointer
+  text-transform: uppercase
+  text-align: center
+  -webkit-transition: 0.4s
+  transition: 0.4s
+
+.divider
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5)
+  text-align: left
+  font-size: small
+
+.divider:hover
+  cursor: pointer
+
+.city-row
+  text-align: center
+  color: rgb(221, 222, 226)
+  margin-bottom: auto
+  margin-left: 10%
+  margin-right: 10%
+
+.video-bg
+  bottom: 0
+  left: 0
+  overflow: hidden
+  position: absolute
+  right: 0
+  top: 0
+
+.myfa-entry
+  position: relative
+  top: 0px
+  opacity: 0.5
+
+.myfa-pending
+  color: orange
+
+.myfa-edit
+  color: blue
+
+.myfa-modified
+  color: purple
+
+.myfa-active
+  color: #1d9d74
+
+.myfa-cancelled
+  color: #a94442
+
+.order-sorter:hover
+  cursor: pointer
+
+.additional-summary
+  position: relative
+  top: -10px
+  left: -2px
+  font-size: 8px
+
+.descending
+  display: inline-block
+  font: normal normal normal 14px/1 FontAwesome
+  font-size: inherit
+  text-rendering: auto
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  transform: translate(0, 0)
+
+.jrpanel-extend-button
+  background-color: rgba(92, 184, 92, 0.580392)
+  border-color: rgb(76, 174, 76)
+  box-sizing: border-box
+  color: rgb(255, 255, 255)
+  cursor: pointer
+  display: block
+  float: left
+  font-size: 12px
+  font-weight: normal
+  height: 27px
+  line-height: 17.142858505249px
+  padding: 5px 10px 5px 10px
+  text-transform: uppercase
+  position: relative
+  text-align: center
+  vertical-align: middle
+  white-space: nowrap
+
+.jrpanel-extend-button:hover
+  z-index: 2
+  border-color: rgb(57, 132, 57)
+  background-color: rgb(68, 157, 68)
+  cursor: pointer
+
+.jrpanel-cancel-button
+  background-color: rgba(217, 83, 79, 0.498039)
+  border-color: rgb(212, 63, 58)
+  box-sizing: border-box
+  color: rgb(255, 255, 255)
+  text-transform: uppercase
+  cursor: pointer
+  display: block
+  float: left
+  font-size: 12px
+  font-weight: normal
+  height: 27px
+  line-height: 17.142858505249px
+  padding: 5px 10px 5px 10px
+  position: relative
+  text-align: center
+  vertical-align: middle
+  white-space: nowrap
+
+.jrpanel-cancel-button:hover
+  z-index: 2
+  border-color: rgb(201, 48, 44)
+  background-color: rgb(172, 41, 37)
+  cursor: pointer
+
+.jrpanel-heading
+  background-color: #f5f5f5
+  padding: 10px 15px
+
+.jrpanel-default
+  border-color: #ddd
+  margin-bottom: 20px
+  background-color: #fff
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05)
+  box-shadow: 0 1px 1px rgba(0,0,0,.05)
+
+.jrpanel-footer
+  background-color: #f5f5f5
+  border-top: 1px solid #ddd
+
+.jrpanel-droplabel
+  font-weight: bold
+
+.jrpanel-marker
+  opacity: 0.5
+
+#right-hand
+  margin-top: 10px
+
+.enlarge-modal
+  z-index: 4000 !important
+  .modal-content, .modal-dialog
+    border-radius: 0
+    width: 70%
+    margin-left: auto
+    margin-right: auto
+    z-index: 4000 !important
+
+.additional-viewmore
+  display: inline
+  cursor: pointer
+
+.additional-viewmore
+  cursore: pointer
+
+.payment-messages
+  padding: 15px
+  background: #fff
+.quick-links
+  background: #2c3e50
+  color: #fff !important
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  font-family: $jrFont
+  text-align: center
+  padding: 5px
+  margin-top: 10px
+  &:hover
+    background: #f94646
+
+.remember-text
+  font-family: $jrFontSecondary
+  color: #999
+  line-height: 20px
+  margin-top: 5px
+  margin-bottom: 5px
+
+.booking-box-header
+  background: #616161
+  padding: 6px
+  font-family: $jrFont
+  color: #fff
+  text-align: center
+  margin-bottom: 20px;
+  border-radius: 4px;
+.booking-box-body
+  background: #fff
+  padding: 15px
+.booking-body-sub
+  border-bottom: 1px solid #ccc
+  padding: 10px 0 10px 0
+.bold-val
+  color: #000
+.my-ride-toggle
+  min-width: 195px
+.my-ride-dropdown
+  min-width: 195px
+  left: -15px
+  margin-top: 0 !important
+  border-radius: 0px
+  top: 42px
+  right: 15px !important
+
+.sr-dropdown
+  max-width: 362px
+  margin-left: 15px
+  margin-right: auto
+.reset-pass
+  width: 100%
+  padding: 10px
+
+.locator-modal
+  z-index: 4000 !important
+  .modal-content
+    border-radius: 0
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+  .modal-dialog
+    border-radius: 0
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+    width: 500px
+    margin-top: 170px
+    margin-left: auto
+    margin-right: auto
+
+.jrlocation-marker
+  cursor: pointer
+
+.jrlocation-marker:hover
+  cursor: pointer
+
+@media (max-width: 760px)
+  #invoice1
+    width: 100%
+  #invoice2
+    width: 100%
+  #invoice3
+    width: 100%
+  #invoice4
+    width: 100%
+.ui-notification
+  background: #2c3e50 !important
+@keyframes hourglass-spin
+  0%
+    transform: rotate(0deg)
+
+  10%
+    transform: rotate(180deg)
+
+  50%
+    transform: rotate(180deg)
+
+  60%
+    transform: rotate(360deg)
+
+  100%
+    transform: rotate(360deg)
+
+
+@keyframes hourglass-sand
+  0%
+    background-position: 0 25px
+
+  50%
+    background-position: 0 0
+
+  100%
+    background-position: 0 -25px
+
+
+@keyframes hourglass-stream
+  0%
+    top: 29px
+    opacity: 0
+
+  10%
+    opacity: 1
+
+  49.9%
+    top: 29px
+    opacity: 1
+
+  50%
+    top: 2px
+    opacity: 0
+
+  60%
+    opacity: 1
+
+  100%
+    top: 2px
+    opacity: 1
+
+
+
+@-webkit-keyframes hourglass-spin
+  0%
+    -webkit-transform: rotate(0deg)
+
+  10%
+    -webkit-transform: rotate(180deg)
+
+  50%
+    -webkit-transform: rotate(180deg)
+
+  60%
+    -webkit-transform: rotate(360deg)
+
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@-webkit-keyframes hourglass-sand
+  0%
+    background-position: 0 25px
+
+  50%
+    background-position: 0 0
+
+  100%
+    background-position: 0 -25px
+
+
+@-webkit-keyframes hourglass-stream
+  0%
+    top: 29px
+    opacity: 0
+
+  10%
+    opacity: 1
+
+  49.9%
+    top: 29px
+    opacity: 1
+
+  50%
+    top: 2px
+    opacity: 0
+
+  60%
+    opacity: 1
+
+  100%
+    top: 2px
+    opacity: 1
+
+
+.hourglass
+  position: relative
+  width: 28px
+  height: 56px
+  animation: hourglass-spin 8s ease-in-out 4s infinite
+  -webkit-animation: hourglass-spin 8s ease-in-out 4s infinite
+  &::before, &::after
+    position: absolute
+    content: ''
+    left: 0
+    bottom: 0
+    width: 24px
+    height: 25px
+    background: #000
+    border: 2px solid #000
+    border-top-left-radius: 15px 25px
+    border-top-right-radius: 15px 25px
+  &::before
+    top: 0
+    transform: rotate(180deg)
+    -webkit-transform: rotate(180deg)
+  .hourglass-stand
+    &::after
+      position: absolute
+      content: ''
+      z-index: 3
+      left: -4px
+      bottom: 0
+      width: 36px
+      height: 5px
+      background: #000
+    &::before
+      position: absolute
+      content: ''
+      z-index: 3
+      left: -4px
+      bottom: 0
+      width: 36px
+      height: 5px
+      background: #000
+      top: 0
+  .hourglass-sand
+    &::before, &::after
+      position: absolute
+      content: ''
+      z-index: 2
+      left: 2px
+      bottom: 2px
+      width: 24px
+      height: 25px
+      background: linear-gradient(#CF9751 0%, #CF9751 50%, #fff 50%, #ddd 100%)
+      background-size: 30px 50px
+      border-top-left-radius: 13px 23px
+      border-top-right-radius: 13px 23px
+      animation: hourglass-sand 8s ease-in-out 0s infinite
+      -webkit-animation: hourglass-sand 8s ease-in-out 0s infinite
+    &::before
+      top: 2px
+      transform: rotate(180deg)
+      animation-delay: -4s
+      -webkit-transform: rotate(180deg)
+      -webkit-animation-delay: -4s
+  .hourglass-stream
+    position: absolute
+    z-index: 2
+    left: 13px
+    width: 2px
+    height: 25px
+    opacity: 0
+    background: #CF9751
+    animation: hourglass-stream 8s linear 0.6s infinite
+    -webkit-animation: hourglass-stream 8s linear 0.6s infinite
+.banner-box 
+  display: none
+  padding: 10px
+  background: #e7e7e6
+.banner-label
+  background: $primaryColor
+  color: #fff
+  font-family: $jrFont
+  padding: 5px 
+  text-align: center
+  width: 100%
+  cursor: pointer
+.banner-header  
+  width: 145px
+.date-box
+  width: 12px
+  height: 10px
+  background: #ecf0f1
+  margin-left: 6px
+.selected-box
+  background: #2c3e50 !important
+.hero
+  height: 600px
+  position: relative
+.search-overlay
+  width: 100%
+  bottom: 150px
+  padding: 20px
+  .zero-pad
+    &:first-child
+      padding-left: 15px !important
+    &:last-child
+      padding-right: 15px !important
+.banners, .alt-banners
+  padding: 20px
+.banners
+  background: #e7e7e6
+.available-box  
+  background: #27ae60
+  cursor: pointer
+.select-time-box
+  background: $primaryColor
+  padding: 3px
+  border: 1px solid $primaryColor
+  color: #fff
+  text-align: center
+  cursor: pointer
+.map-holder
+  border-top: 1px solid #ccc
+  margin-top: 15px
+  padding-top: 15px
+.availability-board
+  height: 100%
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 4000
+  .hidden-board
+    width: 100%
+    background: rgba(0,0,0,0.4)
+    height: 100%
+  .board-body
+    width: 100%
+    background: #fff
+    /*height: 100%*/
+    -webkit-box-shadow: -5px 0px 5px 0px rgba(50, 50, 50, 0.5)
+    -moz-box-shadow: -5px 0px 5px 0px rgba(50, 50, 50, 0.5)
+    box-shadow: -5px 0px 5px 0px rgba(50, 50, 50, 0.5)
+.board-header
+  padding: 15px
+  border-bottom: 1px solid #ccc
+.animate
+  &.ng-enter, &.ng-leave
+    -transition: background-position 150ms ease-out
+    -moz-transition: background-position 150ms ease-out
+    -webkit-transition: background-position 150ms ease-out
+    -o-transition: background-position 150ms ease-out
+  &.ng-enter
+    -transition: background-position 150ms ease-in
+    -moz-transition: background-position 150ms ease-in
+    -webkit-transition: background-position 150ms ease-in
+    -o-transition: background-position 150ms ease-in
+    &.animate.ng-enter-active
+      right: 0
+  &.ng-leave
+    right: 0
+    &.animate.ng-leave-active
+      right: -100%
+.board-sub
+  padding: 15px
+  background: #fff
+  margin-bottom: 5px
+
+.pull-out
+  width: 30px
+  height: 150px
+  background: $primaryColor
+  display: block
+.pull-out-container
+  position: fixed
+  right: 0
+  top: 90px
+.pull-out-body 
+  display: none
+  background: #fff
+  padding: 15px
+
+#shortListDiv
+  &.expanded
+    right: 0 !important
+  position: fixed
+  top: 625px
+  right: -220px
+  -webkit-transition: right 150ms linear 0ms
+  -moz-transition: right 150ms linear 0ms
+  -ms-transition: right 150ms linear 0ms
+  transition: right 150ms linear 0ms
+  height: 100%
+#shortListDiv
+  z-index: 5
+  &.expanded .shortListButton
+    left: -30px
+    z-index: -1
+    opacity: 0
+  .shortListButton
+    top: 102px
+    position: absolute
+    left: -10px
+    background: $primaryColor
+    border: 1px solid $primaryColor
+    color: #fff
+    text-decoration: none
+    line-height: 28px
+    width: 30px
+    text-transform: none
+    padding: 0
+    text-align: center
+    font-size: 14px
+    border-radius: 0
+    overflow: hidden
+    opacity: 0
+#shortListDiv .mainContainer
+  background: #fff
+  max-height: 240px
+  text-align: center
+  width: 240px
+  opacity: 0
+  .main-container-header
+    background: #2c3e50
+    font-family: $jrFont
+    color: #fff !important
+  .main-container-body
+    overflow-y: scroll
+    
+.android-show, .ios-show
+  text-align: center
+  margin-top: 40px
+  vertical-align: middle
+
+.continue
+  position: absolute
+  bottom: 30px
+  left: 15%
+  right: 15%
+  text-align: center
+
+.jr-results-filter
+  background: #fff
+  padding: 5px
+  margin-top: 0px
+
+.previous-car-detail
+  display: inline-block
+  text-align: center
+  width: 49%
+
+.previous-car-detail-1
+  display: inline-block
+  text-align: center
+  font-weight: bold
+  width: 32%
+
+.detail-type
+  border-top: 1px solid #ddd
+  padding: 10px
+  font-family: "jrMid",sans-serif
+  text-align: left
+  cursor: default
+
+.label-control
+  margin: 0px
+  font-weight: bold
+  width: 50%
+
+.text-control
+  margin: 0px
+  text-align: right
+  width: 50%
+
+.jr-previous-body
+  display: table-cell
+  vertical-align: top
+
+.jr-previous-left
+  display: table-cell
+  vertical-align: top
+  padding-right: 5px
+
+@media (max-width: 768px)
+  #modifyContainer
+    width: 90%
+    font-size: smaller
+@media (min-width: 992px)
+  #modifyContainer
+    width: 900px
+    font-size: normal
+@media (min-width: 1200px)
+  #modifyContainer
+    width: 1110px
+    font-size: normal
+
+.modify-back
+  margin-right: 15px
+  margin-top: 10px
+  margin-bottom: 10px
+
+.modify-car
+  width: 55%
+  margin-left: 25%
+
+.top-header
+  margin-bottom: 10px
+  margin-top: 10px
+  min-height: 40px
+
+.header-caption
+  display: inline-block
+  width: 80%
+  vertical-align: middle
+  text-align: center
+  font-weight: bold
+
+.header-back
+  display: inline-block
+  float: right
+
+.bgimage
+  text-align: right
+  color: white
+  background-size: cover
+  height: 100%
+  background-position: center center
+
+#carousel-1
+  width: 100%
+  height: 200px
+  margin: 0 auto
+
+#carousel-2
+  width: 100%
+  height: 320px
+  margin: 0 auto
+
+.carousel-demo
+  width: 100%
+  display: inline-block
+  text-align: center
+
+div.rn-carousel-indicator span.active
+  color: #131313
+
+div.rn-carousel-indicator span
+  color: rgba(102, 102, 102, 0.49)
+
+.rn-carousel-control
+  font-size: 4rem
+
+.mynav
+  bottom: -4px
+  display: block
+  height: 48px
+  left: 0
+  margin: 0 auto
+  //position: absolute;
+  padding: 1em 0 0.8em
+  margin-bottom: 21px
+  right: 0
+  text-align: center
+  width: 100%
+  z-index: 5
+  li
+    border: 5px solid #AAAAAA
+    border-radius: 5px
+    cursor: pointer
+    display: inline-block
+    height: 50px
+    margin: 0 8px
+    position: relative
+    width: 50px
+    &.active
+      border: 5px solid #FFFFFF
+    img
+      width: 100%
+      height: 100%
+
+.bgimage2
+  text-align: right
+  color: white
+  background-size: contain
+  height: 100%
+  background-position: center center
+  background-repeat: no-repeat
+
+@media (min-width: 1000px) and (max-width: 1195px)
+  #normal-circle
+    display: none
+  #minimized-circle
+    display: block
+
+@media (max-width: 1000px)
+  #normal-circle
+    display: block
+  #minimized-circle
+    display: none
+
+@media (min-width: 1195px)
+  #normal-circle
+    display: block
+  #minimized-circle
+    display: none
+
+.circle-content
+  width: 145px
+  height: 72px
+  background-color: rgba(44,62,80,0.09)
+  border-bottom-left-radius: 110px
+  border-bottom-right-radius: 110px
+  border-top: 0
+  position: absolute
+  top: 120px
+  z-index: 100
+  left: 10px
+  color: #fff
+  text-align: center
+  cursor: pointer
+
+.circle-content2
+  width: 110px
+  height: 50px
+  background-color: rgba(44,62,80,0.09)
+  border-bottom-left-radius: 110px
+  border-bottom-right-radius: 110px
+  border-top: 0
+  position: absolute
+  top: 145px
+  z-index: 100
+  left: 10px
+  color: #fff
+  text-align: center
+  cursor: pointer
+
+.jr-nodisplay
+  display: none
+
+
+.jr-left-footer
+  text-align: left
+
+.jr-success-text
+  color: #2ecc71
+
+.jr-map-out
+  cursor: pointer
+  text-decoration: none
+  &:hover
+    color: #2c3e50
+    cursor: pointer
+
+.jr-redirect-container
+  display: inline-block
+  width: 100%
+  vertical-align: middle
+  text-align: center
+
+.jr-redirect-button
+  text-decoration: none 
+  display: inline-block
+  width: 40%
+  margin: 4%
+  cursor: pointer
+
+#jr-loading-span
+  height: 100%
+  vertical-align: middle
+  display: inline-block
+
+.outer-class
+  display: block
+  width: 60px
+  height: 60px
+  position: relative
+  padding: 5px
+  vertical-align: middle
+  display: inline-block
+
+.inner-wheel
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-SP2.png")
+  background-position: -1422px -429px
+  width: 37px
+  height: 44px
+  display: block
+  position: absolute
+  background-repeat: no-repeat
+  top: 20px
+  left: 20px
+
+.outer-wheel
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-SP2.png")
+  background-position: -1459px -415px
+  width: 60px
+  height: 68px
+  left: 8px
+  top: 6px
+  display: block
+  position: absolute
+  background-repeat: no-repeat
+  animation: roundabout 500ms linear infinite alternate
+  -webkit-animation: roundabout 500ms linear infinite alternate
+  -moz-animation: roundabout 500ms linear infinite alternate
+  -ms-animation: roundabout 500ms linear infinite alternate
+  -o-animation: roundabout 500ms linear infinite alternate
+
+@-webkit-keyframes roundabout
+  from
+    -webkit-transform: rotate(-10deg)
+
+  to
+    -webkit-transform: rotate(0deg)
+
+
+@-moz-keyframes roundabout
+  from
+    -moz-transform: rotate(-10deg)
+
+  to
+    -moz-transform: rotate(0deg)
+
+
+@-ms-keyframes roundabout
+  from
+    -ms-transform: rotate(-10deg)
+
+  to
+    -ms-transform: rotate(0deg)
+
+
+@-o-keyframes roundabout
+  from
+    -o-transform: rotate(-10deg)
+
+  to
+    -o-transform: rotate(0deg)
+
+
+@-keyframes roundabout
+  from
+    transform: rotate(-10deg)
+  to
+    transform: rotate(0deg)
+
+.jr-booking-detail
+  padding: 5px
+  margin-top: -5px
+  text-transform: uppercase
+
+.jr-booking-apply
+.jr-booking-modify
+  padding: 5px
+  text-transform: uppercase
+
+.jr-booking-cancel
+  margin-top: 10px
+  text-transform: uppercase
+  border-radius: 4px
+
+.jr-vehicle-info-left
+  display: inline-block
+  width: 48%
+  padding-left: 15px
+  text-align: left
+
+.jr-vehicle-info-right
+  display: inline-block
+  width: 49%
+  text-align: right
+
+.city-block
+  color: #fff
+  cursor: pointer
+  border-radius: 2px
+  border: 2px solid #fff
+  max-width: 160px
+  width: 160px
+.city-item
+  padding: 5px
+  border-bottom: 1px solid #ddd
+  cursor: pointer
+  font-family: $jrFont
+.city-name-dropdown
+  border-radius: 0px
+@media (max-width: 767px)
+  #city-header-dropdown
+    // display: inline-block;
+    position: absolute
+    visibility: visible
+    top: -60px
+    left: 156px
+  #city-header-dropdown-menu
+    top: -15px
+    left: 156px
+    position: absolute
+    background-color: white
+    top: -70px
+    left: 160px
+.inner-city
+  padding-top: 10px
+  padding-bottom: 10px
+
+.jr-inner-rotate
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg)
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg)
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg)
+
+.jr-inner-text
+  font-size: 11px
+  position: absolute
+  top: 50%
+  left: 50%
+  text-transform: uppercase
+  letter-spacing: 2px
+
+.jr-payment-announcer
+  height: 50px
+  padding: 10px
+
+.payment-title
+  text-transform: uppercase
+  font-size: medium
+  vertical-align: middle
+  margin: 0 auto
+  line-height: 2.5em
+
+.jr-payment-tabs
+  height: 50px
+  text-align: center
+  border-bottom: 1px solid rgba(128, 128, 128, 0.42)
+
+.jr-payment-tab
+  height: 65px
+  vertical-align: middle
+  padding: 5px
+  cursor: pointer
+
+.jr-payment-expiry-row
+  position: relative
+  margin-top: 20px
+
+.jr-payment-expiry-dropdown
+  width: 25%
+  max-height: 100px
+  overflow-y: scroll
+
+.jr-payment-tab-selected
+  background-color: #fff
+  color: #333
+  font-family: 'jrLight'
+
+.jr-payment-tab-unselected
+  background-color: #ddd
+  color: #333
+  font-family: 'jrLight'
+
+.jr-payment-tab span
+  position: relative
+  left: 5%
+  top: 25%
+
+.jr-payment-container-common
+  min-height: 400px
+  padding: 10px
+  border-bottom: 1px solid #C5C5C5
+  position: relative
+
+.jr-payment-credit-image
+  margin-left: 40%
+  margin-top: 10px
+  margin-bottom: 10px
+
+.jr-payment-boxes
+  background: #fff
+  font-family: "jrMid",sans-serif
+  cursor: pointer
+  border: 1px solid #ccc
+  white-space: nowrap
+  text-overflow: ellipsis
+  position: relative
+  border-radius: 4px
+
+.jr-payment-row
+  margin-top: 20px
+  text-align: left
+  height: 45px
+  padding: 2px
+  padding-left: 20px;
+  padding-right: 20px;
+
+.jr-payment-credit-number, .jr-payment-credit-name
+  height: 100%
+  width: 50%
+  padding: 10px
+  border: 1px solid #ccc
+
+.jr-payment-dropdown
+  width: 100%
+.jr-cvv-credit-container
+  display: inline-block
+  height: 42px
+  position: absolute
+  top: 20px
+  margin-left: 5px
+  width: 15%
+  right: 0px
+
+.jr-cvv-credit
+  height: 100%
+  border: 1px solid #ccc
+  padding: 10px
+  width: 100%
+
+.jr-payment-footer-btn
+  height: 50px
+  background-color: #068306
+  padding: 10px
+  width: 50%
+  margin-top: 20px
+  color: #ECECEC
+  position: absolute
+  bottom: 20px
+  left: 25%
+
+.jr-credit-card-container
+  padding: 10px
+  height: 100%
+  min-height: 437px
+
+.jr-no-saved-cards
+  text-transform: uppercase
+  text-align: center
+  vertical-align: middle
+
+.jr-payment-row
+  width: 100%
+  height: 45px
+  margin-top: 20px
+
+.jr-side-nav-col
+  padding-left: 0px
+  padding-right: 0px
+  height: 450px
+  background-color: white
+
+.jr-payment-center-container
+  background-color: white
+  min-height: 450px
+
+.credit-card-input
+  height: 100%
+  width: 100%
+  padding: 10px
+  border-radius: 4px
+
+.credit-card-name
+  height: 100%
+  width: 100%
+  padding: 10px
+  text-transform: uppercase
+  border-radius: 4px
+
+.jr-debit-card-container
+  padding: 10px
+  min-height: 437px
+
+.jr-cvv-block
+  display: inline-block
+  margin-left: 2%
+  position: absolute
+  height: 42px
+  top: 20px
+  //right: 0px;
+  width: 17%
+
+.jr-cvv-input
+  height: 100%
+  padding: 10px
+  width: 100%
+  border-radius: 4px
+
+.jr-pay-now-btn
+  background-color: #2ecc71
+  width: 100%
+  cursor: pointer
+  padding: 10px
+  font-family: $jrFont
+  text-align: center
+  color: white
+
+.jr-dropdown-menu-limit
+  min-width: 94px
+  max-height: 200px
+  overflow-y: scroll
+
+.jr-pay-now-text2
+  top: 25%
+  float: right
+  margin-right: 2%
+  position: relative
+  font-weight: bold
+  font-size: 1.3em
+
+.card-img
+  display: inline-block
+  width: 42px
+  height: 28px
+  margin: 1px 2px 0 0
+
+.card-img-pos
+  position: absolute
+  top: 5px
+  left: 69%
+
+.icon-visa
+  background: url(/assets/images/visa.png) no-repeat
+
+.icon-mastercard
+  background: url(/assets/images/mastercard.png) no-repeat
+
+.icon-maestro
+  background: url(/assets/images/maestro.png) no-repeat
+
+.icon-amex
+  background: url(/assets/images/amex.png) no-repeat
+
+.icon-sbi
+  background: url(/assets/images/sbi.png) no-repeat
+
+.icon-axis
+  background: url(/assets/images/axis.png) no-repeat
+
+.lock-icon
+  display: inline-block
+  width: 17px
+  height: 30px
+  margin-right: 10px
+  background: url(/assets/images/secure-lock.png) center top no-repeat
+  vertical-align: middle
+
+.info-text
+  font-size: 11px
+  color: #919bac
+  margin-top: 10px
+
+.jr-icon-side-nav-span
+  display: inline-block
+  margin-right: 5px
+
+.jr-remember-card
+  display: inline-block
+  top: 15px
+  position: relative
+
+.jr-pay-now-ib-text
+  top: 27%
+  left: 30%
+  position: relative
+
+.jr-pay-now-ib-btn
+  margin-top: 20px
+  float: right
+  background-color: #33cc33
+  width: 20%
+  height: 50px
+  margin-bottom: 10px
+  cursor: pointer
+
+.stored-cards
+  padding: 8px 16px 18px 32px
+  overflow: auto
+  height: 100%
+  border: 0
+
+.stored-card
+  border-top: 1px solid #eaedef
+  cursor: pointer
+  position: relative
+
+.new-clearfix
+  content: " "
+  display: table
+  width: 100%
+  height: 50px
+  margin-top: 10px
+
+label.card
+  display: block
+  cursor: pointer
+  padding: 10px
+  margin: 0
+
+input[type=radio]
+  display: none
+  margin: 4px 0 0
+  line-height: normal
+
+.stored-cards .stored-card .card-radio
+  float: left
+  margin-top: 5px
+
+input
+  &[type=radio]:checked + span, &[type=checkbox]:checked + span
+    border-color: #65c6bb
+  &[type=radio]
+    + span
+      border-radius: 50%
+      display: inline-block
+      width: 27px
+      height: 27px
+      border: 1px solid #eaedef
+      background-color: #fff
+      vertical-align: middle
+      margin-right: 8px
+      position: relative
+    &:checked + span:after
+      background: url(/assets/images/radio-dot.png) center center no-repeat
+    + span:after
+      content: ''
+      position: absolute
+      top: 7px
+      left: 7px
+      width: 11px
+      height: 11px
+
+.stored-card
+  .card-num
+    float: left
+    width: 55%
+    display: inline-block
+    .main-text
+      //display: block;
+      font-size: 14px
+      text-transform: uppercase
+      font-weight: 400
+    .sub-text
+      display: block
+      font-size: 9px
+      text-transform: uppercase
+      color: #919bac
+  .delete-btn-section
+    position: absolute
+    right: 0px
+
+.stored-cards .stored-card.active .delete-btn-section img
+  visibility: visible
+
+.stored-card .delete-btn-section img
+  visibility: hidden
+  margin: 10px 0 0 75px
+  width: 15px
+
+.stored-cards .stored-card
+  &.active .cvv
+    visibility: visible
+  .cvv
+    position: absolute
+    height: 38px
+    width: 60px
+    vertical-align: middle
+    top: 5px
+    padding: 10px
+    visibility: hidden
+
+.disclaimer
+  font-size: smaller
+  color: #acacac
+
+.jr-payment-dropdown
+  padding: 0
+  text-align: left
+
+.jr-remember-div
+  margin-left: 20%
+
+@media screen and (max-width: 992px)
+  #small-screen-announcer
+    display: block
+  #side-large-announcer, #side-nav-col
+    display: none
+  #top-nav-row
+    display: block
+
+@media screen and (max-width: 525px)
+  .minimize-label, #top-nav-row ul li .tab-text
+    font-size: xx-small
+  .stored-card .card-num
+    width: 45%
+    .main-text
+      font-size: 10px
+  #minimum-list
+    visibility: hidden
+    //display: none;
+  #maximum-list
+    visibility: visible
+    //display: block;
+  #image-bank-list
+    display: none
+
+@media screen and (min-width: 526px)
+  .minimize-label, #top-nav-row ul li .tab-text
+    font-size: initial
+  .stored-card .card-num
+    width: 55%
+    .main-text
+      font-size: 14px
+  #minimum-list
+    visibility: visible
+    //display: block;
+  #maximum-list
+    visibility: hidden
+    //display: none;
+  #image-bank-list
+    display: block
+
+@media screen and (min-width: 993px)
+  #small-screen-announcer
+    display: none
+  #side-large-announcer, #side-nav-col
+    display: block
+  #top-nav-row
+    display: none
+
+.side-announcer-common
+  text-align: center
+
+.side-announcer-large
+  font-size: 2em
+  line-height: 25px
+  margin-bottom: 10px
+
+.jr-error-div
+  margin-top: 0px
+  position: relative
+  width: 100%
+  height: 10px
+  text-align: left
+
+.jr-expiry-year-error
+  color: red
+  font-size: smaller
+  display: inline-block
+  position: absolute
+  left: 0%
+
+.jr-expiry-month-error
+  color: red
+  font-size: smaller
+  display: inline-block
+  position: absolute
+  left: 30%
+
+.jr-cvv-error
+  color: red
+  font-size: smaller
+  display: inline-block
+  position: absolute
+  left: 62%
+
+#top-nav-row ul
+  list-style: none
+  padding-left: 0px
+  li
+    display: inline-block
+    width: 21%
+    text-align: center
+    margin: 1%
+    height: 40px
+    cursor: pointer
+    .tab-text
+      position: relative
+      top: 10px
+
+.jr-cvv-error2
+  color: red
+  font-size: smaller
+  position: absolute
+  left: 62%
+  top: 45px
+
+#internet-banking
+  ul
+    list-style: none
+  .netbanking > li
+    border: 0px
+    display: inline-block
+
+.bank-list
+  li .bankOption
+    padding: 10px 6px
+    margin: 0 10px 10px 0
+    background: #fff
+    box-shadow: none
+    cursor: pointer
+    height: 50px
+    line-height: 50px
+    overflow: hidden
+    border: 1px solid #E3E3E3
+    padding: 10px 5px
+    margin: 0 15px 15px 0
+    display: inline-block
+    color: #999
+    font-size: 11px
+    box-shadow: 0 0 1px #E0E0E0
+    background: #FFF
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F7F7F7))
+    background: -webkit-linear-gradient(#FFF 0, #F7F7F7 100%)
+    background: -moz-linear-gradient(#FFF 0, #F7F7F7 100%)
+    background: -o-linear-gradient(#FFF 0, #F7F7F7 100%)
+    background: linear-gradient(#FFF 0, #F7F7F7 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f7f7f7', GradientType=0)
+    *
+      float: left
+  input.rdoIn
+    margin: 7px 10px 0
+    float: left
+    border: 0
+    padding: 0
+
+.netbanking .bankOption .rdoIn + span
+  margin-bottom: 8px
+
+.payimg-responsive
+  display: block
+  max-width: 100%
+  height: auto
+
+.bank-list label.bankOption img
+  float: left
+  margin: 0 10px 0 0
+
+@media screen and (max-width: 466px)
+  .jr-pay-now-text
+    top: 30%
+    margin-left: 40%
+    margin-right: 0%
+.header-btn
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.2) 100%) !important
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.2) 100%) !important
+  color: #f3f3f3 !important
+  font-weight: 700 !important
+  height: 30px !important
+  line-height: 30px !important
+  margin-right: 8px !important
+  min-width: 30px !important
+  padding: 0 !important
+  position: relative !important
+  -ms-user-select: none !important
+  user-select: none !important
+  margin-top: 8px
+  width: 100%
+.header-btn.new-notifications
+  background: #eb5a46
+  &:hover
+    background: #cf513d
+
+.header-btn-icon
+  font-size: 1pc
+  line-height: 30px
+  position: absolute
+  top: 0
+  left: 0
+
+.header-btn-text
+  padding: 0 8px
+  font-weight: 300
+
+.header-btn
+  &.header-member .member
+    margin: 0
+    border-radius: 3px 0 0 3px
+    &:hover .member-avatar
+      opacity: 1
+  &:hover
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.4) 0, rgba(255, 255, 255, 0.3) 100%)
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0, rgba(255, 255, 255, 0.3) 100%)
+    color: #fff
+  &:active
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0.35) 100%)
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0.35) 100%)
+  &.header-boards
+    padding-left: 26px
+  &.header-login
+    padding: 0 9pt
+  &.header-signup
+    padding: 0 9pt
+    background: -webkit-linear-gradient(top, #61bd4f 0, #5aac44 100%)
+    background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%)
+    &:hover
+      background: -webkit-linear-gradient(top, #5aac44 0, #519839 100%)
+      background: linear-gradient(to bottom, #5aac44 0, #519839 100%)
+    &:active
+      background: -webkit-linear-gradient(top, #519839 0, #49852e 100%)
+      background: linear-gradient(to bottom, #519839 0, #49852e 100%)
+  &.header-btn-feedback
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.05) 100%)
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.05) 100%)
+    padding-left: 22px
+    margin-right: 1pc
+    .header-btn-icon
+      top: 1px
+.member
+  background-color: #d6dadc
+  border-radius: 2px
+  color: #4d4d4d
+  display: block
+  float: right
+  height: 30px
+  overflow: hidden
+  position: relative
+  width: 30px
+  text-decoration: none
+  user-select: none
+  z-index: 0
+  text-align: center
+  cursor: pointer
+.works-container  
+  max-width: 220px
+  text-align: center
+  font-family: $jrFont
+  color: #fff
+  margin-left: auto
+    margin-right: auto
+
+.come-in
+  transform: translateY(150px)
+  animation: come-in 0.8s ease forwards
+  &:nth-child(odd)
+    animation-duration: 0.6s
+
+.already-visible
+  transform: translateY(0)
+  animation: none
+
+@keyframes come-in
+  to
+    transform: translateY(0)
+.new-footer
+  position: relative
+  //background: url(/assets/images/footer-bg.jpg) 30% 50% no-repeat
+  background-size: cover
+  min-height: 250px
+  .footer-overlay
+    background: url(/assets/images/footer-overlay.png) rgb(4,29,35)
+    padding: 40px 40px 0px 40px
+    width: 100%
+    height: 100%
+.social-box
+  max-width: 42px
+  background: #fff
+  border-radius: 10px
+  margin-left: auto
+  margin-right: auto
+.footer-main-icon
+  max-width: 30px
+  margin-left: auto
+  margin-right: auto
+  .outer-class
+    display: block
+    width: 30px
+    height: 30px
+    position: relative
+    padding: 5px
+    vertical-align: middle
+    display: inline-block
+
+  .inner-wheel-footer
+    background-image: url("../images/small_red_in.png")
+    background-position: 50% 50%
+    background-size: contain
+    width: 15px
+    height: 15px
+    display: block
+    position: absolute
+    background-repeat: no-repeat
+    top: 12px
+    left: 12px
+
+  .outer-wheel-footer
+    background-image: url("../images/small_red_out.png")
+    background-position: 50% 50%
+    background-size: contain
+    width: 30px
+    height: 30px
+    display: block
+    position: absolute
+    background-repeat: no-repeat
+.pay-image
+  position: relative
+  img
+    height: 292px
+    width: 100%
+  .pnr-overlay
+    position: absolute
+    background: rgba(0,0,0,0.5)
+    bottom: 0
+    width: 100%
+    padding: 10px
+    .para-text
+      font-size: 1.4em
+      margin: 0 !important
+      text-align: left
+      color: #fff !important
+.super-text
+  font-family: $jrFontSecondary
+  font-size: 1em
+  color: #fff
+  margin-bottom: 0px
+  margin-top: 20px
+.banner-text
+  font-family: $jrFont
+  text-align: center
+  color: #000
+  font-size: 2em
+.hiw-container
+  max-width: 300px
+  margin-left: auto
+  margin-right: auto
+  img
+    height: 240px
+    margin: auto
+.animated-header-class
+  background: rgba(45,45,45,0.8) !important
+.hiw-header
+  font-family: $jrFont
+  text-align: center
+  color: #000
+  font-size: 2em
+  text-transform: uppercase
+.jr-hiw-circle
+  height: 300px
+  width: 300px
+  border-radius: 300px
+  border: 4px solid #EFEFEF
+  padding: 30px
+  background-color: #04434D
+
+.hiw-text
+  font-family: $jrFontSecondary
+  text-align: center
+  color: #7f7f7f !important
+  font-weight: 100
+  font-size: 15px 
+.li-scroll
+  max-height: 80px
+  overflow-y: scroll
+
+.social-item
+  display: inline-block
+  margin: 5px
+  border: 2px solid white
+  height: 50px
+  width: 50px
+  border-radius: 25px
+  text-align: center
+  padding-top: 10px
+
+.social-item:hover 
+  background-color: white
+  border-color: #424242
+
+.social-item:hover
+  a
+    color: #424242
+    text-decoration: none
+
+.social-list
+  list-style: none
+  text-decoration: none
+  margin-top: 10px
+  margin-left: 0px
+  padding-left: 0px
+
+.social-a
+  color: #cdcdcd
+  text-decoration: none
+
+.social-a:hover
+  color: #424242
+  text-decoration: none
+
+.social-box
+  max-width: 42px
+  height: 42px
+  border-color: white
+  margin-left: auto
+  margin-right: auto  
+
+.jr-section-header
+  text-transform: uppercase
+  font-weight: 700
+  font-size: 2.23em
+  line-height: 50px
+
+.jr-section-subheader
+  text-align: center
+  line-height: 30px
+  font-size: 18px
+  color: #7f7f7f
+  font-weight: 200
+
+.jr-contact
+  text-decoration: none
+  color: #fff
+  font-size: 1.25em
+  font-weight: 100
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.jr-side-offer-text
+  text-transform: uppercase
+
+.jr-custom-bottom-container
+  margin-left: 10px
+  margin-right: 10px
+  width: 100%
+  display: table
+  height: 100%
+
+.social-div
+  text-align: center
+
+.jr-footer-description
+  text-decoration: none !important
+  line-height: 20px
+  color: #cdcdcd
+  display: block
+  font-family: "jrLight",sans-serif
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+  text-align: left
+  margin-top: 15px
+
+.jr-useful-panel
+  margin-top: 20px
+  border: none
+
+.intro-icon
+  display: inline-block
+  vertical-align: top
+  padding: 6px 0 0 0
+  margin-right: 20px
+  width: 40px
+  span
+    font-size: 3em
+    text-align: center
+    color: darken(#ACB1B4, 5%)
+
+.features
+  padding: 20px 40px 80px 40px
+.contact, .features
+  background: url('https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-triangulated_bg.png')
+  background-color: #333844
+.intro-content
+  display: inline-block
+  width: 60%
+  h5
+    font-family: $jrFontSecondary
+    font-size: 1em
+    color: #ACB1B4
+    line-height: 20px
+
+.sign-up .signup-form .form-input-group
+  width: 80%
+  height: 55px
+  margin: 0 auto 10px
+  border-radius: 5px
+  border: solid 1px #E6E9EA
+  text-align: left
+  position: relative
+  i
+    &.fa-envelope 
+      font-size: 14px
+      position: absolute
+      top: 50%
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      margin-left: 20px
+    color: $primaryColor
+    font-size: 14px
+    &.fa-user
+      font-size: 14px
+      position: absolute
+      top: 50%
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      margin-left: 20px
+    &.fa-phone
+      font-size: 14px
+      position: absolute
+      top: 50%
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      margin-left: 20px
+    &.fa-pencil
+      font-size: 14px
+      position: absolute
+      top: 50%
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      margin-left: 20px
+  input
+    padding-left: 68px
+    width: 100%
+    height: 100%
+    border-radius: 6px
+    border: none
+.imp-terms
+  padding: 20px 40px 40px 40px
+  background: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-triangulated_bg.png)
+  background-color: #eeeeee
+  .intro-content
+    h5
+      color: #424242 !important
+      line-height: 15px
+  .intro-icon
+    span
+      color: #424242 !important
+.details-text
+  margin-top: 40px
+  color: #7f7f7f
+  text-align: center
+  a
+    text-decoration: underline
+    color: #01579b
+    &:hover
+      text-decoration: underline
+.contact
+  padding: 40px
+.sign-up .signup-form .sign-up-btn
+  padding: 15px 0
+  border-radius: 3px
+  width: 80%
+  font-size: 13px
+
+.btn-fill
+  color: #fff
+  border: solid 2px #FF5274
+  border-radius: 40px
+  display: inline-block
+  text-transform: uppercase
+  background-color: $primaryColor
+
+a:hover
+  color: #fff
+  text-decoration: underline
+
+.jr-alt-banners
+  background: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-triangulated_bg.png)
+  background-color: #eeeeee
+  text-align: center
+  margin: 0 auto
+
+@media (max-width: 984px)
+  .jr-footer-description
+    display: none
+  .jr-footer-one-line
+    display: block
+  .jr-footer-column
+    display: none
+
+@media (min-width: 985px)
+  .jr-footer-description
+    display: block
+  .jr-footer-one-line
+    display: none
+  .jr-footer-column
+    display: block
+
+span.footer-header-single
+  font-family: "jrLight",sans-serif
+  font-weight: normal
+  color: #Fff
+  font-size: 18px
+  text-transform: uppercase
+  line-height: 20px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+span.footer-item-single
+  font-family: "jrLight",sans-serif
+  line-height: 25px
+  color: #cdcdcd
+  font-size: 14px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+  margin-left: 5px
+  border-left: 1px solid gray
+  padding-left: 5px
+
+span.footer-item-single-invisible
+  font-family: "jrLight",sans-serif
+  line-height: 25px
+  color: #041d23 
+  font-size: 11px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: #041d23
+  -webkit-text-stroke-width: 0.1px
+  margin-left: 5px
+  padding-left: 5px
+
+.jr-coupon-val
+  z-index: 10
+  text-transform: uppercase
+  font-size: 1.2em
+  -webkit-font-smoothing: antialiased
+
+.jr-coupon-feedback-icon
+  position: relative
+  transform: scale(0.5)
+  top: 1px
+  left: -12px
+  z-index: 2
+
+.jr-coupon-text-danger
+  color: red
+
+.jr-text-right
+  text-align: right
+
+.limitdiv
+  max-height: 200px
+  overflow-y: scroll
+
+.jr-spaced-header
+  margin-top: 5px
+  margin-bottom: 5px
+
+.dropdown-menu .limitdiv li a
+  &:focus, &:hover
+    color: #262626
+    text-decoration: none
+    background-color: #f5f5f5
+  display: block
+  padding: 3px 11px
+  clear: both
+  font-weight: 400
+  line-height: 1.42857143
+  color: #333
+  white-space: nowrap
+  text-decoration: none
+
+.jr-payment-dummy
+  &::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 7px
+  &::-webkit-scrollbar-thumb
+    border-radius: 4px
+    background-color: rgba(0, 0, 0, 0.5)
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5)
+
+.limitdiv
+  &::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 10px
+    height: 10px
+  &::-webkit-scrollbar-thumb
+    border-radius: 2px
+    background-color: #D30606
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5)
+.jr-input-group
+  .input-label
+    display: inline-block
+    margin-right: 10px
+    width: 75px
+    font-family: "jrLight",sans-serif
+    font-size: 1.5em
+    color: #ACB1B4
+    line-height: 20px
+    text-align: left
+
+.contact-input-name
+  display: inline-block
+  width: 350px
+  margin-left: 10px
+
+.contact-message-label
+  position: relative
+
+.input-area
+  display: inline-block
+  margin-top: 10px
+  margin-left: 10px
+  position: relative
+
+.input-label
+  font-family: $jrFont
+  text-align: left
+  font-size: 1.5em
+  color: #333
+.jr-contact-input
+  width: 450px
+  outline: none
+  margin-bottom: 10px
+  font-family: "jrMid",sans-serif
+  padding: 10px
+  background: #fff
+  font-size: 1.3em
+  &:disabled
+    width: 100%
+    border-top: none
+    border-left: none
+    border-right: none
+    border-bottom: 1px solid #eee
+    outline: none
+    margin-bottom: 10px
+    font-family: "jrMid",sans-serif
+    padding: 0 5px 5px 5px
+    background: #fff
+.jr-contact-text-area
+  width: 450px
+  border-top: none
+  border-left: none
+  border-right: none
+  border-bottom: 1px solid #eee
+  outline: none
+  margin-bottom: 10px
+  font-family: "jrMid",sans-serif
+  padding: 10px
+  background: #fff
+  font-size: 1.3em
+  height: 120px
+  resize: none
+.sub-contact
+  font-family: $jrFont
+  text-align: left
+  font-size: 1.5em
+  color: #ACB1B4
+.main-contact
+  font-family: $jrFont
+  text-align: left
+  font-size: 1.5em
+  color: #333
+  a
+    color: #333 !important
+    text-decoration: under line
+.contact
+  form
+    padding: 10px
+    width: 80%
+    margin-left: 8%
+    text-align: center
+
+.contact-email-span
+  display: inline-block
+  position: relative
+  right: 9%
+
+.contact-phone-span
+  display: inline-block
+  position: relative
+  left: 9%
+
+.jr-toggle-switch
+  //border: 1px solid
+  cursor: pointer
+  display: inline-block
+  text-align: left
+  overflow: hidden
+  line-height: 8px
+  min-width: 100px
+  border-radius: 50px
+  &.disabled > div > span.knob
+    background: #AAA
+  span
+    cursor: pointer
+    display: inline-block
+    float: left
+    height: 100%
+    line-height: 20px
+    padding: 4px
+    text-align: center
+    width: 33%
+    white-space: nowrap
+    box-sizing: border-box
+    -o-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+  > div
+    position: relative
+    width: 150%
+  .knob
+    background: red
+    border-left: 1px solid #ccc
+    border-right: 1px solid #ccc
+    background-color: rgba(181, 181, 181, 0.23)
+    width: 34%
+    z-index: 100
+  .switch-on
+    left: 0%
+  .switch-off
+    left: -50%
+  .switch-left, .switch-right
+    z-index: 1
+  .switch-left
+    color: #fff
+    background: #70C17C
+    font-weight: 300
+    -webkit-font-smoothing: antialiased
+  .switch-right
+    color: #FEF6F6
+    background: #F36A6A
+    font-weight: 300
+    -webkit-font-smoothing: antialiased
+
+.jr-toggle-switch-animate
+  transition: left 0.5s
+  -o-transition: left 0.5s
+  -moz-transition: left 0.5s
+  -webkit-transition: left 0.5s
+
+.jr-vehicle-side-addn
+  margin-bottom: 15px
+  margin-left: 5px
+  color: #424242
+  text-align: center
+  font-family: "jrMid",sans-serif
+
+.jr-vehicle-side-info
+  padding-left: 20px
+  li
+    font-weight: 300
+    color: #757575
+    font-size: 13px
+    line-height: 24px
+
+.contact-fa-icon
+  color: gray
+  padding: 2px
+
+.jr-contact:hover
+  color: #fff
+  text-decoration: none !important
+  font-size: 1.4em
+  line-height: 10px
+
+.jr-sprite-logo
+  background-image: url('https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-SP2.png')
+  background-position: -1271px -425px
+  width: 150px
+  height: 51px
+
+.car_red_512x512
+  background-image: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-Sprite-2.png)
+  background-position: -1025px -103px
+  width: 512px
+  height: 350px
+  margin-left: -102px
+  transform: scale(0.55)
+  -webkit-transform: scale(0.55)
+  -o-transform: scale(0.55)
+  -moz-transform: scale(0.55)
+
+.cc_red_512x512
+  background-image: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-Sprite-2.png)
+  background-position: -512px -84px
+  width: 512px
+  height: 350px
+  margin-left: -102px
+  transform: scale(0.55)
+  -webkit-transform: scale(0.55)
+  -o-transform: scale(0.55)
+  -moz-transform: scale(0.55)
+
+.rideBook_512x512
+  background-image: url(https://s3-ap-southeast-1.amazonaws.com/justride-assets/public/selfdrive-Sprite-2.png)
+  background-position: 0 -84px
+  width: 512px
+  height: 350px
+  margin-left: -102px
+  transform: scale(0.55)
+  -webkit-transform: scale(0.55)
+  -o-transform: scale(0.55)
+  -moz-transform: scale(0.55)
+
+.jr-nocar-heading
+  padding: 20px
+  text-align: center
+  font-family: $jrFont
+  text-transform: uppercase
+
+.jr-nocar-para
+  text-align: center
+  font-family: $jrFontSecondary
+  text-transform: uppercase
+
+.jr-dropdown-textblock
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  width: 190px !important
+.payment-new-body
+  background: #fff
+  min-height: 450px
+  .nav-tabs
+    background: #ccc
+    border-bottom: 1px solid #ccc
+    li
+      border-radius: 0px
+      background: #eee
+      margin-bottom: -3px
+      webkit-transition: 0.4s
+      transition: 0.4s
+      &.active
+        background: #fff
+        border-top: 2px solid red
+        a
+          color: #333
+      a
+        border-radius: 0px 
+        text-decoration: underline
+        color: #2c3e50 !important
+        width: 200px
+        text-align: center
+        &:hover
+          background: none
+        &:active
+          background: none
+
+.top-payment
+  background: #ddd
+  padding: 15px
+.cc-inputs
+  outline: none
+  font-family: $jrFont
+  width: 100% !important
+.remember-text-box
+  padding: 10px
+  text-align: left
+  font-family: $jrFontSecondary
+.top-payment
+  color: #333 !important
+
+.jr-setting-error
+  margin: 0 auto
+  color: red
+  display: block
+  text-align: center
+  padding: 1px
+
+.jr-horizontal-nav-container
+  padding: 0
+  text-align: center
+  margin-top: 55px
+
+.jr-horizontal-nav
+  list-style: none
+  padding: 0px
+  width: 100%
+  text-align: center
+
+.jr-horizontal-nav-link
+  display: inline-block
+  padding: 2px
+  margin: 2px
+  width: 12%
+  opacity: 1
+
+.jr-horizontal-nav-link-a
+  color: #d2d2d2
+  text-decoration: none
+  font-size: small
+  &:hover
+    color: #D2D2D2
+    text-decoration: none
+  &:focus
+    color: #D2D2D2
+    text-decoration: none
+
+.jr-horizontal-nav-link.active
+  a
+    font-size: 1.2em
+    color: white
+  border-bottom: 2px solid red
+
+.list-pricing-unavailable-red
+  padding: 10px
+  color: #fff
+  font-family: "jrMid",sans-serif
+  text-align: center
+  border-bottom: 16px solid rgba(255, 0, 0, 0)
+  border-right: 24px solid red
+  border-top: 36px solid rgba(128, 128, 128, 0)
+  height: 139px
+  width: 13px
+  transform: rotate(59deg)
+  position: absolute
+  left: 43px
+  top: -49px
+  padding-left: 5px
+  font-size: 1.3em
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: black
+  -webkit-text-stroke-width: 0.1px
+
+.list-pricing-unavailable-content
+  width: 60px
+  text-transform: uppercase
+  transform: rotate(-31deg)
+  font-size: 0.8em
+  position: absolute
+  top: 20px
+  margin-left: 15px
+  color: white
+
+.grid-book-button
+  position: absolute
+  padding: 6px
+  background-color: rgba(46, 204, 113, 0.53)
+  top: 115px
+  right: 0px
+  color: white
+  -webkit-font-smoothing: antialiased
+  text-transform: uppercase
+
+.spans
+  display: inline-block
+  position: relative
+
+.time-slot
+  position: absolute
+  font-size: 7px
+  left: 0px
+  color: orange
+  margin-left: 2px
+
+.jr-car-map-unavailable-overlay
+  position: absolute
+  top: 30%
+  left: 45%
+  z-index: 99
+  color: red
+  background-color: white
+  padding: 10px
+  text-align: center
+
+.jr-car-sidepane
+  position: absolute
+  z-index: 1000
+  background-color: #f1f1f1
+  float: right
+  right: 0px
+  max-height: 700px
+  max-width: 300px
+  overflow-y: scroll
+  top: 0px
+
+.jr-car-left-icon
+  display: inline-block
+  width: 20%
+  padding: 10px
+  margin: 2%
+  text-align: right
+  vertical-align: top
+  color: gray
+
+.jr-car-side-text
+  display: inline-block
+  width: 70%
+  padding: 10px
+  margin: 2%
+  vertical-align: middle
+
+.jr-side-pane-header
+  text-align: center
+  color: #D30606
+  padding: 2px
+  background-color: white
+
+.jr-car-venue-name-text
+  color: #0D610D
+  font-size: 1.2em
+
+.jr-car-venue-address-text
+  font-weight: 300
+  font-size: small
+
+.jr-car-image
+  display: inline-block
+  width: 120px
+  position: relative
+  bottom: 30px
+  left: 7px
+  //margin-right: 30px
+  &:img
+    width: 100px
+    vertical-align: middle
+
+.jr-car-pricing
+  display: inline-block
+  margin-left: 20px
+  ul
+    padding: 0px
+    list-style: none
+  li
+    display: inline-block
+    text-align: center
+    margin: 10px
+
+.jr-car-book
+  position: relative
+  font-size: 1.1em
+  text-align: center
+  background-color: green
+  padding: 10px
+  text-transform: uppercase
+  margin-left: auto
+  color: white
+  cursor: pointer
+  border-radius: 3px
+
+.fdSelected
+  border-left: 15px solid red
+  border-bottom: 1px solid red !important
+
+.jr-unavailable-content
+  color: red
+  font-size: small
+
+.jr-left-image-container
+  width: 20%
+  display: inline-block
+  padding: 5px
+  img
+    width: 100%
+
+.jr-right-image-container
+  width: 20%
+  display: inline-block
+  padding: 5px
+  img
+    width: 100%
+
+.jr-center-image-container
+  display: inline-block
+  width: 45%
+  cursor: pointer
+  position: relative
+  img
+    width: 100%
+
+.jr-left-arrow
+  cursor: pointer
+  display: inline-block
+.jr-right-arrow
+  cursor: pointer
+  display: inline-block
+
+.jr-center-image-price
+  position: absolute
+  margin-left: 25%
+  margin-right: 25%
+  width: 50%
+  top: 0px
+  padding: 10px
+  height: 50px
+  vertical-align: middle
+  text-transform: uppercase
+  font-size: 1.5em
+
+.jr-center-image-name
+  position: absolute
+  margin-left: 25%
+  margin-right: 25%
+  width: 50%
+  top: -25px
+  padding: 10px
+  height: 50px
+  vertical-align: middle
+  text-transform: uppercase
+  font-size: 1.8em
+  text-align: center
+
+#card-chevron-right
+  display: none
+
+.glyphicon-chevron-right:before
+  color: gray
+  font-size: 1.5em
+  font-weight: lighter
+
+.glyphicon-chevron-left:before
+  color: gray
+  font-size: 1.5em
+  font-weight: lighter
+
+.jr-without-fuel-tag
+  display: none
+
+.jr-fuel-tag-car
+  display: inline-block
+
+.bottom-row
+  margin-bottom: 2px
+  margin-top: 2px
+  width: 150px
+
+td.xdsoft_current, .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current
+  background: #D30606 !important
+  box-shadow: #D30606 0 1px 3px 0 inset !important
+  color: #fff !important
+  font-weight: 700
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_today
+  color: #D30606
+
+.jr-default-placeholder
+  color: darkgray
+  font-weight: 500
+
+.jr-modal-error
+  text-align: center
+
+.jr-direction-modal-height
+  height: 90%
+
+.jr-cent-height
+  height: 100%
+
+.jr-profile-new-container
+  padding-left: 0px
+  background-color: #FFFFFF
+  min-height: 489px
+
+\::-webkit-input-placeholder
+  /* WebKit, Blink, Edge
+  font-family: jrMid
+  font-size: 14px
+  font-stretch: normal
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+
+\:-moz-placeholder
+  /* Mozilla Firefox 4 to 18
+  font-family: jrMid
+  font-size: 14px
+  font-stretch: normal
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+
+\::-moz-placeholder
+  /* Mozilla Firefox 19+
+  font-family: jrMid
+  font-size: 14px
+  font-stretch: normal
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+
+\:-ms-input-placeholder
+  /* Internet Explorer 10-11
+  font-family: jrMid
+  font-size: 14px
+  font-stretch: normal
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+
+.jr-custom-modal-header
+  background-color: #2c3e50
+
+.jr-smaller-font
+  font-size: smaller
+
+.jr-appear-as-link
+  text-decoration: underline
+  cursor: pointer
+  color: red
+
+.jr-modal-h5
+  color: white
+  text-align: center
+
+.autocomplete
+  width: 100%
+  position: relative
+  top: 0px
+  ul
+    position: absolute
+    left: 0
+    z-index: 99
+    padding-left: 0px
+    border: 1px solid #D3D3D3
+    width: 227px
+
+.gotaQuestion .ng-scope ul li
+  width: 204px
+
+.autocomplete
+  ul
+    width: 204px
+  li
+    text-align: left
+    list-style: none
+    width: 100%
+    padding: 5px
+    font-size: 13px
+    background-color: #fff
+    border-bottom: 1px solid #D3D3D3
+    cursor: pointer
+    box-sizing: border-box
+    -webkit-box-sizing: border-box
+    -o-box-sizing: border-box
+    -moz-box-sizing: border-box
+    &.active
+      background-color: #D30606
+      color: #fff
+
+.jr-autocomplete-input
+  width: 100%
+  height: 100%
+  border: 1px solid #ccc
+  padding: 10px
+
+.jr-bold
+  font-weight: bold
+
+.jr-refund-online
+  color: #303F9F
+  &:hover  
+    color: #1565C0
+  &:visited
+    color: #1565C0
+
+.tabs-below > .nav-tabs, .tabs-right > .nav-tabs, .tabs-left > .nav-tabs
+  border-bottom: 0
+
+.tab-content > .tab-pane, .pill-content > .pill-pane
+  display: none
+
+.tab-content > .active, .pill-content > .active
+  display: block
+
+.tabs-below > .nav-tabs
+  border-top: 1px solid #ddd
+  >
+    li
+      margin-top: -1px
+      margin-bottom: 0
+      > a
+        -webkit-border-radius: 0 0 4px 4px
+        -moz-border-radius: 0 0 4px 4px
+        border-radius: 0 0 4px 4px
+        &:hover, &:focus
+          border-top-color: #ddd
+          border-bottom-color: transparent
+    .active > a
+      border-color: transparent #ddd #ddd #ddd
+      &:hover, &:focus
+        border-color: transparent #ddd #ddd #ddd
+
+.tabs-left > .nav-tabs > li, .tabs-right > .nav-tabs > li
+  float: none
+
+.tabs-left > .nav-tabs > li > a, .tabs-right > .nav-tabs > li > a
+  min-width: 74px
+  margin-right: 0
+  margin-bottom: 3px
+
+.tabs-left > .nav-tabs
+  font-family: $jrFont
+  float: left
+  margin-right: 19px
+  border-right: 1px solid #ddd
+  > li > a
+    margin-right: -1px
+    -webkit-border-radius: 4px 0 0 4px
+    -moz-border-radius: 4px 0 0 4px
+    border-radius: 0px
+    background: #ccc
+    &:hover, &:focus
+      border-color: #eeeeee #dddddd #eeeeee #eeeeee
+  .active > a
+    border-color: #ddd transparent #ddd #ddd
+    *border-right-color: #ffffff
+    &:hover, &:focus
+      border-color: #ddd transparent #ddd #ddd
+      *border-right-color: #ffffff
+
+.tabs-right > .nav-tabs
+  float: right
+  margin-left: 19px
+  border-left: 1px solid #ddd
+  > li > a
+    margin-left: -1px
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
+    &:hover, &:focus
+      border-color: #eeeeee #eeeeee #eeeeee #dddddd
+  .active > a
+    border-color: #ddd #ddd #ddd transparent
+    *border-left-color: #ffffff
+    &:hover, &:focus
+      border-color: #ddd #ddd #ddd transparent
+      *border-left-color: #ffffff
+
+.license-upload-error
+  text-align: center
+  color: red
+  margin-top: 2px
+  margin-bottom: 2px
+
+.new-grad-overlay
+  padding-top: 50px
+  padding-bottom: 0px
+  background: rgba(0,0,0,0.07)
+  position: absolute
+  width: 100%
+  top: 0
+  bottom: 0
+
+.mobile-home-image
+  width: 100%
+  height: 
+.ac-drop
+  .dropdown-menu
+    max-height: 200px !important
+    border-radius: 0px !important
+    left: 0px !important
+    top: 40px !important
+    width: 100% !important
+    overflow: scroll !important

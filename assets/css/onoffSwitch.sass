@@ -1,0 +1,74 @@
+.onoffswitch
+    position: relative
+    width: 125px
+    margin: 0 auto
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+
+.onoffswitch-checkbox
+    display: none
+
+
+.onoffswitch-label
+    display: block
+    overflow: hidden
+    cursor: pointer
+    border: 1px solid #FFFCFC
+    border-radius: 30px
+
+.onoffswitch-inner
+    display: block
+    width: 200%
+    margin-left: -100%
+    transition: margin 0.3s ease-in 0s
+    &:before, &:after
+        display: block
+        float: left
+        width: 50%
+        height: 30px
+        padding: 0
+        line-height: 30px
+        font-size: 14px
+        color: white
+        box-sizing: border-box
+    &:before
+        content: "UNLIMITED"
+        padding-left: 10px
+        background-color: #6BBA48
+        color: #FFFFFF
+        font-family: "jrMid" sans-serif
+        -webkit-font-smoothing: antialiased
+        font-weight: 400
+        box-shadow: inset 0px 0 50px #6BBA48
+    &:after
+        content: "LIMITED"
+        padding-right: 20px
+        background-color: #C63332
+        color: #FFFFFF
+        text-align: right
+        font-family: "jrMid" sans-serif
+        -webkit-font-smoothing: antialiased
+        font-weight: 400
+        box-shadow: inset 0px 0 50px #C63332
+
+.onoffswitch-switch
+    display: block
+    width: 30px
+    margin: 0px
+    background: #797979
+    position: absolute
+    top: 1px
+    bottom: 0
+    right: 97px
+    border: 5px solid #D8D8D8
+    border-radius: 30px
+    height: 30px
+    transition: all 0.3s ease-in 0s
+    box-shadow: inset 0 0 20px #CCC2C2
+
+.onoffswitch-checkbox:checked + .onoffswitch-label
+    .onoffswitch-inner
+        margin-left: 0
+    .onoffswitch-switch
+        right: 0px

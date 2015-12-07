@@ -1,0 +1,197 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="modal-title pull-left" style="padding-left: 15px; display: inline-block;">
+            <span style="font-size: 2em;">My Rides</span>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="jr-boxes pull-right" style="display: inline-block; margin-top: 0px; padding: 0px;" dropdown>
+            <div class="dropdown-toggle jr-pad my-ride-toggle" dropdown-toggle>
+                <span ng-if="search.status == undefined">
+                    Filter
+                </span>
+                <span ng-if="search.status != null">
+                    {{search.status}}
+                </span>
+            </div>
+            <div class="dropdown-menu my-ride-dropdown">
+                <li ng-repeat="status in statusArray">
+                    <a class="jr-anchor" ng-click="filterB(status)">
+                        {{status.name}}
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row" style="border-bottom: 1px solid #ddd;">
+                <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 order-sorter" ng-click="order('token')">
+                    <div class="booking-header">
+                        Ride PNR
+                        <span ng-show="predicate === 'token'">
+                            <i class="fa fa-sort-desc" ng-if="reverse"></i>
+                            <i class="fa fa-sort-asc" ng-if="!reverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3 order-sorter" ng-click="order('status')">
+                    <div class="booking-header">
+                        Status
+                        <span ng-show="predicate === 'status'">
+                            <i class="fa fa-sort-desc" ng-if="reverse"></i>
+                            <i class="fa fa-sort-asc" ng-if="!reverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 order-sorter" ng-click="order('pickup_time')">
+                    <div class="booking-header">
+                        Pick Up Time
+                        <span ng-show="predicate === 'pickup_time'">
+                            <i class="fa fa-sort-desc" ng-if="reverse"></i>
+                            <i class="fa fa-sort-asc" ng-if="!reverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 order-sorter" ng-click="order('drop_time')">
+                    <div class="booking-header">
+                        Drop Off Time
+                        <span ng-show="predicate === 'drop_time'">
+                            <i class="fa fa-sort-desc" ng-if="reverse"></i>
+                            <i class="fa fa-sort-asc" ng-if="!reverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-2 col-sm-2 order-sorter">
+                    <div class="booking-header">
+                        Details
+                    </div>
+                </div> -->
+            </div>
+            <div class="row" style="border-bottom: 1px solid #ddd;" ng-repeat="f in bookings | filter: {status: statusIdVal}| orderBy:predicate:reverse">
+                <div class="expand-rides" ng-click="expandDetail(f)">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="booking-row" style="word-break:break-all">
+                            {{f.token}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="booking-row">
+                            <p ng-if="f.status.lookup_type == 34">
+                                {{f.status.value}}
+                                <i class="fa fa-exchange myfa-entry myfa-modified"></i>
+                            </p>
+                            <p ng-if="f.status.lookup_type == 5">
+                                {{f.status.value}}
+                                <i class="fa fa-tasks myfa-entry myfa-pending"></i>
+                            </p>
+                            <p ng-if="f.status.lookup_type == 6">
+                                {{f.status.value}}
+                                <i class="fa fa-cog fa-spin myfa-entry myfa-active"></i>
+                            </p>
+                            <p ng-if="f.status.lookup_type == 7">
+                                {{f.status.value}}
+                                <i class="fa fa-check-circle myfa-entry"></i>
+                            </p>
+                            <p ng-if="f.status.lookup_type == 8">
+                                {{f.status.value}}
+                                <i class="fa fa-ban myfa-entry myfa-cancelled"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="booking-row">
+                            {{f.pickup_time_val}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="booking-row">
+                            {{f.drop_time_val}}
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="booking-row ride-details" ng-click="expandDetail(f)">
+                        Details
+                    </div>
+                </div> -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="target-{{f.token}}" class="expand-detail">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <span class="glyphicon glyphicon-remove shut-det" ng-click="closeDetail(f.token)"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+                                <img class="img-responsive" ng-src="{{f.car.image}}" style="margin-bottom: 10px;">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <p class="label-val">
+                                    <span class="fa fa-car"></span> Car Model
+                                </p>
+                                <p class="payment">
+                                    {{f.car.name}}
+                                </p>
+                                <p class="label-val" ng-if="f.status.id ==7 || f.status.id == 6">
+                                    <span class="fa fa-car"></span> License Number
+                                </p>
+                                <p class="payment" ng-if="f.status.id ==7 || f.status.id == 6">
+                                    {{f.vehicle.registration_number}}
+                                </p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <p class="label-val" ng-if="f.status != 8">
+                                    <span class="fa fa-money" ng-if="f.status.id != 8"></span>
+                                    <span ng-if="f.status.id == 7">
+                                        Final Amount
+                                    </span>
+                                    <span ng-if="f.status.id == 5 || f.status.id == 6">
+                                        Amount
+                                    </span>
+                                </p>
+                                <p class="payment" ng-if="f.status != 8">
+
+                                    <span ng-if="f.status.id == 7">
+                                        {{f.final_amount |  currency:"&#8377;"}}
+                                    </span>
+                                    <span ng-if="f.status.id == 5 || f.status.id == 6">
+                                        {{f.tentative_amount |  currency:"&#8377;"}}
+                                    </span>
+                                </p>
+                                <p class="label-val">
+                                    <span class="fa fa-clock-o"></span> Duration
+                                </p>
+                                <p class="payment">
+                                    {{f.durationVal}} hr's
+                                </p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="modify-modal-btn modify-booking mar-sm-left" ng-if="f.status == 5 && f.isAllowedModify" ng-click="modifyRide(f.token)">
+                                    Modify
+                                </div>
+                                <div class="extend-modal-btn extend-booking mar-sm-left" ng-if="f.status == 5 || f.status == 6" ng-click="extendBookingModal(f.token)">
+                                    Extend
+                                </div>
+                                <div class="additional-modal-btn additional-booking mar-sm-left" ng-click="additionalBookingDetails(f)">
+                                    View More...
+                                </div>
+                                <div class="cancel-modal-btn cancel-booking mar-sm-left" ng-if="f.status == 5" ng-click="cancelBookingModal(f.token)">
+                                    Cancel
+                                </div>
+                                <div ng-if="f.status == 7" style="  width: 100%; padding: 10px;text-align: center; -webkit-transition: 0.4s; transition: 0.4s; margin-left: 15px;margin-top: 20px;">
+                                    <div ng-if="f.isReadOnly">You rated this ride</div>
+                                    <div ng-if="!f.isReadOnly">Rate your ride</div> 
+                                    <rating style="outline: none;" ng-model="f.rate" max="5" readonly="f.isReadOnly" on-leave="overStar = null" ng-click="tellme(f)"></rating>
+                                </div>
+                                <div class="extend-modal-btn extend-booking mar-sm-left" ng-if="f.status == 7 || f.status == 8" ng-click="showInvoice(f.token)">
+                                    View Invoice
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

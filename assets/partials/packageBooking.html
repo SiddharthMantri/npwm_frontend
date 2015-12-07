@@ -1,0 +1,312 @@
+<section class="jr-body">
+	<div class="container">
+		<div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="car-img">
+						<img class="img-responsive img-thumbnail" ng-src="{{car.image}}" style="width: 100%;">
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="map-view" style="margin-top: 10px; height: 250px;">						
+						<div class="map-block" style="height:240px;">						
+							<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+								<ui-gmap-marker coords="marker.coords" idkey="marker.id">
+							</ui-gmap-google-map>
+						</div>						
+					</div>					
+				</div>				
+			</div>
+		</div>		
+		<div class="col-lg-6 col-lg-12 col-md-6 col-xs-12">			
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+					<div class="booking-details-row" style="  padding: 10px 10px 15px 10px;">
+						<div class="row">
+							<div class="col-lg-6 col-xs-12">
+								<p class="booking-label">
+									Ride Fare
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12">
+								<p class="booking-label">
+									<!--<span class="fa fa-inr" style="font-size: 0.9em;"></span>-->
+									<span style="font-size: 1.35em;">
+										<strong>{{totalCost | currency:"&#8377;"}}</strong>
+									</span>
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12">
+								<p class="booking-label" ng-click="expandTarget('.fare-details')" style="cursor: pointer">
+									<span class="jr-booking-detail pull-right apply-coupon">
+										Details
+									</span>
+								</p>
+							</div>
+						</div>
+						<div class="row fare-details">
+							<div class="col-lg-6 col-xs-12">
+								
+								<div style="padding: 5px;"></div>
+								<div class="row" ng-repeat="(rateField, ratePrice) in availability.pricing" ng-if="ratePrice">
+									<div class="col-lg-6">
+										<p class="booking-label" style="text-transform: uppercase;">
+											{{rateField}}
+										</p>
+									</div>
+									<div class="col-lg-6">
+										<span class="date-vals pull-left">
+											<span class="fa fa-inr"></span>
+											{{ratePrice | formatToInr}}
+										</span>
+									</div>
+								</div>
+								<!--<div class="row" ng-if="availability.pricing.distance != 0">
+									<div class="col-lg-6">
+										<p class="booking-label">
+											Distance Rate
+										</p>
+									</div>
+									<div class="col-lg-6">
+										<span class="date-vals pull-left" float-val="distance">
+											<span class="fa fa-inr"></span>
+											{{availability.pricing.distance | formatToInr}}
+										</span>
+									</div>
+								</div>
+								<div class="row" ng-if="availability.pricing.duration">
+									<div class="col-lg-6">
+										<p class="booking-label">
+											Duration Rate
+										</p>
+									</div>
+									<div class="col-lg-6">
+										<span class="date-vals pull-left" float-val="duration">
+											<span class="fa fa-inr"></span>
+											{{availability.pricing.duration | formatToInr}}
+										</span>
+									</div>
+								</div>		
+								<div class="row">
+									<div class="col-lg-6">
+										<p class="booking-label">
+											Deposit
+										</p>
+									</div>
+									<div class="col-lg-6">
+										<span class="date-vals pull-left" float-val="caution">
+											<span class="fa fa-inr"></span>
+											{{availability.pricing.caution | formatToInr}}
+										</span>
+									</div>
+								</div>-->															
+							</div>						
+						</div>
+					</div>
+					<div class="booking-details-row">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+								<p class="booking-label">
+									Pick Up Time
+									<span class="date-vals pull-right">
+										{{start_time}}
+									</span>
+								</p>								
+							</div>														
+						</div>
+					</div>					
+					<div class="booking-details-row">
+						<div class="row" style="padding: 5px 0px;">
+							<div class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+								<p class="booking-label">
+									Pick Up Location
+								</p>
+							</div>
+							<div class="col-lg-6 col-xs-12 col-sm-12 col-md-6" style="padding-left: 25px;">
+								
+								<span ng-if="!customLocs" class="pull-right">
+									<span class="glyphicon glyphicon-map-marker input-glyphs"></span>
+									<strong>
+										{{station.name}}
+									</strong>
+								</span>
+								<!--<span ng-if="customLocs" class="pull-right">
+									<span class="glyphicon glyphicon-map-marker input-glyphs"></span>
+									<strong>
+										{{customName}}
+									</strong>
+								</span>-->
+							</div>														
+						</div>
+					</div>						
+					<div class="booking-details-row" ng-if="!customLocs">
+						<div class="row">
+							<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+								<p class="booking-label">
+									Pick Up Address
+								</p>
+							</div>
+							<div class="col-lg-8 col-xs-12 col-sm-12 col-md-8">
+								<p class="address-text">
+									<span class="pull-right">
+										<strong>
+											{{station.address}}
+										</strong>
+									</span>
+								</p>
+							</div>														
+						</div>
+					</div>	
+					<div class="booking-details-row" ng-if="addonsShow">
+						<div class="row">
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3">
+								<p class="booking-label" style="padding-top: 5px;">
+									Addons
+								</p>
+							</div>
+							<div class="col-lg-7 col-xs-12 col-sm-12 col-md-7">
+								
+							</div>
+							<div class="col-lg-2 col-xs-12 col-sm-12 col-md-2">
+								<div class="apply-coupon" ng-click="showAddons()" style="padding: 5px;">
+									Add
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div class="booking-details-row" ng-if="finals.length > 0">
+						<div class="row" ng-repeat="f in finals">
+							<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+								<p class="booking-label" style="padding-top: 5px;">
+									<strong>{{f.accessory.name}}</strong>
+								</p>
+							</div>
+							<div class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+								<span class="pull-right" style="padding-top: 5px">
+									<span class="fa fa-inr"></span>
+									<strong>
+										{{f.accessory.cost}}
+									</strong>
+								</span>
+							</div>
+							<div class="col-lg-2 col-xs-12 col-sm-12 col-md-2">		
+								<span class="glyphicon glyphicon-remove pull-right" ng-click="removeAccessory(f.accessory_id)" style="padding-top: 8px;"></span>						
+							</div>
+						</div>
+					</div>														
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-lg-12">
+					<div class="booking-details-row">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+								<p class="booking-label">
+									Duration
+									<span class="date-vals pull-right">
+										{{duration}} hrs
+									</span>
+								</p>								
+							</div>													
+						</div>	
+					</div>					
+					<div class="booking-details-row">
+						<div class="row" style="padding: 5px 0px;">
+							<div class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+								<p class="booking-label">
+									Drop Off Location
+								</p>
+							</div>
+							<div class="col-lg-6 col-xs-12 col-sm-12 col-md-6" style="padding-left: 25px;">
+								
+								<span ng-if="!customLocs" class="pull-right">
+									<span class="glyphicon glyphicon-map-marker input-glyphs"></span>
+									<strong>
+										{{station.name}}
+									</strong>
+								</span>
+								<span ng-if="customLocs" class="pull-right">
+									<span class="glyphicon glyphicon-map-marker input-glyphs"></span>
+									<strong>
+										{{customName}}
+									</strong>
+								</span>
+							</div>														
+						</div>
+					</div>						
+					<div class="booking-details-row" ng-if="!customLocs">
+						<div class="row">
+							<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+								<p class="booking-label">
+									Drop Off Address
+								</p>
+							</div>
+							<div class="col-lg-8 col-xs-12 col-sm-12 col-md-8">
+								<p class="address-text">
+									<span class="pull-right">
+										<strong>
+											{{station.address}}
+										</strong>
+									</span>
+								</p>
+							</div>														
+						</div>
+					</div>	
+					
+					<div class="booking-details-row">
+						<div class="row" style="padding-top: 3px;padding-bottom: 2px;">
+							<div class="col-lg-6">
+								<p class="booking-label">
+									Distance
+								</p>
+							</div>
+							<div class="col-lg-6">
+								<span class="date-vals pull-right" float-val="caution">
+									{{distance}} Kms
+								</span>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="save-settings hidden-xs hidden-sm" ng-click="getDirections()" style="margin-top: 10px;">
+						Get Directions
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<input type="button" value="Get Set Go!" class="jr-get-set-btn cancel-booking " ng-click="confirmBooking()" style="margin-left: 0;margin-top: 10px;outline: none;border: none;" ng-if="!isDisabled">
+					<input type="button" value="Get Set Go!" class="jr-get-set-btn cancel-booking" style="margin-left: 0;margin-top: 10px;outline: none;border: none;" ng-if="isDisabled">
+				</div>
+				<div class="col-lg-4">
+					<div class="jr-booking-cancel cancel-booking" ng-click="cancelBooking()" style="margin-top: 10px;">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="jr-body" ng-if="directions">
+	<div class="container">
+		<div class="col-lg-offset-2 col-lg-8">
+			<map center="{{station.latitude}}, {{station.longitude}}" zoom="14" lat="{{station.latitude}}" lon="{{station.longitude}}">
+				<marker position="{{station.latitude}}, {{station.longitude}}"></marker>
+			</map>
+		</div>
+		<div class="col-lg-2"></div>
+		<div class="col-lg-12">
+			<div class="row">
+				<div class="col-lg-offset-3 col-lg-3 col-xs-12">
+					<input class="jr-input" id="search-places">
+				</div>
+				<div class="col-lg-3">
+					<div class="get-dir save-settings" ng-click="findDirections()">
+						Get Directions
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

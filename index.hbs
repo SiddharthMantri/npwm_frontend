@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<head>
+	<title>Node Flask Mongo</title>
+	<base href="/">
+
+	<link rel="stylesheet" type="text/css" href="assets/dist/{{"vendor.css"}}">
+	<link rel="stylesheet" type="text/css" href="assets/dist/{{"style.css"}}">
+	<base href="/"></base>
+
+	<style>
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide {
+    display: none !important;
+}
+
+ng\:form {
+    display: block;
+}
+
+</style>
+</head>
+<body style="overflow-x:hidden;height:100;">
+	<section>	
+			<div class="navbar navbar-default jr-nav-true" ng-class="{'transparent-header': indexPageNew}" id="nav-jr" scrollheader>
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed jr-button jr-index-button" ng-click="isCollapsed = !isCollapsed">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand jr-navbar-indexhbs">
+							<ul class="nav navbar-nav">
+								<li class="banner-links">
+									<a ui-sref="index">
+										
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="collapse navbar-collapse" id="jr-collapse-menu" collapse="!isCollapsed">
+					</div>
+				</div>
+			</div>	
+		</section>
+   <div ui-view style="height: 100%"></div>
+	<script type="text/javascript" src="assets/js/configParams.js"></script>
+	<script type="text/javascript" src="assets/dist/{{"vendor.js"}}"></script>
+	<script type="text/javascript" src="bower_components/angular-google-plus/dist/angular-google-plus.js"></script>
+	<script type="text/javascript" src="assets/dist/{{"templates.js"}}"></script>
+     <script>
+
+     var npwmApp = angular.module('npwmApp', [
+     	'ui.router',
+     	'ui.router.router',
+     	'ui.bootstrap',
+     	'templates',
+     	]);
+     function bootstrapApplication(){
+     	angular.element(document).ready(function() {
+     		angular.bootstrap(document, ['npwmApp']);
+     	});
+     }
+     bootstrapApplication();
+     </script>
+     <script type="text/javascript" src="assets/dist/{{"app.js"}}"></script>
+     <script type="text/javascript" src="assets/dist/{{"combined.js"}}"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-sanitize.min.js"></script>
+ </body>
+ </html>

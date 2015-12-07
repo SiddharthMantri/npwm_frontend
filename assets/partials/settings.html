@@ -1,0 +1,234 @@
+<div ng-if="userObj.user">
+	<h3 class="modal-title" style="padding-left: 15px;">
+		Settings
+	</h3>
+	<div class="row">
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="padding-left: 25px">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row setting-fixed-row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div class="setting-label">
+								Name
+							</div>
+						</div>	
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+							<input class="jr-input-setting" id="setting-name-input" disabled="true" ng-model="userObj.user.display_name" type="text" placeholder="Display Name">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div class="edit-btn" ng-click="showSetting('setting-name')">
+								Edit
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 setting-edit-row" id="setting-name">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<span class="glyphicon glyphicon-remove shut-det" style="margin-bottom: 5px;" ng-click="shutSetting('setting-name')"></span>
+								</div>
+								<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+									<input class="jr-input-edit" ng-model="userObj.user.display_name" placeholder="Display Name" id="display_name" ng-change="showVal()">
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+									<div class="save-settings" ng-click="saveSetting('display_name')"> 
+										Save
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row setting-fixed-row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div class="setting-label">
+								Email
+							</div>
+						</div>	
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<input class="jr-input-setting" id="setting-email-input" disabled="true" ng-model="userObj.user.email" type="text" placeholder="Email">
+						</div>
+						<!--<div class="col-lg-2">
+							<div class="edit-btn" ng-click="showSetting('setting-email')">
+								Edit
+							</div>
+						</div>-->
+						<div class="col-lg-12 setting-edit-row" id="setting-email">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<span class="glyphicon glyphicon-remove shut-det" style="margin-bottom: 5px;" ng-click="shutSetting('setting-email')"></span>
+								</div>
+								<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+									<input class="jr-input-edit" ng-model="userObj.user.email" placeholder="Email" id="email">
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+									<div class="save-settings" ng-click="saveSetting('email')"> 
+										Save
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row setting-fixed-row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div class="setting-label">
+								Mobile
+							</div>
+						</div>	
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+							<input class="jr-input-setting" id="setting-mobile-input" disabled="true" ng-model="userObj.user.mobile" type="text" placeholder="Mobile">							
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div class="edit-btn" ng-click="showSetting('setting-mobile')">
+								Edit
+							</div>
+						</div>
+						<div class="col-lg-12 setting-edit-row" id="setting-mobile">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<span class="glyphicon glyphicon-remove shut-det" style="margin-bottom: 5px;" ng-click="shutSetting('setting-mobile')"></span>
+								</div>
+									<form name="modalForm" novalidate>
+									<div id="div-mobile" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+										<input tooltip="{{modalForm.mobile.$valid ? '' : '10 digit no. please'}}" tooltip-trigger="focus" tooltip-placement="bottom" ng-change="checkMinLength()" ng-init="loadBtnSample()" class="jr-input-edit" ng-model="userObj.user.mobile" placeholder="Mobile" id="mobile" numberonly maxlength="10" required>
+
+									</div>
+									</form>
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+										<button style="width:100%;border-radius:0px !important;" ng-show="btnActive" id="mobileSave" class="btn btn-primary save-settings" ng-click="saveSetting('mobile')"> 
+											Save
+										</button>
+										<button style="width:100%;border-radius:0px !important;" ng-show="btnNotActive" id="mobileSave" class="btn btn-primary save-settings">
+											Save
+										</button>
+										<button style="width:100%;border-radius:0px !important;" ng-show="onLoadCheck" id="mobileSave" class="btn btn-primary save-settings">
+											Save
+										</button>
+									</div>
+							</div>						
+						</div>
+					</div>									
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row setting-fixed-row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div class="setting-label">
+								License No.
+							</div>
+						</div>	
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+							<input class="jr-input-setting" id="setting-license_number-input" disabled="true" ng-model="userObj.user.license_number" type="text" placeholder="License Number">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div class="edit-btn hide" ng-click="showSetting('setting-license_number')" ng-if="!userObj.user.license_number">
+								Edit
+							</div>
+						</div>
+						<div class="col-lg-12 setting-edit-row" id="setting-license_number">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<span class="glyphicon glyphicon-remove shut-det" style="margin-bottom: 5px;" ng-click="shutSetting('setting-license_number')"></span>
+								</div>
+								<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+									<input class="jr-input-edit" ng-model="userObj.user.license_number" placeholder="License Number" id="license_number">
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+									<div class="save-settings" ng-click="saveSetting('license_number')"> 
+										Save
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>					
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row setting-fixed-row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<div class="setting-label">
+								Date of Birth
+							</div>
+						</div>	
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+							<input class="jr-input-setting" id="setting-dob-input" disabled="true" ng-model="userObj.user.dob" type="text" placeholder="Date of Birth(dd/mm/yyyy)">
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div class="edit-btn hide" ng-click="showSetting('setting-dob')" ng-if="!userObj.user.dob">
+								Edit
+							</div>
+						</div>
+						<div class="col-lg-12 setting-edit-row" id="setting-dob">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<span class="glyphicon glyphicon-remove shut-det" style="margin-bottom: 5px;" ng-click="shutSetting('setting-dob')"></span>
+								</div>
+								<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
+									<input class="jr-input-edit" ng-class="{'error-dob': invalidDob}" ng-model="userObj.user.dob" placeholder="Date of Birth(dd/mm/yyyy)" id="dob" birthdatetimepicker>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+									<div class="save-settings" ng-click="saveSetting('dob')"> 
+										Save
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>					
+				</div>
+				<div ng-if= "!userObj.user.dob && !userObj.user.license_number" class="col-lg-12">
+					<p style="font-size: 12px;"><sup style="font-size: 0.9em;color: red;">*</sup>License No. and DOB will be shown once the uploaded license image gets verified by our system.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<div class="setting-label">
+				License
+			</div>		
+			<!--<div class="license-image" ng-if="userObj.user.license">-->
+			<!--<div class="license-image" ng-if="license_setup">
+				<carousel id="licenseCarouselp" interval="myInterval" no-wrap="noWrapSlides" >
+					<slide ng-repeat="slide in slides" active="slide.active">
+						<img ng-src="{{slide.image}}" class="img-responsive" style="max-height: 160px;width: 100%;margin-top: 6px;" >
+					</slide>
+				</carousel>
+			</div>-->
+
+
+			<div style="cursor:pointer;" ng-if="license_setup">
+			    <carousel no-wrap="noWrapSlides">
+			      <slide ng-repeat="slide in slides" zoom-image="{{carouselIndex}}" zoom-title="License Image" slides-array={{slides}}>
+			        <img style="margin-left:auto;margin-right:auto;width:100%;height:200px;" ng-src="{{slide.image}}"  class="img-responsive" style="height:200px !important">
+			        <div class="carousel-caption">
+			        </div>
+			      </slide>
+			    </carousel>
+			</div>
+
+			<!-- <div class="carousel-demo" ng-if="license_setup">
+				<ul id="carousel-1" rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2" zoom-image="{{carouselIndex}}" zoom-title="License Image" slides-array={{slides}}>
+					<li ng-repeat="slide in slides track by $index" ng-class="'id-' + $index">
+						<img ng-src="{{slide.image}}"  class="img-responsive" style="height: 100%; width: 100%;margin-top: 6px;">
+					</li>
+				</ul>
+				<div rn-carousel-indicators ng-if="slides.length > 1" slides="slides" rn-carousel-index="carouselIndex"></div>
+			</div> -->
+
+			<div ng-if="maxSizeError == true">
+				<!--<p class="setting-label" style="color: #d30606;">
+					Please upload an image lesser than 500kb.
+				</p>-->
+			</div>
+			<!--<button ng-controller="uploadCtrl" class="button img-upload btn btn-small" ng-file-select ng-file-change="upload($files)" ng-model="license" accept="image/*" ngf-min-size='10' ngf-max-size='10'>
+	           	Change	
+	        </button>
+	        <button class="button img-upload btn btn-small" compress ng-file-select accept="image/*">
+	        	Upload
+	        </button>-->
+			<button ng-controller="uploadCtrl" class="button img-upload btn btn-small" ng-file-select ng-file-change="upload($files)" ng-model="license" accept="image/*" ngf-min-size='10' ngf-max-size='10' ngf-capture="'camera'" ngf-multiple="true" checkFileSize>
+				Add license	
+			</button>
+			<span id="pdfFile" class="pdf-message"></span>
+			<span id="fileNewSize" class="pdf-message"></span>
+		</div>
+	</div>
+</div>

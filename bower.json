@@ -1,0 +1,38 @@
+{
+  "name": "mongo-py-node",
+  "version": "0.0.1",
+  "authors": [
+    ""
+  ],
+  "description": "",
+  "main": "js/app.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "mongo-py-node"
+  ],
+  "license": "MIT",
+  "homepage": "justride.in",
+  "dependencies": {
+    "angular": "1.2.27",
+    "angular-bootstrap": "0.12.1",
+    "angular-cookies": "1.2.27",
+    "angular-loading-bar": "~0.8.0",
+    "angular-ui-router": "0.2.8",
+    "bootstrap": "3.3.2",
+    "font-awesome": "~4.4.0",
+    "lodash": "3.8.0",
+    "momentjs": "~2.10.6",
+    "ocLazyLoad": "~1.0.4",
+    "angular-material": "~0.11.4"
+  },
+  "resolutions": {
+    "angular": "1.2.27",
+    "angular-cookies": "1.2.27"
+  },
+  "devDependencies": {
+    "angular-carousel": "~0.3.13",
+    "bootstrap-slider-sass": "~4.8.2"
+  }
+}

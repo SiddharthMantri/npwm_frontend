@@ -1,0 +1,458 @@
+<section class="jr-body">
+	<div class="row search-nav-cont" style="margin-bottom: 40px;">
+		<div class="search-cont search-pg top-search" ng-cloak>
+			<div class="row">
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" ng-class="{'open': stationMissing.val}" id="toggle-station" ng-click="selectStation()" dropdown style="padding:0;" >
+						<div class="dropdown-toggle jr-pad jr-dropdown-textblock" dropdown-toggle="dropdown">							
+							<span ng-if="selectedStation == undefined && !customLocation" class="jr-default-placeholder">
+								Pick Up Location
+							</span>
+							<span ng-if="selectedStation != null">
+								{{selectedStation.name}}
+							</span>
+							<span ng-if="customLocation && selectedStation == undefined" style="text-overflow: ellipsis;white-space:nowrap;width:150px;">
+								{{customLocationName}}
+							</span>
+							<i class="fa fa-map-marker form-control-feedback" style="position: absolute; top: 10px;"></i>
+						</div>
+						<div class="dropdown-menu jr-dropdown">
+							<div class="loading-spinner-icon" ng-if="!venuesLoaded" style="width:30px;height:30px;margin-left: auto;margin-right: auto;"></div>
+							<div class="limitdiv">
+								<li ng-if="venuesLoaded" ng-repeat="p in pickUpStations| orderBy: 'name'" ng-if="p.id != 0"	>
+									<a class="jr-anchor" ng-if="p.active != 0"  ng-click="setStation(p.id)">
+										{{p.name}}
+									</a>
+								</li>
+							</div>
+							<li ng-if="venuesLoaded">
+								<a class="jr-label-list"  ng-click="pickStationFromMap()">
+									Pick from map
+								</a>
+							</li>														
+						</div>
+					</div>		       
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes jr-first-search-box" style="padding: 0px">
+						<input id="jr-start-head-time" class="jr-date-input" placeholder="Pick Up Time" ng-model="pickedDateVal" onfocus="blur()">
+						<i style="top: 0px;" class="glyphicon glyphicon-calendar form-control-feedback" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+						<i style="top: 0px;" class="glyphicon glyphicon-info-sign form-control-feedback" tooltip="Error in pick up time" ng-if="wrongTimes"></i>
+					</div>
+					<div class="jr-errors" ng-if="startMiss">
+						Select a pick up time
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="jr-boxes" style="padding: 0px">
+						<input id="jr-drop-head-time" class="jr-date-input" placeholder="Drop Time" ng-model="droppedDateVal" onfocus="blur()">
+						<i style="top: 0px;" class="glyphicon glyphicon-calendar form-control-feedback" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+						<i style="top: 0px;" class="glyphicon glyphicon-info-sign form-control-feedback" tooltip="Error in drop off time" ng-if="wrongTimes"></i>
+					</div>
+					<div class="jr-errors" ng-if="dropMiss">
+						Select a drop off time
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+					<div class="search-btn" ng-click="invokeSearch()">
+						Modify
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container jr-results-filter" id="modifyContainer" style="margin-bottom: 40px;" ng-if="show_previous">
+		<div style="margin-bottom: 10px; min-height: 40px;">
+			<div class="modal-heading" style="text-align: center; font-weight: bold;margin-left: 15%;width: 70%;display: inline-block;">Modifying Booking PNR {{carobj.token}}</div>
+			<div style="display: inline-block;width: 10%;">
+				<div class="additional-booking" ng-click="myRides()">My Rides</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="detail-type">
+				<div class="previous-car-detail-1" style="text-align: left;">
+					{{carobj.car.name}}
+				</div>
+				<div class="previous-car-detail-1">
+					{{carobj.car.seats}} Seater
+				</div>
+				<div class="previous-car-detail-1" style="text-align: right;">
+					{{carobj.car.transmission}}
+				</div>
+			</div>
+			<div class="detail-type">
+				<label class="label-control">PAID AMOUNT</label>
+				<span class="text-control pull-right">{{carobj.tentative_amount | currency:"&#8377;"}}</span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="detail-type" id="time-table">
+				<label class="label-control">PICKUP TIME</label>
+				<span  class="text-control pull-right">{{carobj.pickup_time_val}}</span>
+			</div>
+			<div class="detail-type">
+				<label class="label-control">DROP TIME</label>
+				<span  class="text-control pull-right">{{carobj.drop_time_val}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="container" ng-if="showBottomContainer">
+		<div class="col-lg-3 col-xs-12">
+			<div class="floating-side-bar" >
+				<div class="jr-results-filter">
+					<h4 class="modal-title" style="padding: 5px; text-align: center;margin-bottom: 10px;" ng-if="unlimitedCityShow && unlimitedFor12">
+						JustRide Kilometers
+					</h4>
+					<div class="onoffswitch" ng-if="unlimitedCityShow && unlimitedFor12">
+    					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="unLimitedKms" ng-change="switchKms()">
+    					<label class="onoffswitch-label" for="myonoffswitch">
+        					<span class="onoffswitch-inner"></span>
+        					<span class="onoffswitch-switch"></span>
+    					</label>
+					</div>
+
+					<h4 class="modal-title" style="text-align: center;margin-top: 10px;" ng-if="!unLimitedKms">
+						Free kilometers
+					</h4>
+
+					<div style="font-size: 2em;text-align: center;margin-bottom: 5px;" ng-if="!unLimitedKms">{{freeKms}}</div>
+
+					<ol class="jr-vehicle-side-info" style="margin-top: 5px;" ng-if="!unLimitedKms">
+						<li>
+							On exceeding the free km limit, user will be charged Rs.9/km for Ritz, Rs.12/km for Amaze &amp; Rs.15/km for all other cars
+						</li>
+						<li>
+							Fuel cost for the entire duration a user drives will be borne by JustRide
+						</li>
+					</ol>
+					<ol class="jr-vehicle-side-info" style="margin-top: 5px;" ng-if="unLimitedKms">
+						<li>
+							User can drive unlimited kilometers
+						</li>
+						<li>
+							Fuel cost be to be borne by the user
+						</li>
+					</ol>
+
+				</div>
+				<div class="jr-results-filter hidden-xs hidden-sm">
+					<h4 class="modal-title" style="padding: 5px;">
+						Filter By
+					</h4>
+					<div class="sort-type" ng-class="{'sort-active': sortActive==1}" ng-click="sortRes(1)">
+						Pricing
+						<span class="pull-right">
+							<span class="fa fa-sort-amount-asc" ng-class="{'fa-sort-amount-asc': priceAsc, 'fa-sort-amount-desc': !priceAsc}"></span>
+						</span>
+					</div>
+					<div class="sort-type" ng-class="{'sort-active': sortActive==2}"  ng-click="sortRes(2)">	
+						Make
+						<span class="pull-right">
+							<span class="fa fa-sort-alpha-asc"</span>
+							</span>
+						</div>									
+					</div>
+					<div class="jr-results-filter hidden-xs hidden-sm" style="margin-top: 10px;">							
+						<div class="detail-type">						
+							<span class="fa fa-clock-o"></span>
+							{{durationHours}} Hours
+						</div>	
+						<div class="detail-type">						
+							<p>
+								<span class="fa fa-map-marker"></span>
+								Pick Up Location
+							</p>
+							<p class="address-text" ng-if="selectedStation != null">
+								{{stationObj.name}}
+							</p>
+							<p class="address-text" ng-if='!(stationObj.address == null && stationObj.address == undefined && stationObj.address == "")'>
+								{{stationObj.address}}
+							</p>
+							<p ng-if="customLocation && selectedStation == undefined">
+								{{customLocationName}}
+							</p>
+						</div>				
+					</div>
+					<div class="jr-results-filter hidden-xs hidden-sm" style="margin-top: 10px;">	
+						<h4 class="modal-title" style="padding: 5px;">
+							Quick Links
+						</h4>						
+						<div class="detail-type">						
+							<a class="quick-links-menu" ui-sref="policies.rental" target="_blank">
+								<span class="fa fa-info"></span>
+								Rental Agreement
+							</a>
+						</div>
+						<div class="detail-type">						
+							<a class="quick-links-menu" ui-sref="termsAndConditions" target="_blank">
+								<span class="fa fa-info"></span>
+								Terms and Conditions
+							</a>
+						</div>
+						<div class="detail-type">						
+							<a class="quick-links-menu" ui-sref="policies.cancellation" target="_blank">
+								<span class="fa fa-info" ></span>
+								Refund &amp; Cancellation Policies
+							</a>
+						</div>							
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 col-xs-12">
+				<div class="jr-result-header">
+					<div class="row" style="text-align: right;padding-right: 10px;">
+										<div class="toggle-view-btn" ng-click="toggleResultView(0)">
+											<span class="glyphicon glyphicon-th-list"></span>
+										</div>
+                                      <div class="toggle-view-btn" ng-click="toggleResultView(2)">
+											<span class="glyphicon glyphicon-th"></span>
+										</div>
+									</div>
+								</div>
+												
+				<div class="results">
+					<div class="list" ng-if="list">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" ng-repeat="r in results" ng-if="!noresults">
+								<div class="list-result">
+									<div class="row">
+										<div class="col-lg-5 col-xs-12 col-sm-12 col-md-5">
+											<div class="list-img">
+												<div class="list-pricing-unavailable-red" ng-if="!r.availability.success"></div>		
+												<div class="list-pricing-unavailable-content">Sold Out</div>
+												<img class="img-responsive res-list-img" ng-src="{{r.car.image}}">
+											</div>
+										</div>	
+										<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+											<div class="list-title-car">
+												<h4 class="list-title">
+													{{r.car.name}}
+												</h4>
+											</div>
+											<div class="list-details">
+												<p class="modal-title list-detail-para">
+													<span class="fa fa-users"></span>
+													{{r.car.seats}} seater
+												</p>
+												<p class="modal-title list-detail-para">
+													<span class="fa fa-cogs"></span>
+													{{r.car.transmission}} transmission
+												</p>
+											</div>
+										</div>
+										<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3">
+											<div class="list-price">
+												<div class="list-pricing-available" ng-if="r.availability.success">
+													<span class="fa fa-inr"></span><span style="font-size: 2.2em;">{{r.pricing.weekend + r.pricing.weekday}}</span>
+													<div class="book-now"  ng-click="clickResult(r)">
+														Book Now
+													</div>
+												</div>
+												<div class="list-pricing-unavailable" ng-if="!r.availability.success" ng-click="clickResult(r)">
+													Check Availability										
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" ng-if="noresults">
+								<h4 class="modal-title jr-nocar-heading" >No Cars Available</h4>
+								<p class="jr-nocar-para">Sorry! Please try a different time slot to find any available cars</p>
+							</div>
+						</div>
+					</div>	
+				</div>			
+				<div class="results">		
+					<div class="grid" ng-if="grid">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="r in results" ng-if="!noresults">
+								<div class="grid-result" backimg="{{r.car.image}}" ng-if="r.availability.success" ng-click="clickResult(r)">
+									<div class="overlay">
+										<div class="grid-pricing">
+											<div class="grid-pricing-available" ng-if="r.availability.success">
+												<span class="fa fa-inr"></span>{{r.pricing.weekend + r.pricing.weekday}}
+											</div>
+										</div>
+										<div class="grid-book-button" ng-if="r.availability.success" ng-click="clickResult(r)">Book Now</div>
+										<div class="res-titles">
+											<h4 class="modal-title">
+												{{r.car.name}}
+												<span class="pull-right">
+													<span class="fa fa-users" style="font-size: 0.8em;"></span>
+													{{r.car.seats}} Seater
+												</span>
+											</h4>
+										</div>
+									</div>
+								</div>
+								<div class="grid-result" backimg="{{r.car.image}}" ng-if="!r.availability.success" ng-click="clickResult(r)"s>
+									<div class="unavailable-overlay">
+										<div class="grid-pricing">
+											<div class="grid-pricing-unavailable ng-scope" ng-if="!r.availability.success">
+											</div>
+											<div style="width: 60px;text-transform: uppercase;transform: rotate(-31deg);font-size: 0.8em;position: absolute;top: 20px;margin-left: 15px;color: white;">Sold Out</div>
+										</div>
+										<div class="grid-book-button" ng-if="!r.availability.success">Check Availability</div>
+										<div class="res-titles">
+											<h4 class="modal-title">
+												{{r.car.name}}
+												<span class="pull-right">
+													<span class="fa fa-users" style="font-size: 0.8em;"></span>
+													{{r.car.seats}} Seater
+												</span>
+											</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" ng-if="noresults">
+								<h4 class="modal-title jr-nocar-heading" >No Cars Available</h4>
+								<p class="jr-nocar-para">Sorry! Please try a different time slot to find any available cars</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="availability-board animate" ng-if="showSideBar">
+		<div style="height: 100%;" ng-controller="availabilityBoardCtrl">
+			<div class="col-lg-4 col-md-4 zero-pad hidden-sm hidden-xs" style="height: 100%;">
+				<div class="hidden-board"></div>
+			</div>
+			<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4 zero-pad" style="height: 100%;">
+				<div class="hidden-board">
+					<div class="board-body">
+						<div class="board-header">
+							<h4 class="modal-title">
+								Availability of {{carDetails.name}}
+								<span class="pull-right glyphicon glyphicon-remove" ng-click="closeBoard()"></span>
+							</h4>
+						</div>
+						<div class="board-sub">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="available-rows" ng-if="selectedIndex == f.id || selectedIndex == undefined" ng-repeat="f in formattedLocks | orderBy: 'start_time'">
+										<div class="row">
+											<div class="col-lg-4">
+												<div class="jr-boxes-borderless" style="padding: 0px">
+													<div class="inner-addon has-feedback">
+														<input class="jr-date-input" placeholder="Drop Time" ng-model="f.start_time" disabled>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-2">
+												<div class="jr-boxes-borderless" style="padding: 0px; border: none;">
+													<div class="inner-addon has-feedback" style="text-align: center; padding: 10px;">
+														To
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="jr-boxes-borderless" style="padding: 0px">
+													<div class="inner-addon has-feedback">
+														<input class="jr-date-input" placeholder="Drop Time" ng-model="f.end_time" disabled>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-2">
+												<div class="jr-boxes-borderless select-time-box" ng-click="selectRange(f.id)">
+													View
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="map-holder" ng-if="showRange">
+										<div class="col-lg-4 col-sm-4 col-xs-4">
+											<div class="spans" style="display: inline-block">
+												<div class="date-box">
+												</div>
+											</div>
+											<div class="para-text" style="font-size: 0.9em;display: inline-block;">Unavailable </div>
+										</div>
+										<div class="col-lg-4 col-sm-4 col-xs-4">
+											<div class="date-box available-box" style="display: inline-block;">
+											</div>
+											<span class="para-text" style="font-size: 0.9em;">Available</span>
+										</div>
+										<div class="col-lg-4 col-sm-4 col-xs-4">
+											<div class="date-box selected-box" style="display: inline-block;">
+											</div>
+											<span class="para-text" style="font-size: 0.9em;">Selected</span>
+										</div>
+										<div class="col-lg-12">
+											<p class="modal-title">
+												
+											</p>
+											<div class="row">
+												<div class="" ng-repeat="(key, value) in rangeObj" style="margin-bottom: 0px; display: inline-block;">
+													<p class="para-text">
+														{{key | jrday}}
+													</p>
+													<div style="width: 100%; height: 25px; padding: 2px;">
+														<div class="spans" ng-repeat="v in value" style="display: inline-block">
+															<div class="date-box" tooltip="{{v.description}} {{v.hoursFormat}}" id="date-{{v.id}}" ng-class="{ 'available-box': v.slot == true, 'selected-box': v.selected == true}" ng-click="addSlot(v)">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" ng-if="showRange" style="border-top: 1px solid #ccc; margin-top: 10px; padding-top: 10px;">
+								<div class="col-lg-12">
+									<div class="map-upper">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="jr-boxes" style="padding: 0px">
+													<div class="inner-addon has-feedback">
+														<input class="jr-date-input" disabled placeholder="Selected Pick up Time" ng-model="newStartTime.format">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="jr-boxes" style="padding: 0px">
+													<div class="inner-addon has-feedback">
+														<input class="jr-date-input" disabled placeholder="Selected Drop Time" ng-model="newEndTime.format">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4" style="margin-top: 15px;">
+												<div class="btn user-btn signup-btn" ng-click="reset()">
+													Reset
+												</div>
+											</div>
+											<div class="col-lg-4" style="margin-top: 15px;">
+												<div class="btn user-btn signup-btn" ng-click="changeRange()">
+													Change Date
+												</div>
+											</div>
+											<div class="col-lg-4" style="margin-top: 15px;">
+												<div class="btn user-btn login-btn" ng-click="select()" ng-if="newEndTime">
+													Select
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 zero-pad hidden-sm hidden-xs" style="height: 100%;">
+				<div class="hidden-board"></div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>	
+</section>

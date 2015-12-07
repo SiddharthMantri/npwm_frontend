@@ -1,0 +1,151 @@
+<!--deals.rides.html-->
+<div class="jr-body bg-image">
+<div class="row search-nav-cont">
+	<div class="search-cont search-pg top-search">
+		<div class="row">
+			<h3 style="text-align: center;color: white;">Customize your Package</h3>
+			<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4 zero-pad">
+				<div class="jr-boxes" ng-class="{'open': askLocation}" id="toggle-station" dropdown style="padding:0;" >
+					<div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown" is-open="isopen">	
+						<span ng-if="selectedStation == undefined">
+							Select a Car Pick Up Point
+						</span>
+						<span ng-if="selectedStation != null">
+							{{selectedStation.name}}
+						</span>
+					</div>
+					<div class="dropdown-menu jr-dropdown">
+						<li ng-repeat="p in pickUpStations" ng-if="p.id != 0">
+							<a class="jr-anchor"  ng-click="setStation(p)">
+								{{p.name}}
+							</a>
+						</li>														
+					</div>
+				</div>					
+			</div>
+			<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4 zero-pad">
+				<div class="jr-boxes" style="padding: 0px">
+					<div class="inner-addon has-feedback">
+						<input id="jr-deal-start-time" class="jr-date-input" placeholder="Select a travel time" ng-model="dealStartDateVal" onfocus="blur();"> 
+						<i class="glyphicon glyphicon-time form-control-feedback" style="top: 2px" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!timeMissing"></i>
+						<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="timeMissing"></i>
+					</div>										
+				</div>
+			</div>
+			<div class="col-lg-4 col-xs-12 col-sm-12 col-md-4 zero-pad">
+				<div class="search-btn" ng-click="findCars()">
+					Modify
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row search-nav-cont">
+	<div class="search-cont search-pg top-search slider-margin">
+		<div class="slider-div">
+			<p class="slider-caption">Ride Distance(Km's) <input type="number" class="jr-input mar-top-sm" ng-model="numberRideDistance" style="padding: 5px;margin-bottom: 0px;color: black; width: 20%;margin-left: 5%" tooltip-placement="right" tooltip-enable="displayDistanceError" tooltip="{{distanceTooltipText}}"></p>
+			<span slider ng-model="rideDistance"  type="text" id="distance-slider" options="distanceOptions" style="display: block !important;"/>
+		</div>
+		<div class="clearfix"></div>
+		<div class="slider-div">
+			<p class="slider-caption">Ride Duration(hrs)<input type="number" class="jr-input mar-top-sm" ng-model="numberRideDuration" style="padding: 5px;margin-bottom: 0px;color: black; width: 20%;margin-left: 5%" tooltip-placement="right" tooltip-enable="displayDurationError" tooltip="{{durationTooltipText}}"></p>
+			<span slider ng-model="rideDuration" type="text" id="duration-slider" options="timeOptions" style="display: block !important;"/>
+		</div>
+	</div>
+</div>
+<div class="container" ng-if="showBottomContainer" style="margin-top: 40px;">
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+		<div class="floating-side-bar" >
+			<div class="jr-results-filter" style="margin-top: 10px;">
+				<h4 class="modal-title" style="padding: 5px;">
+					Selected Package
+				</h4>
+				<div ng-repeat="cityPackage in packageCollections" class="deal-type" ng-class="{'deal-active': dealActive==cityPackage.id}" ng-click="modifyPackage(cityPackage)">
+					{{cityPackage.name}}
+				</div>
+			</div>
+			<div class="jr-results-filter" style="margin-top: 10px;">	
+				<h4 class="modal-title" style="padding: 5px;">
+					Quick Links
+				</h4>						
+				<div class="detail-type">						
+					<a ui-sref="policies.rental" target="_blank">
+						<span class="fa fa-info"></span>
+						Rental Agreement
+					</a>
+				</div>
+				<div class="detail-type">						
+					<a ui-sref="policies.fee" target="_blank">
+						<span class="fa fa-info"></span>
+						Fee Policy
+					</a>
+				</div>
+				<div class="detail-type">						
+					<a ui-sref="policies.cancellation" target="_blank">
+						<span class="fa fa-info" ></span>
+						Refund and Cancellation Policies
+					</a>
+				</div>							
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<!--<div class="deal-result-header">
+			<div class="sort-deals">
+				<li class="deal-sort-type" ng-class="{'sort-active': sortActive==2}" ng-click="sortRes(2)" style="text-align: right;">
+					Make
+					<span class="fa fa-sort-alpha-asc"></span>
+				</li>
+				<li class="deal-sort-type" ng-class="{'sort-active': sortActive==1}" ng-click="sortRes(1)" style="text-align: right;">
+					Pricing
+					<span class="fa" ng-class="{'fa-arrow-up': priceAsc, 'fa-arrow-down': !priceAsc}"></span>
+				</li>
+			</div>
+		</div>-->
+		<div class="results">		
+			<div class="grid">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="r in results">
+						<div class="grid-result" backimg="{{r.car.image}}" ng-if="r.availability.success" ng-click="clickResult(r)">
+							<div class="overlay">
+								<div class="grid-pricing">
+									<div class="grid-pricing-available" ng-if="r.availability.success">
+										<span class="fa fa-inr"></span>{{r.display_price}}
+									</div>
+								</div>
+								<div class="res-titles">
+									<h4 class="modal-title">
+										{{r.car.name}}
+										<span class="pull-right">
+											<span class="fa fa-users" style="font-size: 0.8em;"></span>
+											{{r.car.seats}} Seater
+										</span>
+									</h4>
+								</div>
+							</div>
+						</div>
+						<div class="grid-result" backimg="{{r.car.image}}" ng-if="!r.availability.success" ng-click="clickResult(r)">
+							<div class="overlay">
+								<div class="grid-pricing">
+									<div class="grid-pricing-unavailable"  ng-if="!r.availability.success">
+										Unavailable
+									</div>
+								</div>
+								<div class="res-titles">
+									<h4 class="modal-title">
+										{{r.car.name}}
+										<span class="pull-right">
+											<span class="fa fa-users" style="font-size: 0.8em;"></span>
+											{{r.car.seats}} Seater
+										</span>
+									</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,1182 @@
+var justride = angular.module('justride', [
+    'ui.router',
+    'ui.router.router',
+    'ui.bootstrap',
+    'ngCookies',
+    'facebook',
+    'googleplus',
+    'smoothScroll',
+    'ng-slide-down',
+    'angularFileUpload',
+    'uiGmapgoogle-maps',
+    'toggle-switch',
+    'ngStorage',
+    'ngMap',
+    'ui-notification',
+    'templates',
+    'angular-carousel'
+]);
+
+var $stateProviderRef = null,
+    $urlRouterProviderRef = null;
+
+justride.config(function($stateProvider,$urlRouterProvider, $locationProvider, $httpProvider){
+    $stateProviderRef = $stateProvider;
+    $urlRouterProviderRef = $urlRouterProvider;
+
+    $locationProvider.html5Mode(true);//.hashPrefix('!');
+    $urlRouterProvider.when('','/');
+
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.useXDomain = true
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    $stateProvider.state('index',{
+        url: '/',
+        templateUrl: 'assets/partials/index.html',
+        controller: 'indexCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/indexCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    })
+    .state('testIndex',{
+        url: '/testIndex',
+        templateUrl: 'assets/partials/testIndex.html',
+        controller: 'testIndexCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/testIndexCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('vehicles',{
+        url: '/vehicles',
+        templateUrl: 'assets/partials/vehicles.html',
+        controller: 'vehiclesCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/vehiclesCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('header',{
+        url: '^',
+        controller: 'setHeaderCtrl'
+    }).state('results',{
+        url: '/results',
+        templateUrl: 'assets/partials/results.html',
+        controller: 'resultsCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/resultsCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('results.list',{
+        url: '/list',
+        templateUrl: 'assets/partials/results/resultList.html',
+        controller: 'resultsCtrl'
+    }).state('results.gridSm',{
+        url: '/grid',
+        templateUrl: 'assets/partials/results/resultGridSm.html',
+        controller: 'resultsCtrl'
+    }).state('results.gridLg',{
+        url: '/block',
+        templateUrl: 'assets/partials/results/resultGridLg.html',
+        controller: 'resultsCtrl'
+    })
+    .state('profile',{
+        url: '/profile',
+        templateUrl: 'assets/partials/profile.html',
+        controller: 'profileCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/profileCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('profile.rides',{
+        url: '/rides',
+        templateUrl: 'assets/partials/myRides.html',
+        controller: 'myRidesCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/myRidesCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('profile.additional',{
+        url: '/rides/:token',
+        templateUrl: 'assets/partials/additionalBooking.html',
+        controller: 'additionalBookingCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/additionalBookingCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('profile.invoice',{
+        url: '/invoice/:token',
+        templateUrl: 'assets/partials/invoice.html',
+        controller: 'invoiceCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/invoiceCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('profile.feedback',{
+        url:'/feedback/:token/:rating',
+        templateUrl: 'assets/partials/feedback.html',
+        controller: 'feedbackCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/feedbackCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    })
+    .state('profile.settings',{
+        url: '/settings',
+        templateUrl: 'assets/partials/settings.html',
+        controller: 'settingsCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/settingsCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('booking',{
+        url: '/booking',
+        templateUrl: 'assets/partials/booking.html',
+        controller: 'bookingCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/bookingCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('payment',{
+        url: '/booking/payment/:success/:token',
+        templateUrl: 'assets/partials/payment.html',
+        controller: 'paymentHandleCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/paymentHandleCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('error',{
+        url: '/error',
+        templateUrl: 'assets/partials/error.html',
+        controller: 'errorHandleCtrl',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/errorHandleCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('policies',{
+        url: '/policies',
+        abstract: true,
+        //controller: 'policiesCtrl',
+        templateUrl: 'assets/partials/policies.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/policiesCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('policies.privacy',{
+        url: '/privacy',
+        templateUrl: 'assets/partials/policies/privacy.html'
+    }).state('policies.rental',{
+        url: '/rental',
+        templateUrl: 'assets/partials/policies/rental.html'
+    }).state('policies.fee',{
+        url: '/fee',
+        templateUrl: 'assets/partials/policies/fee.html'
+    }).state('policies.user',{
+        url: '/user',
+        templateUrl: 'assets/partials/policies/useragreement.html'
+    }).state('policies.terms',{
+        url: '/all-terms',
+        templateUrl: 'assets/partials/policies/terms.html'
+    }).state('policies.cancellation',{
+        url: '/refund-cancellation',
+        templateUrl: 'assets/partials/policies/cancellation.html'
+    }).state('company',{
+        url: '/company',        
+        templateUrl: 'assets/partials/company/company.html'
+    }).state('company.about',{
+        url: '/about',
+        templateUrl: 'assets/partials/company/about.html'
+    }).state('company.contact',{
+        url: '/contact',
+        templateUrl: 'assets/partials/company/contact.html'
+    }).state('company.office',{
+        url: '/office',
+        templateUrl: 'assets/partials/company/office.html'
+    }).state('hiring',{
+        url: '/careers',
+        controller: 'careersCtrl',
+        templateUrl: 'assets/partials/hiring.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/careersCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('points',{
+        url: '/points',
+        controller: 'userPointsCtrl',
+        templateUrl: 'assets/partials/userPoints.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/userPointsCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('resetPass',{
+        url: '/resetPassword/:hashVal',
+        controller: 'resetPassCtrl',
+        templateUrl: 'assets/partials/resetPass.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/resetPassCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('test',{
+        url: '/test',
+        controller: 'testCtrl',
+        templateUrl: 'assets/partials/test.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/testCtrl.js'
+                        ]
+                    }]);
+            }]
+        }*/
+    }).state('modify',{
+        url:'/modify/:token',
+        controller: 'resultsCtrl',
+        templateUrl: 'assets/partials/results.html',
+        /*resolve: {
+            deps:['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/resultsCtrl.js'
+                    ]
+                }]);
+            }]
+        }*/
+    }).state('revised',{
+        url:'/revised/:token',
+        controller: 'bookingCtrl',
+        templateUrl: 'assets/partials/booking.html',
+        /*resolve: {
+            deps: ['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load([{
+                    name: 'justride',
+                    files: [
+                        'assets/js/controllers/bookingCtrl.js'
+                    ]
+                }])
+            }]
+        }*/
+    })
+    //$locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('!');
+    $httpProvider.defaults.xsrfCookieName = 'jtride_session';
+    // $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}).config(function(NotificationProvider) {
+    NotificationProvider.setOptions({
+        delay: 100000,
+        startTop: 20,
+        startRight: 10,
+        verticalSpacing: 20,
+        horizontalSpacing: 20,
+        positionX: 'right',
+        positionY: 'top'
+    });
+}).config(function ($provide) {
+  $provide.decorator('$uiViewScroll', function ($delegate) {
+    return function (uiViewElement) {
+      window.scrollTo(0, 0);
+    }; 
+  });
+});
+justride.config(['$tooltipProvider', function($tooltipProvider){
+  $tooltipProvider.setTriggers({
+    'mouseenter': 'mouseleave',
+    'click': 'click',
+    'focus': 'blur',
+    'never': 'mouseleave' // <- This ensures the tooltip will go away on mouseleave
+  });
+}]);
+
+justride.config(function(FacebookProvider){
+    FacebookProvider.init(fbKey);
+}).config(['GooglePlusProvider', function(GooglePlusProvider) {
+     GooglePlusProvider.init({
+        clientId: gPlusClient,
+        apiKey: gPlusApi
+     });
+}]).config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyCAkc9eu9V3g21MXsTUemFf5YM5Nc6_dUg',
+        v: '3.17',
+        libraries: 'places' // Required for SearchBox.
+    });
+}).factory('searchFactory', function(){
+    return {};
+}).directive('backimg', function(){
+    return function(scope, elem, attrs){
+        var url = attrs.backimg;
+        $(elem[0]).css({
+            'background': 'url('+url+')',
+            'background-repeat': 'no-repeat',
+            'background-position': '50% 50%',
+            'background-size': 'contain',
+            'background-color': 'white'
+        });
+    }
+}).directive('dropdowntarget', function(){
+    return function(scope, elem, attrs){
+        var target = attrs.dropdowntarget;
+        $(elem[0]).on('click', function(e){
+            e.stopPropagation();
+            $(target).slideToggle(500,"easeOutBounce");
+        });
+        $('html').on('click', function(){
+            if ( $(target).is(':visible') )
+                $(target).slideUp(500,"easeOutBounce");
+            if ( $('.banner-box').is(':visible') )
+                $('.banner-box').slideUp(500);
+        });
+    }
+}).directive('activeAdder', function(){
+    return function(scope, elem, attrs){        
+        $(elem[0]).on('click', function(){
+            $('.setting-box').removeClass('active');
+            $(this).addClass('active');
+        })
+    }
+}).directive('focusDir', function(){
+    return function(scope, elem, attrs){
+        $(elem[0]).focus();
+    }
+}).directive('mapsblock', function(){
+    return function(scope, element, attrs){
+        var center = attrs.center;
+        var lat = attrs.lat;
+        var lon = attrs.lon;
+        var zoom = attrs.zoom;
+        zoom = parseInt(zoom);
+        var id = attrs.id;
+        center_loc = new google.maps.LatLng(center.split(',')[0], center.split(',')[1]);
+        var mapOptions = {
+            zoom: zoom,
+            center: center_loc,
+            scrollwheel: true,
+            navigationControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            draggable: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            draggableCursor:'pointer'
+        }        
+        
+        setTimeout(function(){
+            var map = new google.maps.Map(document.getElementById(id), mapOptions);
+            var marker = new google.maps.Marker({
+                position: center_loc,
+                map: map
+            });
+        }, 200);
+    }
+}).directive('floatVal', function(){
+    return function(scope, elem, attrs){
+        var key = attrs.floatVal;
+        if(scope.availability){
+            if(key != 'total'){
+                scope.availability.pricing[key] = parseFloat(scope.availability.pricing[key]).toFixed(2); 
+            }else{
+                var totalCost = parseFloat(scope.availability.pricing.weekday) + parseFloat(scope.availability.pricing.weekend) + parseFloat(scope.availability.pricing.caution)
+                if(scope.showPreviousPaid)
+                    totalCost = totalCost - scope.previousCarPaid;
+                scope.totalCost = totalCost.toFixed(2);
+                if(scope.availability.pricing.homepickup){
+                    scope.totalCost = parseFloat(scope.totalCost)+parseFloat(scope.availability.pricing.homepickup);
+                    scope.totalCost = scope.totalCost.toFixed(2);
+                }
+            }
+        }        
+    }
+}).directive('scrollHide', function($rootScope){
+    return function(scope, elem, attrs){
+        var mywindow = $(window);
+        var mypos = 663;        
+    }
+}).run(['$q','$http','$urlRouter','$rootScope','$state', 'cityStorage', function($q, $http, $urlRouter, $rootScope,$state, cityStorage){
+     var cityPromise = cityStorage.setCities(true);
+     cityPromise.then(function(data)
+      {
+        if(data.success){
+            angular.forEach(data.response, function (value, key) 
+        { 
+            var getExistingState = $state.get(value.name.toLowerCase())
+
+          if(getExistingState !== null){
+            return; 
+          }
+          var state = {
+            url: '/:cityName',
+            templateUrl: 'assets/partials/index.html',
+            controller: 'indexCtrl',
+            /*resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'justride',
+                        files: [
+                            'assets/js/controllers/indexCtrl.js'
+                        ]
+                }]);
+            }]
+        }*/
+        };
+          $stateProviderRef.state(value.name.toLowerCase(), state);
+        });
+        $urlRouterProviderRef.otherwise('/');
+        // Configures $urlRouter's listener *after* your custom listener
+        $urlRouter.sync();
+        //$urlRouter.listen();
+        }
+        
+    });
+    //$anchorScroll.yOffset = 50; 
+    $rootScope.$on('$stateChangeStart', function(){
+        $('.jr-nav-true').show();
+        $('#jr-start-time').datetimepicker('remove');
+        $('#jr-start-min-time').datetimepicker('remove');
+        $('#jr-start-head-time').datetimepicker('remove');
+        $('#jr-drop-time').datetimepicker('remove');
+        $('#jr-drop-min-time').datetimepicker('remove');
+        $('#jr-drop-head-time').datetimepicker('remove');
+    });
+    $rootScope.$on('$stateChangeSuccess', function(){
+        $rootScope.$broadcast('hideLoading'); 
+        if($state.current.name == 'index' || $state.current.name == 'testIndex'){
+            $rootScope.$broadcast('setIndexNew');
+        }else{
+            $rootScope.$broadcast('setIndexFalse');
+        }
+    });
+}]).directive('searchBox', function($http){
+    return function(scope, element, attrs){
+        
+    }
+}).directive('numberonly', function(){
+    return function(scope, element, attrs){
+        $(element[0]).keydown(function(e){
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                (e.keyCode == 65 && e.ctrlKey === true) || 
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+            }
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+}).directive('birthdatetimepicker', function(){
+    return function(scope, elem, attrs){
+        $(elem[0]).datetimepicker({
+            format: 'dd/mm/yyyy',
+            pickerPosition: "top",
+            autoclose: true,
+            startView: 2,
+            minView: 2
+        });
+    }
+});
+function setDateString(dateTimeObject){
+    var year = dateTimeObject.split(' ')[0].split('/')[2];
+    var month = dateTimeObject.split(' ')[0].split('/')[1];
+    var day = dateTimeObject.split(' ')[0].split('/')[0];
+    return year+'-'+month+'-'+day+' '+dateTimeObject.split(' ')[1]+':00';
+}
+function returnMonth(val){
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    return months[parseInt(val)-1];
+}
+function setWebTime(data){
+    return data.split(' ')[0].split('-')[2]+' '+returnMonth(data.split(' ')[0].split('-')[1])+' '+data.split(' ')[0].split('-')[0]+' '+data.split(' ')[1];
+}
+function setDurationDiff(startTime, endTime){
+    return (Math.abs(new Date(startTime) - new Date(endTime)) / 36e5).toFixed(2);
+}
+function invalidTimes(startDate, endDate){
+    if(!angular.isDefined(startDate) || !angular.isDefined(endDate))
+        return false;
+    var startObject = moment(startDate);
+    var endObject = moment(endDate);
+    var today = moment();
+    var diff = endObject.diff(startObject, 'minutes');
+    var mainDiff = startObject.diff(today, 'minutes');
+    if(diff<0 || mainDiff < 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+function validateEmail(sEmail) {
+    var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }else {
+        return false;
+    }
+}
+function checkDob(data){
+    var limitDate = new Date().getFullYear() - 23;
+    if(parseInt(data.split('-')[0])>limitDate){
+        return false;
+    }else if(parseInt(data.split('-')[1])<0 || parseInt(data.split('-')[1])>12){
+        return false
+    }else if(parseInt(data.split('-')[2])<0 || parseInt(data.split('-')[2])>31){
+        return false;
+    }else{
+        return true;
+    }
+}
+function setDiff(startTime, endTime){
+    hours = (Math.abs(new Date(startTime) - new Date(endTime)) / 36e5);
+    var hrs = parseInt(Number(hours));
+    var min = Math.round((Number(hours)-hrs) * 60);
+    if(min!=0)
+        return hrs+' hours '+min+' mins';
+    else
+        return hrs+' hours';
+}
+justride.factory('httpInterceptor', ['$q', '$rootScope', function($q, $rootScope){
+    var loadingCount = 0;
+    return {
+        request: function(config){       
+            return config
+        },
+        response: function (response) {            
+            return response || $q.when(response);
+        },
+        responseError: function (response) {  
+            $rootScope.errorHandler = {
+                status: response.status, 
+                message: response.statusText
+            }
+            return $q.reject(response);
+        }
+    }
+}]).config(function ($httpProvider) {
+     $httpProvider.interceptors.push('httpInterceptor');
+}).directive('targetExpand', function(){
+    return function(scope, elem, attrs){
+        var target = attrs.targetExpand;
+        $(target).slideToggle();
+    }
+}).directive('customtime', function(){
+    return {
+        scope: {
+            timeObj: '='
+        }, 
+        link: function(scope, elem, attrs){
+            $(elem).datetimepicker({
+                autoclose: true
+            }).on('changeDate', function(){
+                scope.timeObj = $(elem).val();                
+            });
+
+        }
+    }
+}).directive('slideToggle', function(){
+    return {
+        link: function(scope, elem, attrs){
+            target = attrs.slideToggle;
+            $(elem[0]).on('click', function(){
+                $('.how-it-works').css('margin-top', '0px');
+                // $('.how-it-works').show();
+                $('.jr-nav-true').hide();
+                window.scrollTo(0,0);
+            })         
+        }
+    }
+}).directive('slideOut', function(){
+    return {
+        link: function(scope, elem, attrs){
+            $(window).scroll(function(){
+                if($(window).scrollTop()>=663 && $(elem[0]).is(':visible')){
+                    $('.how-it-works').css('margin-top', '-663px');
+                    $('.jr-nav-true').show();
+                    setTimeout(function(){
+                        $('.home-landing').css('margin-top', '0px');
+                        $('.jr-nav-true').show();
+                        // window.scrollTo(0,0);
+                    },900)
+                }
+            });
+            $(window).on('keyup', function(e){
+                if(e.keyCode == 27){
+                    if($(elem[0]).is(':visible')){
+                        $('.how-it-works').css('margin-top', '-663px');
+                        setTimeout(function(){
+                                $('.home-landing').css('margin-top', '0px');
+                                $('.jr-nav-true').show();
+                                $('.home-landing').css('top', '0');
+                                window.scrollTo(0,0);
+                            },900)
+                    }
+                }
+            })
+        }
+    }
+}).directive('slideable', function () {
+    return {
+        restrict:'C',
+        compile: function (element, attr) {
+            // wrap tag
+            var contents = element.html();
+            element.html('<div class="slideable_content" style="margin:0 !important; padding:0 !important" >' + contents + '</div>');
+
+            return function postLink(scope, element, attrs) {
+                // default properties
+                attrs.duration = (!attrs.duration) ? '1s' : attrs.duration;
+                attrs.easing = (!attrs.easing) ? 'ease-in-out' : attrs.easing;
+                element.css({
+                    'overflow': 'hidden',
+                    'height': '0px',
+                    'transitionProperty': 'height',
+                    'transitionDuration': attrs.duration,
+                    'transitionTimingFunction': attrs.easing
+                });
+            };
+        }
+    };
+})
+.directive('testToggle', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var target = document.querySelector(attrs.slideToggle);
+            attrs.expanded = false;
+            element.bind('click', function() {
+                var content = target.querySelector('.slideable_content');
+                if(!attrs.expanded) {
+                    content.style.border = '1px solid rgba(0,0,0,0)';
+                    var y = content.clientHeight;
+                    content.style.border = 0;
+                    target.style.height = y + 'px';
+                } else {
+                    target.style.height = '0px';
+                }
+                attrs.expanded = !attrs.expanded;
+            });
+        }
+    }
+}).directive('testCalendar', function(){
+    return {
+        restrict: 'AE',
+        templateUrl: 'assets/partials/directives/availability.html',
+        scope: {
+            
+        },
+        link: function(scope, elem, attrs){
+            startDate = attrs.startDate;
+
+        }
+    }
+}).service('orderService', function(){
+    var order = {};
+    setOrder = function(newOrder){
+        order = newOrder;
+    }
+    getOrder = function(){
+        return order;
+    }
+    return {
+        set: setOrder,
+        get: getOrder
+    }
+}).service('cityStorage', ['$http','$rootScope', '$localStorage','$q', function($http, $rootScope, $localStorage,$q){
+    var cities = angular.fromJson($localStorage.justrideCities);
+    var city = angular.fromJson($localStorage.justrideCity);
+    var cityLocationProperty = "city_name";
+    setCities(true);
+    function setCities(getNewCities){
+        var cityPromise = $q.defer();
+        $http.get(serverUrl+"/city").success(function(data){
+            if(data.success){
+                var current = moment()
+                var cityArr = data.response;
+                var pendingCities = [];
+                for(c in cityArr){
+                    if(current < moment(cityArr[c].start_date)){
+                        pendingCities.push({
+                            city: cityArr[c],
+                            start_date: moment(cityArr[c].start_date).format('DD/MM/YYYY')
+                        });
+                    }
+                }
+                $rootScope.pendingCities = pendingCities;
+                $rootScope.$broadcast('setPending');
+                $rootScope.$broadcast('hideLoading');
+                cities = data.response;
+                cityPromise.resolve(data);
+                $localStorage.justrideCities = angular.fromJson(cities);
+                $rootScope.$broadcast('citiesPopulated');
+            }
+            else{
+                cityPromise.reject('error');
+            }
+        }).error(function(data){
+            cityPromise.reject('error');
+        })
+        return cityPromise.promise;
+    };
+
+    var setNewCities = function(citiesCollection){
+        cities = citiesCollection;
+        $localStorage.justrideCities = angular.fromJson(cities);
+        $rootScope.$broadcast('newCitiesPopulated');
+    };
+
+    var setCityLocation = function(cityObj){
+        if(cityObj){
+            cityName = cityObj.city_name;
+            for(var i=0; i<cities; i++){
+                if(cities[i].name == cityName){
+                    $localStorage.justrideCity = angular.fromJson(cities[i]);
+                    cities[i].selected = true;
+                }
+                else{
+                    cities[i].selected = false;
+                }
+            }                        
+        }
+    };
+
+    var setCity = function(newCity){
+        if(newCity){
+            city = newCity;
+            cityId = newCity.id;
+            $localStorage.justrideCity = angular.fromJson(newCity);
+        }
+        for(var i=0; i<cities.length; i++){
+            if(cities[i].id == cityId)
+                cities[i].selected = true;
+            else
+                cities[i].selected = false;
+        }
+    };
+
+    var getCity = function(){
+        return city;
+    };
+
+    var getCities = function(){
+        return cities;
+    };
+    return {
+        setCities: setCities,
+        getCities: getCities,
+        setCity: setCity,
+        getCity: getCity,
+        setCityLocation: setCityLocation,
+        setNewCities: setNewCities
+    }
+}]).controller('footerController',['$rootScope','$scope','cityStorage', function($rootScope, $scope, cityStorage){
+    var city = cityStorage.getCity();
+    if(city != null || city != undefined){
+        $scope.contact = city.contact_number;
+    }
+    $scope.$watch(function(){
+        return angular.toJson(cityStorage.getCity());
+    }, function(newValue){
+        var city = angular.fromJson(newValue);
+        if(city!= null || city!=undefined)
+            $scope.contact = city.contact_number;
+    });
+}]).directive('focusMe',['$timeout', function($timeout) {
+    return {
+        scope: { trigger: '@focusMe' },
+        link: function(scope, element) {
+            scope.$watch('trigger', function(value) {
+                if(value === "true") {
+                    $timeout(function() {
+                        $(element[0]).focus();
+                        $(element[0]).select();
+                    });
+                }
+            });
+        }
+    };
+}]);
+function addZeroBefore(n) {
+  return (n < 10 ? '0' : '') + n;
+}
+function setAvailabilityDateTime(time, type){
+    var today = moment()
+    var timeObj = moment(time, 'DD/MM/YYYY HH:mm');
+    if(type == 'minus'){
+        timeObj = moment(timeObj).subtract(1, 'day')
+    }else{
+        timeObj = moment(timeObj).add(1, 'day')
+    }
+    if(timeObj < today){
+        return moment().format('YYYY-MM-DD HH:MM');
+    }else{
+        return moment(timeObj).format('YYYY-MM-DD HH:mm');
+    }
+}
+
+justride.controller('launchModalCtrl', ['$modalInstance', '$timeout','date', '$scope', function($modalInstance, $timeout,date, $scope){
+            $scope.start_date = moment(date).format("DD/MM/YYYY");
+            $timeout(function(){
+                $modalInstance.close();
+            }, 4000);
+}])
+
+justride.directive('screenwidth',function(){
+    return function(scope, elem, attrs){
+        $(elem[0]).width($(window).width());
+    }
+}).directive('zoomImage', function($modal, $rootScope){
+    return function(scope, elem, attrs){
+        scope.$watch(function(){
+            return attrs.zoomImage;
+        }, function(value){
+            $rootScope.imageEnlargeIndex = value;
+        })
+        /*var image = attrs.zoomImage;
+        $rootScope.imageEnlarge = image;*/
+        var imageIndex = attrs.zoomImage;
+        $rootScope.imageEnlargeIndex = imageIndex;
+        $rootScope.modalTitle = attrs.zoomTitle;
+        $(elem[0]).css('cursor', 'pointer');
+        $(elem[0]).on('click', function(){
+            $modal.open({
+                windowClass: 'modal fade enlarge-modal',
+                templateUrl: "assets/partials/modals/enlargeModal.html",
+                controller: 'enlargeModalCtrl',
+                resolve:{
+                    imageSlides: function(){
+                        return attrs.slidesArray;
+                    },
+                    currentClick: function(){
+                        return $rootScope.imageEnlargeIndex;
+                    }
+                }
+            });
+        })
+    }
+}).factory('loadingModal', ['$modal', '$modalStack', function($modal, $modalInstance) {
+    return {
+        trigger: function() {
+            $modal.open({
+                windowClass: 'modal fade loading-modal',
+                templateUrl: 'assets/partials/modals/loadingModal.html',
+                backdrop: 'static',
+                controller: function($scope, $modalInstance) {
+                    $scope.ok = function() {
+                        $modalInstance.close($scope.selected.item);
+                    };
+                    $scope.cancel = function() {
+                        $modalInstance.dismiss('cancel');
+                    };
+                }
+            });
+        },
+        close: function(reason) {
+            $modalInstance.close();
+        }
+    };
+}]).filter('formatToInr', function() {
+       return function (number){
+           if(number>0){
+               number = Math.floor(number);
+           }
+           var x=Math.abs(number);
+           x = x.toString();
+           var lastThree = x.substring(x.length-3);
+           var otherNumbers = x.substring(0,x.length-3);
+           if(otherNumbers != '')
+           lastThree = ',' + lastThree;
+           var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree+ ".00";
+           return res;
+       }
+}).directive('clickcol', function(){
+    return function(scope, elem, attrs){
+        $(elem[0]).on('click', function(){
+            if($(window).width()< 768){
+                $('.col-nav').hide();
+            }
+        })
+    }
+}).directive('mapsblock', function(){
+    return {
+        link: function(scope, elem, attrs){
+            var center = attrs.center;
+            var lat = attrs.lat;
+            var lon = attrs.lon;
+            var zoom = attrs.zoom;
+            zoom = parseInt(zoom);
+            var id = attrs.id;
+            center_loc = new google.maps.LatLng(center.split(',')[0], center.split(',')[1]);
+            console.log(center_loc);
+            var mapOptions = {
+                zoom: zoom,
+                center: center_loc,
+                scrollwheel: true,
+                navigationControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                draggableCursor:'pointer'
+            }        
+            
+            setTimeout(function(){
+                var map = new google.maps.Map(document.getElementById(id), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: center_loc,
+                    map: map
+                });
+            }, 200);
+        }
+    }
+}).directive('availabletimepicker', function(){
+    return {
+        link: function(scope, elem, attrs){
+            minDate = moment() > moment(attrs.mintime, 'DD/MM/YYYY HH:mm') ? moment().format('DD/MM/YYYY HH:mm') : moment(attrs.mintime, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY HH:mm')
+            maxDate = moment() > moment(attrs.rangeend, 'YYYY-MM-DD HH:mm') ? moment().format('DD/MM/YYYY HH:mm') : moment(attrs.rangeend, 'YYYY-MM-DD HH:mm').format('DD/MM/YYYY HH:mm')
+            $(elem[0]).datetimepicker({
+                format: 'dd/mm/yyyy hh:ii',
+                startDate: minDate,
+                autoclose: true,
+                minuteStep: 15,
+                endDate: maxDate
+            })
+        }
+    }
+}).directive('compress', function(){
+    return function(scope, elem, attrs){
+        
+    }
+}).filter('day', function(){
+    return function(input){
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return days[moment(input, 'DD/MM/YYYY HH:mm').day()];
+    }
+}).directive('rightSlide', function(){
+    return function(scope, elem, attrs){
+        var target = attrs.rightSlide;
+        $(elem[0]).click(function(){
+            $(target).effect('slide',{
+                direction: 'right',
+            }, 600)
+        })
+    }
+}).service('previousCar',['$http',function($http){
+    var car = null;
+    var venues_array = [];
+    function setCar(newCar){
+        this.car = newCar;
+    }
+    function getCar(){
+        return this.car;
+    }
+    var getVenues = function(){
+        return this.venues_array;
+    }
+    var setVenues = function(array){
+        this.venues_array = array;
+    }
+    return{
+        setCar: setCar,
+        getCar: getCar,
+        getVenues: getVenues,
+        setVenues: setVenues
+    }
+}]);
+justride.constant("STATUS", {
+        "PENDING": "5",
+        "ACTIVE": "6",
+        "COMPLETED": "7",
+        "CANCELLED": "8"
+});
+
+justride.constant("DEFAULT_CITY",{
+    "id": 1,
+    "name": "Mumbai",
+    "latitude": 72.91,
+    "longitude": 19.12,
+    "contact_person": "Ashish Tripathi",
+    "contact_number": "9695981776",
+    "allow_home_pickup": 1,
+    "start_date": "0000-00-00 00:00:00",
+    "end_date": "0000-00-00 00:00:00",
+    "address_id": 2,
+    "home_booking_range": 5000,
+    "booking_notification_id": 4,
+    "booking_notification_dl": "mumbai@justride.in",
+    "vehicle_movement_range": 10000,
+    "max_homebooking_limit": 4,
+    "minimum_booking_hours": 1,
+    "selected": true
+});
+
+justride.factory('DateLimitComp',['cityStorage', function(cityStorage){
+    var service = {
+        getLimit: function(dateProperty, scopeObject){
+            var LimitDate;
+            if(scopeObject != null || scopeObject != undefined)
+                {
+                    if(dateProperty in scopeObject && (scopeObject[dateProperty] != null || scopeObject[dateProperty] != undefined))
+                        {
+                            var now = moment(new Date());
+                            var startMoment = moment(scopeObject[dateProperty]);
+                            if(startMoment.isBefore()){
+                                var chilloff = parseInt(scopeObject["chilloff_period"]);
+                            if(angular.isDefined(chilloff) && chilloff != null){
+                                var a = moment();
+                                a.add(chilloff, 'm');
+                                if(a.minutes() > 45){
+                                a.add(60-a.minutes(), 'm');
+                                }
+                                LimitDate = a.toDate();
+                            }
+                            else{
+                                LimitDate = new Date();
+                            }
+                        }
+                            else {
+                                var d = scopeObject[dateProperty];
+                                LimitDate = new Date(d.substr(0, 4), d.substr(5, 2) - 1, d.substr(8, 2), d.substr(11, 2), d.substr(14, 2), d.substr(17, 2));
+                            }
+                        }
+                    else{
+                        var chilloff = parseInt(scopeObject["chilloff_period"]);
+                        if(angular.isDefined(chilloff) && chilloff != null){
+                            var a = moment();
+                            a.add(chilloff, 'm');
+                            if(a.minutes() > 45){
+                                a.add(60-a.minutes(), 'm');
+                            }
+                            LimitDate = a.toDate();
+                        }
+                        else{
+                            LimitDate = new Date();
+                        }
+                    }   
+                }
+            else if(cityStorage.getCity() != null || cityStorage.getCity() != undefined)
+                {
+                    var obj = cityStorage.getCity();
+                    if(dateProperty in obj && (obj[dateProperty] != null || obj[dateProperty] != undefined)){
+                        var now = moment(new Date());
+                        var startMoment = moment(obj[dateProperty]);
+                        if(startMoment.isBefore())
+                            LimitDate = new Date();
+                        else{
+                            var d = obj[dateProperty];
+                            LimitDate = new Date(d.substr(0, 4), d.substr(5, 2) - 1, d.substr(8, 2), d.substr(11, 2), d.substr(14, 2), d.substr(17, 2));
+                        }
+                    }
+                    else
+                        LimitDate = new Date();
+                }
+            else
+                LimitDate = new Date();
+            return LimitDate;
+        }
+    }
+    return service;
+}])
+function getLatLng(obj){
+    var lat = obj[Object.keys(obj)[0]];
+    var lon = obj[Object.keys(obj)[1]];
+    return lat+','+lon
+}

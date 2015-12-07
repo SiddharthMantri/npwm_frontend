@@ -1,0 +1,41 @@
+<div class="jr-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="points-user-container">
+					<div class="row">
+						<div class="col-lg-2">
+							<img class="img-responsive" ng-src="{{user.image}}">
+						</div>
+						<div class="col-lg-4">
+							<div class="padded-top" style="padding-top: 30px;">
+								<h2 class="modal-title user-name" style="text-align: left;">
+									{{user.display_name}}
+								</h2>
+								<h4 class="point-sub">
+									JustRide Points
+								</h4>
+							</div>
+						</div>
+						<div class="col-lg-offset-3 col-lg-3">
+							{{totalPoints}}
+						</div>
+					</div>
+				</div>
+				<div class="points-user-container">
+					<div class="row">
+						<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" ng-repeat="r in cars">
+							<div class="grid-result veh-grid" backimg="{{r.image}}" style="height: 150px !important;">
+								<div class="overlay" ng-class="{'opaque': totalPoints < r.unlocks_at}">
+									<p ng-if="totalPoints < r.unlocks_at">
+										Blocked
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

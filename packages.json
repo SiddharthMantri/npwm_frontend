@@ -1,0 +1,102 @@
+{
+	"success": true,
+	"response": [
+	{
+		"id": 1,
+		"name": "mumbai",
+		"image": "http://holidify.com/weekend-getaways/square-images/MUMBAI.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 1,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 2,
+		"name": "delhi",
+		"image": "http://holidify.com/weekend-getaways/square-images/DELHI.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 2,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 3,
+		"name": "bangalore",
+		"image": "http://holidify.com/weekend-getaways/square-images/BANGALORE.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 3,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 4,
+		"name": "hyderabad",
+		"image": "http://holidify.com/weekend-getaways/square-images/HYDERABAD.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 4,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 5,
+		"name": "kolkata",
+		"image": "http://holidify.com/weekend-getaways/square-images/KOLKATA.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 5,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 6,
+		"name": "chennai",
+		"image": "http://holidify.com/weekend-getaways/square-images/CHENNAI.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 6,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 7,
+		"name": "ahmedabad",
+		"image": "http://holidify.com/weekend-getaways/square-images/AHMEDABAD.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 7,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	},{
+		"id": 8,
+		"name": "pune",
+		"image": "http://holidify.com/weekend-getaways/square-images/PUNE.png",
+		"minimum_distance": 250,
+		"optimum_distance": 300,
+		"duration": 100,
+		"deal_id": 8,
+		"number_of_deals": 4,
+		"min_days": 2,
+		"min_km": 400,
+		"min_price": 1000.00
+	}
+]
+}

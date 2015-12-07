@@ -1,0 +1,229 @@
+<div class="container-fluid" ng-cloak>
+	<ol class="breadcrumb mycustom" style="background-color: white">
+		<li><a ui-sref="index">Home</a></li>
+		<li><a ui-sref="profile.rides">My Rides</a></li>
+		<li class="active">PNR No: {{ride.token}}</li>
+	</ol>
+	<div class="row" ng-cloak>
+		<div class="col-md-6 col-sm-6 col-xs-9 col-lg-6" id="invoice1">
+			<ul class="nolist">
+				<li>
+					<div class="line" style="font-size: 1.5em;">
+						Dear {{user.display_name}}
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Invoice No.</label>
+						<span class="pull-right">{{invoice.invoice_number}}</span>
+					</div>
+				</li>
+				<li ng-if="showRideDistance">
+					<div class="line">
+						<label class="inline-block">Distance</label>
+						<span class="pull-right">{{ride.distance}} km</span>
+					</div>
+				</li>
+				<li ng-if="showTime">
+					<div class="line">
+						<label class="inline-block">Duration</label>
+						<span class="pull-right">{{ride.time}} h</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-9 col-lg-6" id="invoice2">
+			<ul class="nolist">
+				<li ng-if="showFeedback">
+					<div style="text-align: center;">
+						<div ng-if="isReadOnly">You rated this ride</div>
+					    <div ng-if="!isReadOnly">Rate your ride</div> 
+					    <rating style="outline: none;" ng-model="userfeedback.rate" max="5" readonly="isReadOnly" on-leave="overStar = null" ng-click="tellme()"></rating>
+					    </div>
+				</li>
+				<li ng-if="cancelledRide">
+					<div style="text-align: center;">
+					<span class="label label-danger">Cancelled Ride</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Invoice Date</label>
+						<span class="pull-right">{{invoice.invoice_date}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Transaction Amount</label>
+						<span class="pull-right">{{ride.transaction| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="ride.fare != null">
+					<div class="line">
+						<label class="inline-block">Fare</label>
+						<span class="pull-right">{{ride.fare| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Refund</label>
+						<span class="pull-right">{{ride.refund| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-9 col-lg-6" id="invoice3">
+			<div class="row" style="text-align: center; font-size: 1.5em;">
+				Booking Details
+			</div>
+			<div class="clearfix"></div>
+			<ul class="nolist">
+				<li>
+					<div class="line">
+						<label class="inline-block">PNR</label>
+						<span class="pull-right">{{ride.token}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Car</label>
+						<span class="pull-right">{{car.name}} - {{vehicle.registration_number}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Pickup Time</label>
+						<span class="pull-right">{{ride.actual_start_time}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Dropoff Time</label>
+						<span class="pull-right">{{ride.actual_end_time}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">Pickup Point</label>
+						<span class="pull-right">{{venue_pick.name}}</span>
+					</div>
+				</li>
+				<li>
+					<div class="line">
+						<label class="inline-block">DropOff Point</label>
+						<span class="pull-right">{{venue_drop.name}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-9 col-lg-6" id="invoice4">
+			<div class="row" style="text-align: center; font-size: 1.5em;" ng-if="hasDebits || hasCredits">
+				Fare Summary
+			</div>
+			<div class="row" style="text-align: center; margin: 0 auto;" ng-if="hasDebits">
+				Dr
+			</div>
+			<ul class="nolist">
+				<li ng-if="order.weekday != 0">
+					<div class="line">
+						<label class="inline-block">Weekday Charges</label>
+						<span class="pull-right">{{order.weekday| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.weekend != 0">
+					<div class="line">
+						<label class="inline-block">Weekend Charges</label>
+						<span class="pull-right">{{order.weekend| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.speeding != 0">
+					<div class="line">
+						<label class="inline-block">Speeding Charges</label>
+						<span class="pull-right">{{order.speeding| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.extrakm != 0">
+					<div class="line">
+						<label class="inline-block">Extra KM</label>
+						<span class="pull-right">{{order.extrakm| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.overtime != 0">
+					<div class="line">
+						<label class="inline-block">Overtime</label>
+						<span class="pull-right">{{order.overtime| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.damage != 0">
+					<div class="line">
+						<label class="inline-block">Damage Cost</label>
+						<span class="pull-right">{{order.damage| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.other != 0">
+					<div class="line">
+						<label class="inline-block">Other Charges</label>
+						<span class="pull-right">{{order.other| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.addon != 0">
+					<div class="line">
+						<label class="inline-block">Car Addon Charges</label>
+						<span class="pull-right">{{order.addon| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.overtime != 0">
+					<div class="line">
+						<label class="inline-block">Overtime Charges</label>
+						<span class="pull-right">{{order.overtime| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.cancellation != 0">
+					<div class="line">
+						<label class="inline-block">Cancellation Charges</label>
+						<span class="pull-right">{{order.cancellation| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.homepickup != 0">
+					<div class="line">
+						<label class="inline-block">HomePickup Charges</label>
+						<span class="pull-right">{{order.homepickup| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+			<div class="row" style="text-align: center; margin: 0 auto;" ng-if="hasCredits">
+				Cr
+			</div>
+			<ul class="nolist">
+				<li ng-if="order.refuelling != 0">
+					<div class="line">
+						<label class="inline-block">Refuelling Cost</label>
+						<span class="pull-right">{{order.refuelling| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<li ng-if="order.discount != 0">
+					<div class="line">
+						<label class="inline-block">Discount</label>
+						<span class="pull-right">{{order.discount| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+				<!--<li ng-if="order.refund != 0">
+					<div class="line">
+						<label class="inline-block">Refund</label>
+						<span class="pull-right">{{order.refund| currency:"&#8377;"}}</span>
+					</div>
+				</li>-->
+				<li ng-if="hasDebits || hasCredits">
+					<div class="line" style="font-size: 1.5em;">
+						<label class="inline-block">Total Amount</label>
+						<span class="pull-right">{{ride.fare| currency:"&#8377;"}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

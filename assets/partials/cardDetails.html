@@ -1,0 +1,191 @@
+<div>
+  <div class="row">
+    <div class="modal-title pull-left" style="padding-left: 15px; display: inline-block;">
+      <span style="font-size: 2em;">
+        Card Details
+      </span>
+    </div>
+    <div class="jr-boxes pull-right" style="display: inline-block; margin-top: 0px; padding: 0px;" dropdown>
+      <buttton style="border-color:1px solid #5cb85c;" class="btn btn-success" ng-click="addbankingDetails()">
+        ADD DETAILS 
+        <i style="color:#fff;" class="fa fa-plus-circle">
+        </i>
+      </buttton>
+    </div>
+  </div>
+  <div class="clearfix">
+  </div>
+  <div class="row table-row">
+      <div class="row" ng-show="cardDetails">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 table-bank-repeat table-head">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head">
+                <h6>Card Type</h6>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head">
+                <h6>Display Name</h6>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head">
+                <h6>Card Number</h6>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head">
+                <h6>Expiry Month</h6>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head">
+                <h6>Year</h6>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-repeat table-padd">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-edit media-table">
+                <h6>Delete</h6>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="b in cardDetails" class="row" ng-show="cardDetails">
+          <div ng-click="viewBankDetail(b)" class="col-lg-10 col-md-10 col-sm-10 col-xs-10 table-bank-repeat angular-dynamic-table">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head table-align">
+                  {{b.card_brand}}
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head table-align">
+                  {{b.card_name}}
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head table-align">
+                  {{b.card_number}}
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head table-align">
+                  {{b.expiry_month}}
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 table-bank-head table-align">
+                  {{b.expiry_year}}
+              </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <div ng-click="deleteDetail(b.id)" style="padding:0px;text-align:center;margin-top:10px;width:50%" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 delete-div">
+                  <i class="fa fa-trash-o trash-delete"></i>
+              </div>
+              
+          </div>
+      </div>
+      <div class="row" ng-show="checkCardDetails" style="cursor:pointer;">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h4 ng-click="addbankingDetails()">{{checkCardDetails}} <i class="fa fa-plus"></i></h4>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div id="editThisContent" class="editContent">
+      <div class="row form-header">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h3>
+            {{valueOfBank}} Card Detail
+          </h3>
+        </div>
+      </div>
+      <div class="outer-bank-detail">
+        <div class="inner-bank-detail">
+          <div class="row">
+          <form class="card-detail-form">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                        <label for="Card Number">
+                          Card Number
+                        </label>
+                        <input ng-show="addThis" type="text" class="form-control test" placeholder="Card Number" ng-model="card_number" ng-init="card_number = ''" maxlength="23" only-digits required>
+                        <span ng-if="cardDetected" class="card-img card-img-pos" ng-class="cardIcon"></span>
+                        <div ng-if="invalidCreditNumber" style="color: red;font-size: smaller;">Invalid Number</div>
+                        <div ng-if="unsupportedCard" style="color: red; font-size: smaller">VISA, MASTER or AMEX CARDS only</div>
+                        <div ng-if="emptyNo" style="color: red; font-size: smaller;">Please provide card number</div>
+                        <input ng-show="viewThis" type="text" class="form-control test" placeholder="Card Number" ng-model="userCardDetails.card_number" disabled>
+                      </div>
+              </div>
+              <div ng-show="viewThis" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="Display Name">
+                        Card Type
+                      </label>
+                      <input type="text" class="form-control test" placeholder="Card Type" ng-model="userCardDetails.card_type" disabled/>
+                    </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="Bank Name">
+                        Nick Name
+                      </label>
+                      <input ng-show="addThis" type="text" class="form-control test" placeholder="Nick Name" ng-model="nickname">
+                      <input ng-show="viewThis" type="text" class="form-control test" placeholder="Nick Name" ng-model="userCardDetails.display_name" disabled>
+                    </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="Month">
+                      Month
+                    </label>
+                    <select ng-show="addThis" class="form-control" ng-model="month">
+                        <option ng-repeat="phone in returnMonth" value="{{phone.id}}">
+                          {{ phone.name }}
+                        </option>
+                    </select>
+                     <select ng-show="viewThis" class="form-control" ng-model="userCardDetails.expiry_month" disabled>
+                        <option ng-repeat="phone in returnMonth" value="{{phone.id}}">
+                          {{ phone.name }}
+                        </option>
+                    </select>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="Year">
+                      Year
+                    </label>
+                    <select ng-show="addThis" class="form-control" ng-model="year">
+                        <option ng-repeat="years in returnYear" value="{{ years.name }}">
+                          {{ years.name }}
+                        </option>
+                    </select>
+                    <select ng-show="viewThis" class="form-control" ng-model="userCardDetails.expiry_year" disabled>
+                        <option ng-repeat="years in returnYear" value="{{ years.name }}">
+                          {{ years.name }}
+                        </option>
+                    </select>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                   <div class="form-group">
+                      <label for=" Credit/Debit Card">
+                        Credit/Debit Card
+                      </label>
+                     <select ng-show="addThis" ng-model="credit_card" class="form-control">
+                          <option value="0">Debit Card</option>
+                          <option value="1">Credit Card</option>
+                      </select>
+                      <select ng-show="viewThis" ng-model="userCardDetails.credit_card" class="form-control" disabled>
+                          <option value="0">Debit Card</option>
+                          <option value="1">Credit Card</option>
+                      </select>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row form-footer">
+        <div ng-show="viewThis" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <button type="submit" class="btn btn-close-form" ng-click="close()">
+            CLOSE
+          </button>
+        </div>
+        <div ng-show="addThis" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <button type="submit" class="btn btn-close-form" ng-click="close()">
+            CLOSE
+          </button>
+        </div>
+        <div ng-show="addThis" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <button ng-show="addThis" type="submit" class="btn btn-send" ng-click="addThisCard()">
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,532 @@
+<section class="new-landing">
+	<section class="hero">
+		<div class="video-preload">
+		</div>
+		<div class="grad-overlay" id="mainBody" style="padding:0">
+			<div class="container" id="pickerAnchor">	
+				<h4 class="jr-tagline" style="margin-top: 150px">
+					Drive it like you own it
+				</h4>
+			</div>
+			<div class="container jr-horizontal-nav-container">
+				<ul class="jr-horizontal-nav">
+					<li class="jr-horizontal-nav-link" ng-click="setActive('station')" ng-class="{'active': activeView == 'station', 'inactive': activeView !== 'station'}" tooltip='Pick a car from our station' tooltip-trigger="mouseenter" tooltip-placement='top'>
+						<span style="display: block; color: white;cursor:pointer;"><i class="fa fa-map-marker fa-2x"></i></span>
+						<a class="jr-horizontal-nav-link-a" href="">STATION PICK</a>
+					</li>
+					<li class="jr-horizontal-nav-link" ng-click="setActive('home')" ng-if="mapPick" ng-class="{'active': activeView == 'home', 'inactive': activeView !== 'home'}" tooltip='Get a car delivered at your home' tooltip-trigger="mouseenter" 
+					tooltip-placement='top'>
+						<span style="display: block; color: white;cursor:pointer;"><i class="fa fa-home fa-2x"></i></span>
+						<a class="jr-horizontal-nav-link-a" href="">HOME PICKUP</a>
+					</li>
+					<li class="jr-horizontal-nav-link" ng-click="setActive('cars')" ng-if="mapPick" ng-class="{'active': activeView == 'cars', 'inactive': activeView !== 'cars'}" tooltip='Book a Car of your choice' tooltip-trigger="mouseenter" tooltip-placement='top'>
+						<span style="display: block; color: white;cursor:pointer;"><i class="fa fa-car fa-2x"></i></span>
+						<a class="jr-horizontal-nav-link-a" href="">SELECT A CAR</a>
+					</li>
+				</ul>
+			</div>
+			<div class="search-overlay">
+				<div class="row" style="margin-top: -20px;">
+					<div class="search-cont-new">
+						<div class="row">
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad" ng-show="activeView === 'station'" id="jr-landing-div-station">
+								<autocomplete placeholder="Pick Up Location" click-activation="true" autocomplete="on" data="pickUpStationsVal" on-type="doSomething" selected-value="selectedStation" venue-pick="venuesLoaded && mapPick" home-pick="'false'"></autocomplete>
+								<i class="fa fa-map-marker form-control-feedback" style="position: absolute; top: 13px;"></i>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad" ng-show="activeView === 'cars'" id="jr-landing-div-cars">
+								<autocomplete placeholder="Select a car" click-activation="true" autocomplete="on" data="pickUpCarsVal" on-type="doSomethingCar" selected-value="selectedCar" venue-pick="false" home-pick="'false'"></autocomplete>
+								<i class="fa fa-car form-control-feedback" style="position: absolute; top: 11px;"></i>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad" ng-show="activeView === 'home'" ng-click="pickStationFromMap(1)" id="jr-landing-div-home">
+								<div class="jr-boxes">
+									<span ng-if="customLocation" style="white-space: nowrap;">
+											{{customLocationName}}
+									</span>
+									<span ng-if="venuesLoaded && mapPick && !customLocation" class="jr-default-placeholder">
+										Choose your own location
+									</span>
+									<i class="fa fa-map-marker form-control-feedback" style="position: absolute; top: 10px;"></i>
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad">
+								<div class="jr-boxes" style="padding: 0px">
+									<div class="inner-addon has-feedback">
+										<input id="jr-start-time" class="jr-date-input" placeholder="Pick Up Date and Time" ng-model="pickedDateVal" onfocus="blur();" required="required" readonly="readonly"> 
+										<i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+									</div>										
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad">
+								<div class="jr-boxes" style="padding: 0px">
+									<div class="inner-addon has-feedback">
+										<input id="jr-drop-time" class="jr-date-input" placeholder="Drop Off Date and Time" ng-model="droppedDateVal" onfocus="blur();" required="required" readonly="readonly"> 	
+										<i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+									</div>									
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad">
+								<div class="search-btn" ng-click="invokeSearch()">
+									Book Now
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+			<div class="jr-offer-side-label" ng-click="addExpand()" ng-if="hasNotifications">
+				<span class="jr-offer-count" ng-if="!expanded">{{newNotifications.length}}</span>
+				<span class="jr-offer-label">OFFERS</span>
+				<span class="glyphicon glyphicon-arrow-down" id="shortListDivCross" style="display: none;"></span>
+				<span class="glyphicon glyphicon-arrow-up"   id="shortListDivArrow" style="display: inline-block;"></span>
+			</div>
+			<div class="jr-offer-outer-container" id="offer-outer-container" ng-if="hasNotifications">
+		    	<div class="jr-offer-inner-container" ng-repeat="n in newNotifications">
+		    		<div class="jr-offer-side-icon">
+		    			<i class="fa fa-gift fa-3x" style="color: #757575;"></i>
+		    		</div>
+		    		<div class="jr-offer-help-text">
+		    			<p class="jr-offer-code" ng-bind="n.coupon_name"></p>
+		    			<p class="jr-offer-desc" ng-bind="n.description"></p>
+		    		</div>
+		    	</div>
+			</div>
+	</section>
+	<section class="banners hide">
+		<div class="container">
+			<h3 class="banner-text">
+				Offers For You
+			</h3>
+
+		</div>
+	</section>
+	<section class="alt-banners jr-alt-banners">
+		<div class="gradient-color">
+			<div class="pattern-overlay">
+				<div class="container">
+					<h3 class="banner-text jr-section-header">
+						Drive a new car everyday
+					</h3>
+					<h6 class="jr-section-subheader">
+						Hire a car for self drive in 3 steps. Renting a car had never been so affordable and simpler
+					</h6>
+					<div class="row" style="margin-top: 40px;">
+						<div class="col-lg-4 col-md-4">
+							<div class="hiw-container">
+								<div class="rideBook_512x512">
+								<!--<img class="img-responsive" src="/assets/images/rideBook_512x512.png">-->
+								</div>
+								<h4 class="hiw-header">
+									Book
+								</h4>
+								<p class="hiw-text">
+									Use our mobile app or visit our website to rent a car.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<!--<div class="hiw-container" style="max-width: 180px;">-->
+							<div class="hiw-container">
+								<div class="cc_red_512x512">
+								<!--<img class="img-responsive" src="/assets/images/cc_red_512x512.png">-->
+								</div>
+								<h4 class="hiw-header">
+									Pay
+								</h4>
+								<p class="hiw-text">
+									Pay via your preferred mode of payment.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="hiw-container">
+								<div class="car_red_512x512">
+								</div>
+								<h4 class="hiw-header">
+									Ride
+								</h4>
+								<p class="hiw-text">
+									Drive your car and explore amazing ways to travel. Fuel and insurance is on us.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="features">
+		<div class="container">
+			<div class="row">
+				<h3 class="banner-text jr-section-header" style="color: #BBB;-webkit-font-smoothing: antialiased;">
+					What We Offer
+				</h3>
+			</div>
+			<div class="row" style="margin-top: 30px; margin-left: 15px;">
+				<div class="col-lg-offset-2 col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-icon">
+						<span>
+							<img class="img-responsive jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127020346-803544.png"/>
+						</span>
+					</div>
+					<div class="intro-content">
+						<h5>Booking via mobile app/website</h5>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-content pull-right">
+						<h5>Security deposit of only Rs. 999/-</h5>
+					</div>
+					<div class="intro-icon pull-right">
+						<span>
+							<img class="img-responsive center-block jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127020422-831483.png"/> 
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 30px; margin-left: 15px;">
+				<div class="col-lg-offset-2 col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-icon">
+						<span>
+							<img class="img-responsive jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127020159-191467.png"/>
+						</span>
+					</div>
+					<div class="intro-content">
+						<h5>Home pickup available for most locations</h5>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-content pull-right">
+						<h5>Extend your ride as required</h5>
+					</div>
+					<div class="intro-icon pull-right">
+						<span>
+							<img class="img-responsive jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127020128-551336.png"/>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 30px; margin-left: 15px;">
+				<div class="col-lg-offset-2 col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-icon">
+						<span>
+							<img class="img-responsive jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127020002-448709.png"/>
+						</span>
+					</div>
+					<div class="intro-content">
+						<h5>Maximum liability in case of accident only Rs. 3000</h5>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xs-6 col-sm-6 col-md-6">
+					<div class="intro-content pull-right">
+						<h5>Dual Airbags and ABS in all cars</h5>
+					</div>
+					<div class="intro-icon pull-right">
+						<span>
+							<img class="img-responsive jr-landing-page-icon" src="https://justride-assets.s3-ap-southeast-1.amazonaws.com/img/20151127015912-700546.png"/>
+						</span>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</section>
+	<section class="imp-terms">
+		<div class="container">
+			<div class="row">
+				<h3 class="banner-text jr-section-header">
+					Important Terms
+				</h3>
+				<h6 class="jr-section-subheader">
+					Drive and have fun. JustRide Responsibly.
+				</h6>
+			</div>
+			<div class="row" style="margin-top: 30px; margin-left: 15px;">
+				<div class="col-lg-3 col-xs-6 col-sm-6 col-md-3" style="margin-top: 10px;">
+					<div class="intro-icon">
+						<span class="icon icon-calendar"></span>
+					</div>
+					<div class="intro-content">
+						<h5>Minimum 21 years of age of rider</h5>
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-6 col-sm-6 col-md-3" style="margin-top: 10px;">
+					<div class="intro-icon">
+						<span class="fa fa-book"></span>
+					</div>
+					<div class="intro-content">
+						<h5>Have a valid driving license</h5>
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-6 col-sm-6 col-md-3" style="margin-top: 10px;">
+					<div class="intro-icon">
+						<span class="icon icon-speedometer"></span>
+					</div>
+					<div class="intro-content">
+						<h5>Always Drive below speed limit of 120 km/hr</h5>
+					</div>
+				</div>
+				<div class="col-lg-3 col-xs-6 col-sm-6 col-md-3" style="margin-top: 10px;">
+					<div class="intro-icon">
+						<span class="fa fa-ban"></span>
+					</div>
+					<div class="intro-content">
+						<h5>No smoking inside vehicle</h5>
+					</div>
+				</div>
+			</div>
+				<div class="row">
+					<h5 class="details-text">
+						For details, visit <a ui-sref="policies.rental">Rental Agreement</a> and <a ui-sref="faq">FAQ</a>.
+					</h5>
+				</div>
+			</div>
+		</section>
+		<section class="contact" id="contact-section-scroll"> 
+			<div class="container">
+				<div class="row">
+					<h3 class="banner-text jr-section-header" style="color: #bbb;">
+						Happy to hear from you
+					</h3>
+					<h6 class="jr-section-subheader" style="color: #bdbdbd;">
+						We love feedback! Tell us how we can make your rides more enjoyable
+					</h6>
+				</div>
+				<div class="row">
+					<h5 style="text-align: center;">
+						<span class="contact-email-span">
+							<i class="fa fa-envelope-o contact-fa-icon jr-email-color-contact"></i> 
+							<a href="mailto: support@justride.in" class="jr-contact jr-email-color-contact">
+								support@justride.in
+							</a>
+						</span>
+						<span class="contact-phone-span">
+							<i class="fa fa-phone contact-fa-icon jr-email-color-contact"></i> 
+							<a href="tel:+918080232211" class="jr-contact jr-email-color-contact">
+								+91-8080232211
+							</a>
+						</span>
+					</h5>
+				</div>
+				<div class="row" ng-if="happyHeard" style="text-align: center;color: #AEAFB0;">
+					<h5><i class="fa fa-smile-o fa-2x" style="color: #4CAf50;bottom: 10%;"></i></h5>
+					<h5>Thanks {{contactObj.name}}</h5>
+					<p>We shall get in touch with you shortly!!</p>
+				</div>
+				<div class="row" ng-if="oopsError">
+					<h5>Oops, Network Issue</h5>
+					<p>We are sorry, but please try again</p>
+				</div>
+				<div class="container" ng-if="!happyHeard"> 
+					<form class="contact-us-form" name="queryForm" ng-submit="submitQuery(queryForm.$valid)" novalidate>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="jr-input-group jr-input-contact">
+									<div class="input-label">
+										Name
+									</div>
+									<div class="input-area">
+										<input type="text" class="jr-contact-input" required ng-model="contactObj.name" name="uName">
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="queryForm.uName.$invalid && submitted"></i>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="jr-input-group jr-input-contact">
+									<div class="input-label">
+										Email
+									</div>
+									<div class="input-area">
+										<input type="email" class="jr-contact-input" required ng-model="contactObj.email" name="uEmail">
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="queryForm.uEmail.$invalid && submitted"></i>
+										<!--<span ng-show="queryForm.uEmail.$invalid && submitted">Email Required</span>-->
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="jr-input-group jr-input-contact">
+									<div class="input-label contact-message-label">
+										Message
+									</div>
+									<div class="input-area">
+										<textarea required class="jr-contact-text-area" ng-model="contactObj.message" name="uComment"></textarea>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="queryForm.uComment.$invalid && submitted"></i>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<button class="search-btn submit-search-btn" type="submit">
+									Submit
+								</button>	
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</section>
+	</section>
+
+	<section class="sr-landing">
+		<div class="grad-overlay">
+			<div class="container">	
+				<h4 class="jr-tagline" style="font-size: 2em">
+					Drive it like you own it
+				</h4>
+				<div class="get-started" ng-click="getStarted()">
+					Get Started
+				</div>
+				<div class="row">
+					<div class="sr-search-cont" ng-if="getStartedVal">
+						<div class="sr-panel-header">
+							Get Started
+							<span class="pull-right fa fa-times" style="cursor: pointer;" ng-click="shutGetStarted()"></span>
+						</div>
+						<div class="sr-overlay">		
+							<div class="col-xs-12 col-sm-12">
+								<p class="super-text" style="margin-left: 10px;">
+									Select a City
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+								<div class="jr-boxes" ng-class="{'open': stationMissing.val}" id="toggle-station" ng-click="selectStation()" dropdown style="padding:0;" >
+									<div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">							
+										<span ng-if="srCity">
+											{{srCity.name}}
+										</span>
+										<span ng-if="!srCity">
+											Select a city
+										</span>
+									</div>
+									<div class="dropdown-menu jr-dropdown sr-dropdown">
+										<div ng-if="noCitySelected" style="text-align: center;">Please select a city</div>
+										<li ng-if="venuesLoaded" ng-repeat="city in cityCollection track by $index" ng-click="citySelect(city)">
+											<a class="jr-anchor"  ng-click="setStation(p.id)">
+												{{city.name}}
+											</a>
+										</li>													
+									</div>
+								</div>					
+							</div>
+							<div class="col-xs-12 col-sm-12">
+								<p class="super-text" style="margin-left: 10px;">
+									Select a Pickup Location
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+								<div class="jr-boxes" ng-class="{'open': stationMissing.val}" id="toggle-station" ng-click="selectStation()" dropdown style="padding:0;" >
+									<div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">							
+										<span ng-if="selectedStation == undefined && !customLocation">
+											Pick Up Location
+										</span>
+										<span ng-if="selectedStation != null">
+											{{selectedStation.name}}
+										</span>
+										<span ng-if="customLocation && selectedStation == undefined" style="max-width: 360px;">
+											{{customLocationName}}
+										</span>
+									</div>
+									<div class="dropdown-menu jr-dropdown sr-dropdown" style="left: 12px;">
+										<div ng-if="noCitySelected" style="text-align: center;">Please select a city</div>
+										<div class="limitdiv">
+											<li ng-if="venuesLoaded" ng-repeat="p in pickUpStations" ng-if="p.id != 0 && p.active != 0"	>
+												<a class="jr-anchor"  ng-click="setStation(p.id)">
+													{{p.name}}</a>
+											</li>
+										</div>
+										<li ng-if="venuesLoaded && mapPick">
+											<a class="jr-label-list click-btn"  ng-click="pickStationFromMap(1)">
+												Choose your own location
+											</a>
+										</li>
+										<li ng-if="venuesLoaded && mapPick">
+											<a class="jr-label-list click-btn"  ng-click="pickStationFromMap(0)">
+												View stations
+											</a>
+										</li>
+										<li ng-if="venuesLoaded && !mapPick">
+											<a class="jr-label-list click-btn" style="color: #9e9e9e;font-weight: 300;cursor: auto;">
+												Home pickup coming soon
+											</a>
+										</li>													
+									</div>
+								</div>					
+							</div>
+							<div class="col-xs-12 col-sm-12">
+								<p class="super-text" style="margin-left: 10px;">
+									Select a pick up time
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+								<div class="jr-boxes" style="padding: 0px">
+									<div class="inner-addon has-feedback">
+										<input id="jr-start-min-time" class="jr-date-input" placeholder="Pick Up Time" ng-model="pickedDateVal" onfocus="blur();"> 
+										<i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" tooltip="Select a pick up time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+									</div>										
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12">
+								<p class="super-text" style="margin-left: 10px;">
+									Select a drop off time
+								</p>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+								<div class="jr-boxes" style="padding: 0px">
+									<div class="inner-addon has-feedback">
+										<input id="jr-drop-min-time" class="jr-date-input" placeholder="Drop Time" ng-model="droppedDateVal" onfocus="blur();"> 	
+										<i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+									</div>									
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad">
+								<div class="search-btn" ng-click="invokeSearch()">
+									Book Now
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 zero-pad hide">
+								<div class="jr-boxes" style="padding: 0px">
+									<div class="inner-addon has-feedback">
+										<input class="jr-date-input" placeholder="Drop Off Time" onfocus="blur();" ng-click="customStartTime()"> 	
+										<i class="glyphicon glyphicon-calendar form-control-feedback" style="top: 2px" style="Select a drop off time" tooltip-trigger="hover" ng-if="!wrongTimes"></i>
+										<i class="glyphicon glyphicon-info-sign form-control-feedback" style="top: 5px" ng-if="wrongTimes"></i>
+									</div>									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>						
+			</div>
+		</div>
+	</section>
+	<div class="start-date-picker" ng-if="showDatePicker">
+		<div class="date-picker-panel">
+			<div class="sr-panel-header">
+				Pick Time
+			</div>
+			<div class="sr-calendar">
+				<div class="month-panel">
+					<div class="row">
+						<div class="col-xs-2">
+							<div class="prev-month">
+								<span class="fa fa-arrow-left"></span>
+							</div>
+						</div>
+						<div class="col-xs-8">
+							<div class="current-month">
+								{{currentMonth}}, {{currentYear}}
+							</div>
+						</div>
+						<div class="col-xs-2">
+							<div class="next-month">
+								<span class="fa fa-arrow-right"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
