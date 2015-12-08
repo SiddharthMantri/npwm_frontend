@@ -26,7 +26,8 @@
     "momentjs": "~2.10.6",
     "ocLazyLoad": "~1.0.4",
     "angular-material": "~0.11.4",
-    "ng-simplePagination": "~1.0.3"
+    "ng-simplePagination": "~1.0.3",
+    "ngmap": "~1.15.0"
   },
   "resolutions": {
     "angular": "1.2.27",
