@@ -21,6 +21,4 @@ npwmApp.config(function($stateProvider,$urlRouterProvider, $locationProvider, $h
         templateUrl: 'restaurant.html',
         controller: 'restaurantCtrl'
     });
-})
-
-
+});

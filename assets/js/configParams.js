@@ -4,7 +4,7 @@ var pythonUrl = {
 	name: 'PyMongo'
 };
 var nodeUrl = {
-	url: 'https://evening-sea-4955.herokuapp.com/',
+	url: 'https://evening-sea-4955.herokuapp.com',
 	id: 2,
 	name: 'Node'
 };

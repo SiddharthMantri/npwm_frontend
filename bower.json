@@ -25,7 +25,8 @@
     "lodash": "3.8.0",
     "momentjs": "~2.10.6",
     "ocLazyLoad": "~1.0.4",
-    "angular-material": "~0.11.4"
+    "angular-material": "~0.11.4",
+    "ng-simplePagination": "~1.0.3"
   },
   "resolutions": {
     "angular": "1.2.27",

@@ -1,4 +1,4 @@
-npwmApp.controller('searchCtrl', ['$scope', '$http', '$stateParams', '$rootScope',
+npwmApp.controller('searchCtrl', ['$scope', '$http', '$stateParams', '$rootScope', //'Pagination',
 	function($scope, $http, $stateParams, $rootScope){
 		$scope.query = $stateParams.query.replace(/-/g, ' ');
 		$rootScope.serverUrl = pythonUrl.url;

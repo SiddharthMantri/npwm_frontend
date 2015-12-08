@@ -48,7 +48,7 @@ ng\:form {
 				</div>
 			</div>	
 		</section>
-   <div ui-view style="height: 100%"></div>
+   <div ui-view style="height: 100%" autoscroll="false"></div>
 	<script type="text/javascript" src="assets/js/configParams.js"></script>
 	<script type="text/javascript" src="assets/dist/{{"vendor.js"}}"></script>
 	<script type="text/javascript" src="bower_components/angular-google-plus/dist/angular-google-plus.js"></script>
@@ -60,6 +60,8 @@ ng\:form {
      	'ui.router.router',
      	'ui.bootstrap',
      	'templates',
+     	'angular-loading-bar',
+     	// 'simplePagination'
      	]);
      function bootstrapApplication(){
      	angular.element(document).ready(function() {
