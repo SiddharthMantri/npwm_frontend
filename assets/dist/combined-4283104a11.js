@@ -30,12 +30,18 @@ npwmApp.controller('restaurantCtrl', ['$scope', '$http', '$rootScope', '$statePa
 			}
 		});
 		$scope.submitComment = function(){
-			$http.post($rootScope.serverUrl+'/restaurant/'+$stateParams.id, {comment: $scope.comment.val}).
-			success(function(data){
+			$http({
+				url: $rootScope.serverUrl+'/restaurant/'+$stateParams.id,
+				method: 'POST',
+				data: {comment: $scope.comment.val},
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).then(function(data){
 				if(data.success== true){
 					$scope.restaurant = data.response[0];
 				}
-			})
+			});
 		}
 	}
 ])
