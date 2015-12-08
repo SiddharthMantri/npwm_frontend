@@ -21,7 +21,7 @@ npwmApp.controller('indexCtrl', ['$scope', '$http', '$rootScope', '$state',
 ])
 npwmApp.controller('restaurantCtrl', ['$scope', '$http', '$rootScope', '$stateParams',
 	function($scope, $http, $rootScope, $stateParams){
-		$rootScope.serverUrl = pythonUrl.url;
+		// $rootScope.serverUrl = pythonUrl.url;
 		$scope.comment = {}
 		$http.get($rootScope.serverUrl+'/restaurant/'+$stateParams.id).
 		success(function(data){
