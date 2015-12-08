@@ -9,7 +9,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12" ng-repeat="r in restaurants | orderBy: 'name'| filter: query">
-				<a ui-sref="restaurant({restaurant_id: r.id})" >
+				<a ui-sref="restaurant({id: r.id})" >
 					<div class="result-box">
 					    {{r.name}}
 					</div>
