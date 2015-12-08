@@ -1,5 +1,40 @@
 <div class="jr-body">
 	<div class="container">
+		<div class="row" style="margin-top: -20px;">
+					<div class="search-cont-new">
+						<div class="row">
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad">
+								<div class="jr-boxes" ng-class="{'open': stationMissing.val}" id="toggle-station" ng-click="selectStation()" dropdown style="padding:0;" >
+									<div class="dropdown-toggle jr-pad" dropdown-toggle="dropdown">							
+										<span ng-if="selectedServer">
+											{{selectedServer.name}}
+										</span>
+										<span ng-if="!selectedServer">
+											Select a backend
+										</span>
+									</div>
+									<div class="dropdown-menu jr-dropdown sr-dropdown">
+										<li ng-repeat="s in serverList" >
+											<a class="jr-anchor"  ng-click="setServer(s.id)">
+												{{s.name}}
+											</a>
+										</li>													
+									</div>
+								</div>	
+							</div>
+							<div class="col-lg-6 zero-pad" id="jr-landing-div-station">
+								<div class="jr-boxes ac-drop">
+									<input type="text" ng-model="asyncSelected" placeholder="Type a cuisine" typeahead="c for c in cuisines | filter:$viewValue" class="form-control" style="border: none;box-shadow: none;outline: none;margin: 0px; height: auto;padding: 0px;">
+								</div>
+							</div>
+							<div class="col-lg-3 col-xs-3 col-sm-3 col-md-3 zero-pad">
+								<div class="search-btn" ng-click="invokeSearch()">
+									Search
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel-default panel">
