@@ -2,9 +2,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="modal-title">
-					{{restaurant.name}}
-				</h3>
+				<div class="panel-default panel">
+					<div class="panel-heading">
+						<h3 class="modal-title">
+							{{restaurant.name}}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p class="para-text">
+							Bourough: {{restaurant.borough}}
+						</p>
+						<p class="para-text">
+							Cuisine: {{restaurant.cuisine}}
+						</p>
+					</div>
+				</div>
 			</div>
 			<div class="col-lg-12">
 				<h4 class="modal-title">
@@ -15,13 +27,19 @@
 				</p>
 			</div>
 			<div class="col-lg-6">
-				<h4 class="modal-title">
-					Add a new comment
-				</h4>
-				<form ng-submit="submitComment()">
-					<input class="jr-input" placeholder="Add a new comment for {{restaurant.name}}" ng-model="comment.val">
-					<input type="submit" value="Submit" class="search-btn">
-				</form>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="modal-title">
+							Add a new comment
+						</h4>
+					</div>
+					<div class="panel-body">
+						<form ng-submit="submitComment()">
+							<input class="jr-input" placeholder="Add a new comment for {{restaurant.name}}" ng-model="comment.val">
+							<input type="submit" value="Submit" class="search-btn">
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
