@@ -1,6 +1,6 @@
 npwmApp.controller('restaurantCtrl', ['$scope', '$http', '$rootScope', '$stateParams',
 	function($scope, $http, $rootScope, $stateParams){
-		// $rootScope.serverUrl = pythonUrl.url;
+		// $rootScope.serverUrl = nodeUrl.url;
 		$scope.comment = {}
 		$http.get($rootScope.serverUrl+'/restaurant/'+$stateParams.id).
 		success(function(data){
@@ -9,14 +9,8 @@ npwmApp.controller('restaurantCtrl', ['$scope', '$http', '$rootScope', '$statePa
 			}
 		});
 		$scope.submitComment = function(){
-			$http({
-				url: $rootScope.serverUrl+'/restaurant/'+$stateParams.id,
-				method: 'POST',
-				data: {comment: $scope.comment.val},
-				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
-			}).then(function(data){
+			$http.post($rootScope.serverUrl+'/restaurant/'+$stateParams.id, {comment: $scope.comment.val}).
+			success(function(data){
 				if(data.success== true){
 					$scope.restaurant = data.response[0];
 				}
