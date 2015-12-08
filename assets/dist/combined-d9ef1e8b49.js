@@ -35,7 +35,7 @@ npwmApp.controller('restaurantCtrl', ['$scope', '$http', '$rootScope', '$statePa
 				method: 'POST',
 				data: {comment: $scope.comment.val},
 				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
+					'Content-Type': 'multipart/form-data'
 				}
 			}).then(function(data){
 				if(data.success== true){
